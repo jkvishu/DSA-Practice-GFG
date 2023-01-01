@@ -13,6 +13,7 @@ public:
         // code here
         //Done by me on my own
         //Time complexity : 0.02 sec
+        //This question is a part of DSA prepration created by Vishu Tyagi
         int c=0;
         if(N<=1)
         return 1;
