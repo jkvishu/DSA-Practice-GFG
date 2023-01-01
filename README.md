@@ -1,2 +1,2 @@
 # DSA-Practice-GFG
-This repository contains all solutions of the GeeksForGeeks problems solved by me.
+*This repository contains all the solutions I've solved for the DSA Practice Problem from GeeksForGeeks Website..*
