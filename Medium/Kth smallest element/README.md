@@ -6,7 +6,7 @@
 <span style="font-size:18px">N = 6
 arr[] = 7 10 4 3 20 15
 K = 3</span>
-<span style="font-size:18px"><strong>Output :</strong> 7</span>
+<span style="font-size:18px"><strong>Output :</strong> 7</span> 
 <strong><span style="font-size:18px">Explanation :</span></strong>
 <span style="font-size:18px">3rd smallest element in the given 
 array is 7.</span>
