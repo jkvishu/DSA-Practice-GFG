@@ -6,6 +6,7 @@ using namespace std;
 class Solution{
 	public:
 	    static bool cmp(string a,string b){
+		    //This is completely made by me (Vishu Tyagi)
 	        if(a[0]==b[0]){
 	            int i=0;
 	            while(a[i]==b[i])
@@ -27,6 +28,7 @@ class Solution{
 		vector<string> AllPossibleStrings(string s)
 		{
 		    // Code here
+		    //Done on my own with my own logic + below algo is learn from GFG
 		    int len=s.length();
 		    vector<string>v;
 		    string st="";
