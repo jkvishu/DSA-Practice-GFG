@@ -15,8 +15,15 @@ class Solution{
     {
         
         // Your code here
-        //Done by my own logic but it's quite slow
-        if(n==0 || n==1)
+        //This method is fast time taken 0.17 sec
+        int res=n;
+        while(n>0){
+            n=n>>1;
+            res^=n;
+        }
+        return res;
+        //Done by my own logic but it's quite slow time taken 0.4 sec.
+        /*if(n==0 || n==1)
         return n;
         string st="",kt="";
         int l=1,ans=0;
@@ -42,7 +49,7 @@ class Solution{
         }
         l=l*2;
     }
-    return ans;
+    return ans;*/
     }
 };
 
