@@ -6,8 +6,8 @@
 
  # Total Problems Solved
 
-- 📂 Basic: 16 Problems Solved
-- 📂 School: 1 Problems Solved
-- 📂 Easy: 20 Problems Solved
+- 📂 Basic: 19 Problems Solved
+- 📂 Medium: 15 Problems Solved
 - 📂 Hard: 4 Problems Solved
-- 📂 Medium: 12 Problems Solved
+- 📂 School: 1 Problems Solved
+- 📂 Easy: 28 Problems Solved
