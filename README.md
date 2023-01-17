@@ -6,28 +6,8 @@
 
  # Total Problems Solved
 
-|  #  |  Difficulty | Problems Solved
-
-                 |-----|-------------|---------------
-
-                 |-| 📂 <strong>Basic</strong> | <strong>23</strong> Problems Solved |
-|  #  |  Difficulty | Problems Solved
-
-                 |-----|-------------|---------------
-
-                 |-| 📂 <strong>Hard</strong> | <strong>9</strong> Problems Solved |
-|  #  |  Difficulty | Problems Solved
-
-                 |-----|-------------|---------------
-
-                 |-| 📂 <strong>Easy</strong> | <strong>41</strong> Problems Solved |
-|  #  |  Difficulty | Problems Solved
-
-                 |-----|-------------|---------------
-
-                 |-| 📂 <strong>School</strong> | <strong>3</strong> Problems Solved |
-|  #  |  Difficulty | Problems Solved
-
-                 |-----|-------------|---------------
-
-                 |-| 📂 <strong>Medium</strong> | <strong>18</strong> Problems Solved |
+- 📂 Basic: 23 Problems Solved
+- 📂 School: 3 Problems Solved
+- 📂 Hard: 9 Problems Solved
+- 📂 Medium: 18 Problems Solved
+- 📂 Easy: 41 Problems Solved
