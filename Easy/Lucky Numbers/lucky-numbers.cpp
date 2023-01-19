@@ -14,29 +14,32 @@ using namespace std;
 
 class Solution{
 public:
-     bool help(int n,int counter){
-
-        if(counter >n)
-
-         return true;
-
-        if(n%counter==0)
-
-         return false;
-
-        n= n-(n/counter);
-
-        return help(n,counter+1); 
-
-   }
-
-    bool isLucky(int n) {
-
-        // code here
-
-        return help(n,2);
-
+bool isLucky(int n) 
+{
+    //Iterative version for the same question.
+    if(n<2)
+    return true;
+    for(int i=2;i<=n;i++){
+        if(i>n)
+        return true;
+        if(n%i==0)
+        return false;
+        n=n-(n/i);
     }
+    return true;
+}
+     /*bool help(int n,int counter){
+        if(counter >n)
+         return true;
+        if(n%counter==0)
+         return false;
+        n= n-(n/counter);
+        return help(n,counter+1); 
+   }
+    bool isLucky(int n) {
+        // code here
+        return help(n,2);
+    }*/
 };
 
 //{ Driver Code Starts.
