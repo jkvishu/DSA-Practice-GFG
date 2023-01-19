@@ -8,8 +8,19 @@ class Solution{
     public:
     //You need to complete this fucntion
     
-    long long power(int N,int R)
-    {
+    long long power(int N,int R){
+        //Already Done in first attempt part of GFG course just for practice
+        long long int m=1e9+7;
+        if(R==0)
+        return 1;
+        long long int temp=power(N,R/2);
+        temp=(temp*temp)%m;
+        if(R%2==0)
+        return temp%m;
+        else
+        return (temp*N)%m;
+    }
+    /*{
        //Your code here
        //Done in first attempt part of GFG course
        long long int m=1000000007;
@@ -21,7 +32,7 @@ class Solution{
         return (temp%m);
         else
         return ((temp%m)*(N%m))%m;
-    }
+    }*/
 
 };
 
