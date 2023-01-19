@@ -12,6 +12,18 @@ class Solution
     public:
     int josephus(int n, int k)
     {
+        vector<int>v(n);
+        for(int i=0;i<n;i++){
+            v[i]=(i+1);
+        }
+        int i=0;
+        while(v.size()!=1){
+            i=(i+(k-1))%v.size();
+            v.erase(v.begin()+i);
+        }
+        return v[0];
+    }
+   /* {
        //Your code here
        //Done after help from yt
        //Done by Vishu Tyagi
@@ -26,7 +38,7 @@ class Solution
            arr.erase(arr.begin()+j);
        }
        return arr[0];
-    }
+    }*/
 };
 
 
