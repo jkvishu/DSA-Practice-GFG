@@ -38,6 +38,7 @@ bool isLucky(int n)
    }
     bool isLucky(int n) {
         // code here
+        //Recursive approach
         return help(n,2);
     }*/
 };
