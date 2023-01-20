@@ -11,19 +11,8 @@ using namespace std;
 class Solution{
 public:
     int remove_duplicate(int a[],int n){
-        //Third type of solution for the same problem this came from GFG-C.
-        int res=1;
-        for(int i=1;i<n;i++){
-            if(a[i]!=a[res-1]){
-                a[res]=a[i];
-                res++;
-            }
-        }
-        return res;
-        // code here
-    }
-        /*
         //Done in first attempt and you can clearly see the difference i build in solving problem from past to present by seeing the quality of both the solutions
+        //All of the solution provided here have the same time complexity.
         int i,j=0,c=0,mx=a[0];
         for(i=1;i<n;i++){
             if(a[i]!=mx){
@@ -34,6 +23,18 @@ public:
             }
         }
         return c+1;
+    }
+        /*
+        //Third type of solution for the same problem this came from GFG-C.
+        int res=1;
+        for(int i=1;i<n;i++){
+            if(a[i]!=a[res-1]){
+                a[res]=a[i];
+                res++;
+            }
+        }
+        return res;
+        // code here
     }*/
     /*int remove_duplicate(int a[],int n)
     {
