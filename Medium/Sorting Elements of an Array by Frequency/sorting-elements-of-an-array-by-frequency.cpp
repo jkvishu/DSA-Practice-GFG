@@ -1,21 +1,24 @@
-#include<bits/stdc++.h>
+//{ Driver Code Starts
+#include <bits/stdc++.h>
 using namespace std;
-int main()
- {
-	//code
-    // cout<<"Hello there I am Vishu";
-    // cout<<"Welcome to my profile";
-    int t;
-    cin>>t;
-    while(t--){
+
+
+
+// } Driver Code Ends
+class Solution{
+    public:
+    //Complete this function
+    //Function to sort the array according to frequency of elements.
+    vector<int> sortByFreq(int arr[],int n)
+    {
+        //Your code here
+        //Done in first attempt
         unordered_map<int,int>m;
         vector<pair<int,int>>v;
         vector<int>ans;
-        int n,x,j,k;
-        cin>>n;
+        int j,k;
         for(int i=0;i<n;i++){
-            cin>>x;
-            m[x]++;
+            m[arr[i]]++;
         }
         auto it=m.begin();
         while(it!=m.end()){
@@ -46,10 +49,40 @@ int main()
                 }
             }
         }
-        for(int i=0;i<ans.size();i++){
-            cout<<ans[i]<<" ";
-        }
-        cout<<endl;
+        return ans;
     }
+};
+
+//{ Driver Code Starts.
+
+int main() {
+	
+	
+	int t;
+	cin >> t;
+	
+	
+	while(t--){
+	    
+	    
+	    int n;
+	    cin >> n;
+	    
+	    int a[n+1];
+	    
+	    for(int i = 0;i<n;i++){
+	        cin >> a[i];
+	    }
+	    Solution obj;
+	    vector<int> v;
+	    v = obj.sortByFreq(a,n);
+	    for(int i:v)
+	        cout<<i<<" ";
+	    cout << endl;
+	}
+	
 	return 0;
 }
+
+
+// } Driver Code Ends
