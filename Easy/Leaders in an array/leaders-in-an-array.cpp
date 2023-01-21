@@ -13,7 +13,21 @@ class Solution{
     public:
     vector<int> leaders(int a[], int n)
     {
+        vector<int>v;
+        int mx=a[n-1];
+        v.push_back(mx);
+        for(int i=n-2;i>=0;i--){
+            if(a[i]>=mx){
+                v.push_back(a[i]);
+                mx=a[i];
+            }
+        }
+        reverse(v.begin(),v.end());
+        return v;
+    }
+    /*{
         //Just checked
+        //Last year done same with edit but now done in a sec.
         vector<int> ans;
        ans.push_back(a[n-1]);
        int maxi = a[n-1];
@@ -25,7 +39,7 @@ class Solution{
        }
        reverse(ans.begin(),ans.end());
        return ans;
-    }
+    }*/
 };
 
 //{ Driver Code Starts.
