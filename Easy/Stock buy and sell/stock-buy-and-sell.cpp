@@ -13,7 +13,9 @@ public:
     //Function to find the days of buying and selling stock for max profit.
     vector<vector<int> > stockBuySell(vector<int> A, int n){
         // code here
-        //Naive solution
+        //Solution Done by me on my own in first attempt.
+        //Without knowing the concept of DP and Greedy
+        //Before it was a cpyypste
         vector<vector<int>> v;
         vector<int>temp;
         int j;
@@ -33,12 +35,6 @@ public:
                 i=j;
             }
         }
-        // for(j=0;j<v.size();j++){
-        //     for(int i=0;i<v[j].size();i++){
-        //         cout<<v[j][i]<<" ";
-        //     }
-        //     cout<<endl;
-        // }
         return v;
     }
 };
