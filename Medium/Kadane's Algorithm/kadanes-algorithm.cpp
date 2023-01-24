@@ -12,22 +12,6 @@ class Solution{
     long long maxSubarraySum(int arr[], int n)
     {
         //Simple implementation of Kadane's algorithm.
-        long long int ans=INT_MIN,sum=0;
-        for(int i=0;i<n;i++){
-            sum+=arr[i];
-            ans=max(sum,ans);
-            if(sum<0)
-            {
-                sum=0;
-                continue;
-            }
-        }
-        if(sum==INT_MIN)
-        return -1;
-        return ans;
-    }
-    /*{
-        
         // Your code here
         //just checking already done
         long long sum=0,mx_sum=INT_MIN;
@@ -43,7 +27,7 @@ class Solution{
         }
         return mx_sum;
         
-    }*/
+    }
 };
 
 //{ Driver Code Starts.
