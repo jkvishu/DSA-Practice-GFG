@@ -15,10 +15,35 @@ class Solution{
     // size: size of input array
     int majorityElement(int a[], int size)
     {
+        // We have to create a solution in which we must not use extra space.
+        // Therefore We will use Moore's voting algorithm.
+        // Part of GFG-C.
+        int j=0,c=1;
+        for(int i=1;i<size;i++){
+            if(a[i]==a[j])
+            c++;
+            else
+            c--;
+            if(c==0){
+                c=1;
+                j=i;
+            }
+        }
+        if(c>size/2)
+        return a[j];
+        c=0;
+        for(int i=0;i<size;i++){
+            if(a[j]==a[i]){
+                c++;
+            }
+        }
+        if(size/2>=c)
+        return -1;
+        return a[j];
+    }
+   /* {
         
         // your code here
-        // We have to create a solution in which we must not use extra space.
-        // We will use Moore's voting algorithm.
         int major=a[0],count=1,i,l=size/2;
         for(i=1;i<size;i++)
         {
@@ -59,7 +84,7 @@ class Solution{
                return -1;
            }
         }
-    }
+    }*/
 };
 
 //{ Driver Code Starts.
