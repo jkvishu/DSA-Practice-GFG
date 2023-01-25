@@ -11,68 +11,25 @@ class Solution
     vector<int> subarraySum(vector<int>arr, int n, long long s)
     {
         // Your code here
-        vector<int>v;
-        if(n==1)
-        {
-            if(arr[0]==s)
-            {
-            v.push_back(1);
-            v.push_back(1);
-            return v;
-            }
-            else
-            {
-                v.push_back(-1);
-                return v;
-            }
-        }
+        //Done in first attempt using sliding window technique
         if(s==0)
-        {
-            int k=0;
-            while(k<n)
-            {
-                if(arr[k]==0)
-                {
-                    v.push_back(k+1);
-                    v.push_back(k+1);
-                    return v;
-                }
-                else
-                {
-                    v.push_back(-1);
-                    return v;
-                }
+        return {-1};
+        long long int sum=0,i,j=0;
+        for(i=0;i<n;i++){
+            sum+=arr[i];
+            if(sum==s){
+                return {j+1,i+1};
             }
-        }
-        int i=0,j=0;
-        long long int sum=0;
-        while(j<n)
-        {
-            sum+=arr[j];
-            if(sum>s)
-            {
-                while(i<n&&sum>s)
-                {
-                    sum-=arr[i];
-                    i++;
+            else if(sum>s){
+                while(j<=i&&sum>s){
+                    sum-=arr[j];
+                    j++;
                 }
                 if(sum==s)
-                {
-                v.push_back(i+1);
-                v.push_back(j+1);
-                return v;
-                }
+                return {j+1,i+1};
             }
-            else if(sum==s)
-            {
-                v.push_back(i+1);
-                v.push_back(j+1);
-                return v;
-            }
-            j++;
         }
-        v.push_back(-1);
-        return v;
+        return {-1};
     }
 };
 
