@@ -6,8 +6,10 @@
 
  # Total Problems Solved
 
-- 📂 Basic: 33 Problems Solved
-- 📂 Hard: 11 Problems Solved
-- 📂 School: 6 Problems Solved
-- 📂 Medium: 35 Problems Solved
-- 📂 Easy: 71 Problems Solved
+|  #  |  Difficulty | Problems Solved  
+|-----|-------------|---------------
+| 1. | :blue_square: <strong>School</strong> |<strong>06</strong> Problems Solved|
+| 2. | :yellow_square: <strong>Basic</strong> | <strong>33</strong> Problems Solved|
+| 3. | :green_square: <strong>Easy</strong> | <strong>71</strong> Problems Solved|
+| 4. | :orange_square: <strong>Medium</strong> | <strong>35</strong> Problems Solved|
+| 5. | :red_square: <strong>Hard</strong>  |<strong>11</strong> Problems Solved|
