@@ -16,16 +16,20 @@ class Solution
     {
        // Your code here
        //Easy but a little trick to master BS.
-       //Ctpysyt but understood.
+       //GFG-C🤝
+       //❌
        int l=0,h=n-1;
-       while(l<h){
-           int m=(l+(h-l)/2);
-           if(arr[m]<arr[m+1])
-           l=m+1;
-           else
-           h=m;
+       while(l<=h){
+           int m=(l+h)/2;
+           if((m==0||arr[m]>=arr[m-1])&&(m==n-1||arr[m]>=arr[m+1]))
+           return m;
+           else if(m>0&&arr[m]<=arr[m-1]){
+               h=m-1;
+           }
+           else{
+               l=m+1;
+           }
        }
-       return l;
     }
 };
 
