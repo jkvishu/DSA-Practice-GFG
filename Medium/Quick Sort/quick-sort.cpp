@@ -18,6 +18,24 @@ class Solution
     public:
     //Function to sort an array using quick sort algorithm.
     int partition(int arr[],int l,int h){
+        //Hoare's partition method.
+        //Little Faster than Lomuto Partition ayi baat smjh beta
+        //Practice makes the man perfect by vishu tyagi 😂
+        int i=l-1,j=h+1;
+        while(1){
+            do{
+                i++;
+            }while(arr[i]<arr[l]);
+            do{
+                j--;
+            }while(arr[j]>arr[l]);
+            if(i>=j)
+            return j;
+            swap(arr[i],arr[j]);
+        }
+    }
+    
+    /*int partition(int arr[],int l,int h){
         //Lomuto Partition method with O(1) space.
         int i=l-1;
         int j=l;
@@ -30,14 +48,14 @@ class Solution
         }
         swap(arr[i+1],arr[h]);
         return i+1;
-    }
+    }*/
     void quickSort(int arr[], int l, int h)
     {
         // code here
         if(l>=h)
         return;
         int p=partition(arr,l,h);
-        quickSort(arr,l,p-1);
+        quickSort(arr,l,p); //p-1 in Hoare's partition method.
         quickSort(arr,p+1,h);
     }
 };
