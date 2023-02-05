@@ -16,6 +16,7 @@ public:
     {
         // code here 
         // Dutch flag algorithm
+        // ✅💯
         int i=0,m=0,j=ar.size()-1;
         while(m<=j){
             if(ar[m]<a){
