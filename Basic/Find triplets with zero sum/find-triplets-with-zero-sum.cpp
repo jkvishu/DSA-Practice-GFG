@@ -18,16 +18,8 @@ class Solution{
         //✅💯
         sort(arr,arr+n);
         for(int i=0;i<n;i++){
-            int l=0,h=n-1;
+            int l=i+1,h=n-1;
             while(l<h){
-                if(l==i){
-                l++;
-                continue;
-                }
-                else if(h==i){
-                h--;
-                continue;
-                }
                 if(arr[i]+arr[h]+arr[l]<0){
                     l++;
                 }
