@@ -23,7 +23,7 @@ class Solution{
             }
             sort(arr1,arr1+n);
             sort(arr2,arr2+m);
-            //Without using extra space it's damm easy.
+            //With using extra space it's damm easy.
             /*vector<int>v;
             int i,j=0;
             for(i=0;i<n;i++){
