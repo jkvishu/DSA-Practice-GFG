@@ -12,7 +12,7 @@ class Solution{
     //Complete this function
     //Function to check whether there is a subarray present with 0-sum or not.
     bool subArrayExists(int arr[], int n)
-    {
+    /*{
         //Your code here
         //Done in first attempt with my own logic
         unordered_map<int,int>m;
@@ -30,6 +30,22 @@ class Solution{
                 m[sum]=i;
             }
             flag=0;
+        }
+        return 0;
+    }*/
+    {
+        //✅💯😏
+        unordered_set<int>s;
+        int fsum=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]==0)
+            return 1;
+            fsum+=arr[i];
+            if(s.find(fsum)!=s.end())
+            return 1;
+            if(fsum==0)
+            return 1;
+            s.insert(fsum);
         }
         return 0;
     }
