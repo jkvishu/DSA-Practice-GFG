@@ -6,7 +6,21 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
   public:
-    int numberOfSubarrays(vector<int>& arr, int N, int x){
+    int solve(vector<int>&a,int n,int x){
+        if(x<0)
+        return 0;
+        int j=0,ans=0;
+        for(int i=0;i<n;i++){
+            x-=a[i];
+            while(x<0){
+                x+=a[j++];
+            }
+            ans+=i-j+1;
+        }
+        return ans;
+    }
+    int numberOfSubarrays(vector<int>& arr, int N, int x)
+    /*{
         // code here
         //💯✅🤝 
         //naive solution
@@ -22,6 +36,13 @@ class Solution{
             s[psum]++;
         }
         return c;
+    }*/
+    {
+        //Let's solve the problem with the given constraints.
+        //👌🏻🥵💯👀❌
+        //Becomes super hard 🥵🥵🥵🥵🥵🥵
+        //Optimized Solution
+        return (solve(arr,N,x)-solve(arr,N,x-1));
     }
 };
 
