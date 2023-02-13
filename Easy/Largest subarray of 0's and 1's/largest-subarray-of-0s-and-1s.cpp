@@ -15,6 +15,23 @@ class Solution{
   public:
     int maxLen(int arr[], int N)
     {
+        //✅😏💯
+        unordered_map<int,int>m;
+        m[0]=-1;
+        int sum=0,ans=0;
+        for(int i=0;i<N;i++){
+            if(arr[i]==0)
+            sum--;
+            if(arr[i]==1)
+            sum++;
+            if(m.find(sum)!=m.end())
+            ans=max(ans,i-m[sum]);
+            if(m.find(sum)==m.end())
+            m[sum]=i;
+        }
+        return ans;
+    }
+    /*{
         // Your code here
         //Done after getting a little idea from pepcoding.
         //I Was extremely close to the same approach.
@@ -41,7 +58,7 @@ class Solution{
         if(c0==c1)
         return N;
         return ans;
-    }
+    }*/
 };
 
 
