@@ -10,6 +10,43 @@ class Solution{
   public:
     vector <int> countDistinct (int A[], int n, int k)
     {
+        //✅😏💯
+        unordered_map<int,int>m;
+        vector<int>v;
+        int i=0,c=0,j=0;
+        while(i<k){
+            if(m.find(A[i])==m.end())
+            c++;
+            m[A[i]]++;
+            i++;
+        }
+        v.push_back(c);
+        while(i<n){
+            if(A[i]==A[j] || m.find(A[i])!=m.end()){
+                m[A[j]]--;
+                m[A[i]]++;
+                if(m[A[j]]==0){
+                m.erase(A[j]);    
+                c--;
+                }
+                v.push_back(c);
+            }
+            else{
+                m[A[j]]--;
+                if(m[A[j]]==0){
+                m.erase(A[j]);    
+                c--;
+                }
+                c++;
+                m[A[i]]++;
+                v.push_back(c);
+            }
+            j++;
+            i++;
+        }
+        return v;
+    }
+    /*{
         //code here.
         //Sliding window problem done in first attempt.
         unordered_map<int,int>m;
@@ -43,7 +80,7 @@ class Solution{
             j++;
         }
         return v;
-    }
+    }*/
 };
 
 //{ Driver Code Starts.
