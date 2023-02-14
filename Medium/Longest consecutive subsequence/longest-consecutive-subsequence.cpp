@@ -10,7 +10,29 @@ class Solution{
     // N : size of the array arr[]
     
     //Function to return length of longest subsequence of consecutive integers.
-    void countsort(int arr[],int n,int p){
+    int findLongestConseqSubseq(int arr[], int N){
+        //Optimized Solution ❌🤝
+        //GFG-C.👌🏻
+        unordered_set<int>s;
+        for(int i=0;i<N;i++){
+            s.insert(arr[i]);
+        }
+        int ans=0,c=0;
+        for(int i=0;i<N;i++){
+            if(s.find(arr[i]-1)==s.end()){
+                int x=arr[i];
+                while(s.find(x)!=s.end()){
+                    c++;
+                    x++;
+                }
+                ans=max(ans,c);
+                c=0;
+            }
+        }
+        return ans;
+    }
+    //Solution designed by me previously which is working well but it is quite long.
+    /*void countsort(int arr[],int n,int p){
     int count[10],ax[n];
     for(int i=0;i<10;i++){
         count[i]=0;
@@ -58,7 +80,7 @@ class Solution{
        j=i;
    }
    return ans+1;
-}
+}*/
 };
 
 //{ Driver Code Starts.
