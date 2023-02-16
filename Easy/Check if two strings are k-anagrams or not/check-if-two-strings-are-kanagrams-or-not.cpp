@@ -10,7 +10,43 @@ using namespace std;
 
 class Solution {
   public:
-    bool areKAnagrams(string str1, string str2, int k) {
+    bool areKAnagrams(string str1, string str2, int k){
+        // code here
+        //done in second attempt using my own logic just forget to code one of the possible case 
+        //i have pre defined.
+        unordered_map<char,int>m;
+        int i,n=str1.length(),l=str2.length(),j=0;
+        if(n==l)
+        {
+            for(i=0;i<n;i++)
+            {
+                m[str1[i]]++;
+            }
+            for(i=0;i<l;i++)
+            {
+                auto it=m.find(str2[i]);
+                if(it!=m.end()&&it->second>0)
+                {
+                    j++;
+                    it->second=it->second-1;
+                }
+            }
+            if(n-j<=k)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    /*{
+        //Second try
         // code here
         // ❌👀
         if(str1.length()!=str2.length())
@@ -29,7 +65,7 @@ class Solution {
             if(c>k)
             return 0;
             return 1;
-    }
+    }*/
 };
 
 //{ Driver Code Starts.
