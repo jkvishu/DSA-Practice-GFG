@@ -8,59 +8,35 @@ using namespace std;
 //User function template for C++
 class Solution{
 public:
+    bool check(int a[],int b[]){
+        int f=0;
+        for(int i=0;i<26;i++){
+            if(a[i]!=b[i]){
+                f=1;
+                break;
+            }
+        }
+        if(f==0)
+        return 1;
+        return 0;
+    }
 	int search(string pat, string txt) {
-	    // code here
-	    //WTF why my code is not working lode ka bal ha ye
-	    /*int count=0;
-	    int m=pat.size(),n=txt.size();
-	    vector<int>a(26,0),b(26,0);
-	    for(int i=0;i<m;i++){
+	    //❌🤝GFG-C understood
+	    int a[26]={0},b[26]={0},c=0;
+	    for(int i=0;i<pat.length();i++){
 	        a[pat[i]-'a']++;
 	        b[txt[i]-'a']++;
 	    }
-	    if(a==b)
+	    if(check(a,b))
 	    c++;
-	    for(int i=m;i<n;i++)
-	    {
-	        b[txt[i-m]-'a']--;
+	    for(int i=pat.length();i<txt.length();i++){
+	        b[txt[i-pat.length()]-'a']--;
 	        b[txt[i]-'a']++;
-	        if(a==b);
+	        if(check(a,b))
 	        c++;
 	    }
-	    return c;*/
-	     int count=0;
-
-     int m=pat.size(),n=txt.size();
-
-     vector<int> v1(26,0),v2(26,0);
-
-     for(int i=0;i<m;i++)
-
-     {
-
-         v1[pat[i]-'a']++;
-
-         v2[txt[i]-'a']++;
-
-     }
-
-     if(v1==v2) count++;
-
-     for(int i=m;i<n;i++)
-
-     {
-
-         v2[txt[i-m]-'a']--;
-
-         v2[txt[i]-'a']++;
-
-         if(v1==v2) count++;
-
-     }
-
-     return count;
+	    return c;
 	}
-
 };
 
 //{ Driver Code Starts.
