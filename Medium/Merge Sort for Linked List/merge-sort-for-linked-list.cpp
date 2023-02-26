@@ -29,7 +29,7 @@ struct Node
 class Solution{
   public:
     //Function to sort the given linked list using Merge Sort.
-    Node* mergeSort(Node* head) {
+    /*Node* mergeSort(Node* head) {
         // your code here
         // ✅💯😏
         vector<int>v;
@@ -46,6 +46,42 @@ class Solution{
             st=st->next;
         }
         return head;
+    }*/
+    Node* hlp(Node* l1,Node* l2){
+        Node* ans=new Node(0);
+        Node* curr=ans;
+        while(l1!=NULL and l2!=NULL){ 
+            if(l1->data<=l2->data){
+                curr->next=l1;
+                l1=l1->next;
+            }
+            else{
+                curr->next=l2;
+                l2=l2->next;
+            }
+            curr=curr->next;
+        }
+        if(l1!=NULL){curr->next=l1;}
+        if(l2!=NULL){curr->next=l2;}
+        return ans->next;
+    }
+  public:
+    //Function to sort the given linked list using Merge Sort.
+    Node* mergeSort(Node* head) {
+        // your code here
+        // real merge sort on the linked list
+        // ©👀❌
+        if(head==NULL ||head->next==NULL){return head;}
+        Node *s=head , *f=head ,*p=NULL;
+        while(f!=NULL and f->next!=NULL){
+            p=s;
+            s=s->next;
+            f=f->next->next;
+        }
+        p->next=NULL;
+        Node* l1=mergeSort(head);
+        Node* l2=mergeSort(s);
+       return hlp(l1,l2);
     }
 };
 
