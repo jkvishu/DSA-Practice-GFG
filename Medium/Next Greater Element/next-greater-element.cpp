@@ -12,6 +12,7 @@ class Solution
         // Your code here
         // Solved in first attempt with my own logic Jood boltte
         // ✅💯😏
+        // Time taken 0.47 sec
         vector<long long>ans(n);
         stack<long long >s;
         for(int i=n-1;i>=0;i--){
