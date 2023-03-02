@@ -10,6 +10,28 @@ using namespace std;
 class Solution{
 public:
     int maxLength(string S){
+        /*{
+        // code here
+        // MY code fails at this Test case ()(()()(()(
+        int ans=0,c=0;
+        stack<char>s;
+        for(int i=0;i<S.length();i++){
+            if(S[i]=='('){
+                s.push('(');
+            }
+            else{
+                if(!s.empty()){
+                    c++;
+                    s.pop();
+                    ans=max(ans,c);
+                }
+                else{
+                    c=0;
+                }
+            }
+        }
+        return ans*2;
+    }*/
         // code here
         // ❌👀🤝
         int ans=0;
@@ -31,6 +53,7 @@ public:
         }
         return ans;
     }
+    
 };
 
 //{ Driver Code Starts.
