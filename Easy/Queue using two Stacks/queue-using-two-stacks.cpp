@@ -60,6 +60,34 @@ public:
 void StackQueue :: push(int x)
 {
     // Your Code
+    while(!s1.empty()){
+        s2.push(s1.top());
+        s1.pop();
+    }
+    s1.push(x);
+    while(!s2.empty())
+    {
+        s1.push(s2.top());
+        s2.pop();
+    }
+}
+
+//Function to pop an element from queue by using 2 stacks.
+int StackQueue :: pop()
+{
+        // Your Code 
+        // 🔥Making the push operation costly.
+        // ✅🤝💯
+        if(s1.empty())
+        return -1;
+        int x=s1.top();
+        s1.pop();
+        return x;
+}
+/*//Function to push an element in queue by using 2 stacks.
+void StackQueue :: push(int x)
+{
+    // Your Code
     s1.push(x);
 }
 
@@ -68,6 +96,7 @@ int StackQueue :: pop()
 {
         // Your Code  
         // ✅💯😏
+        // 🔥Making the pop operation costly.
         while(!s1.empty()){
             s2.push(s1.top());
             s1.pop();
@@ -81,4 +110,4 @@ int StackQueue :: pop()
             s2.pop();
         }
         return x;
-}
+}*/
