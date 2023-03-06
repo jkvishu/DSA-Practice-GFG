@@ -10,11 +10,10 @@ class Queue {
 public:
 
     void enqueue(int x) {
-        //Making the push operation costly.
+        //Making the pop operation costly.
         //✅💯😏
         input.push(x);
     }
-
     int dequeue() {
         while(!input.empty()){
             output.push(input.top());
