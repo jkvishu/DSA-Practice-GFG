@@ -33,10 +33,19 @@ int main()
 //function Template for C++
 
 //Function to reverse the queue.
+void help(queue<int> &q){
+    if(q.empty())
+    return;
+    int x=q.front();
+    q.pop();
+    help(q);
+    q.push(x);
+}
 queue<int> rev(queue<int> q)
-{
+/*{
     // add code here.
     // First method by using a stack
+    // 😏✅💯
     stack<int>v;
     while(!q.empty()){
         v.push(q.front());
@@ -46,5 +55,12 @@ queue<int> rev(queue<int> q)
         q.push(v.top());
         v.pop();
     }
+    return q;
+}*/
+{
+    //2 Method using no extra space.
+    //Doing it with recursion
+    // ✅🤝💯
+    help(q);
     return q;
 }
