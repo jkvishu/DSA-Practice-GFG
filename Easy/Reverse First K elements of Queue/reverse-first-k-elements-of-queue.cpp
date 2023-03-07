@@ -31,7 +31,8 @@ int main() {
 // User function Template for C++
 
 // Function to reverse first k elements of a queue.
-queue<int> modifyQueue(queue<int> q, int k) {
+queue<int> modifyQueue(queue<int> q, int k) 
+/*{
     // add code here.
     // Naive Solution for this problem
     // ✅💯😏
@@ -51,6 +52,27 @@ queue<int> modifyQueue(queue<int> q, int k) {
     }
     for(int i=0;i<v.size();i++){
         q.push(v[i]);
+    }
+    return q;
+}*/
+{
+    //Best solution for this problem is quite simple.
+    //🤝💯✅
+    stack<int>s;
+    for(int i=0;i<k;i++){
+        s.push(q.front());
+        q.pop();
+    }
+    while(!s.empty()){
+        q.push(s.top());
+        s.pop();
+    }
+    int c=q.size()-k;
+    while(c){
+        int temp=q.front();
+        q.pop();
+        q.push(temp);
+        c--;
     }
     return q;
 }
