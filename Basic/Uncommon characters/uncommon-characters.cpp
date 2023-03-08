@@ -8,8 +8,31 @@ class Solution
     public:
         string UncommonChars(string A, string B)
         {
+            //let's see a better solution to solve this problem 
+            //Do star my repo :-> username jkvishu
+            // ✅🤝😏
+            int a[26]={0};
+            int b[26]={0};
+            string ans="";
+            for(int i=0;i<A.length();i++){
+                a[A[i]-'a']++;
+            }
+            for(int i=0;i<B.length();i++){
+                b[B[i]-'a']++;
+            }
+            for(int i=0;i<26;i++){
+                if(a[i]>0&&b[i]==0||b[i]>0&&a[i]==0){
+                    ans.push_back(i+'a');
+                }
+            }
+            if(ans.length()>0)
+            return ans;
+            return "-1";
+        }
+       /* {
             // code here
             // Jood 😏💯✅
+            // BUt this is tati solution ha bhai sahi me
             string ans="";
             unordered_set<int>s1;
             unordered_set<int>s2;
@@ -34,7 +57,7 @@ class Solution
             if(ans.length()>0)
             return ans;
             return "-1";
-        }
+        }*/
 };
 
 
