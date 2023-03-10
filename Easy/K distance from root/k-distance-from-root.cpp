@@ -117,11 +117,24 @@ struct Node
 }; */
 
 // function should print the nodes at k distance from root
+void find(vector<int>&ans,Node* root,int k){
+    if(root==NULL)
+    return;
+    if(k==0){
+        ans.push_back(root->data);
+    }
+    else{
+        find(ans,root->left,k-1);
+        find(ans,root->right,k-1);
+    }
+}
 vector<int> Kdistance(struct Node *root, int k)
-{
+/*{
   // Your code here
   // ✅💯😏
   // Iterative solution by Jood Vishu Tyagi. 😂
+  // Faster than the recursive one
+  // Time taken 0.09 sec.
   if(k==0)
   return {root->data};
   vector<int>ans;
@@ -155,4 +168,12 @@ vector<int> Kdistance(struct Node *root, int k)
       c++;
   }
   return ans;
+}*/
+{
+    //Let's see The recursive approach
+    //✅🤝💯
+    //Time taken 0.15 sec.
+    vector<int>ans;
+    find(ans,root,k);
+    return ans;
 }
