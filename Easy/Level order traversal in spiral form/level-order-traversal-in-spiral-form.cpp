@@ -131,6 +131,8 @@ vector<int> findSpiral(Node *root)
 {
     //Your code here
     //✅💯😏
+    //Time taken 0.01 sec
+    //Jood Vishu Tyagi
     if(root==NULL)
     return {};
     if(root->left==NULL&&root->right==NULL)
