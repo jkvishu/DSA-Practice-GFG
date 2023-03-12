@@ -117,6 +117,7 @@ class Solution{
         //  Your Code here
         // Brute force approach but works fine
         // ✅💯😏
+        // Time taken 0.51 sec.
         if(root->left==NULL&&root->right==NULL)
         return 1;
         queue<Node*>q;
@@ -147,13 +148,18 @@ class Solution{
         return 1;
     }
     */
-    int check(Node* root,int &c){
+    int check(Node* root){
         if(root==NULL)
         return 0;
-        int lh=check(root->left,c);
-        int rh=check(root->right,c);
+        int lh=check(root->left);
+        if(lh==-1)
+        return -1;
+        int rh=check(root->right);
+        if(rh==-1)
+        return -1;
         if(abs(lh-rh)>1)
-        c=0;
+        return -1;
+        else
         return max(lh,rh)+1;
     }
     bool isBalanced(Node *root)
@@ -161,9 +167,11 @@ class Solution{
         //  Your Code here
         // Let's see the optimized recursive approach
         // ✅🤝💯
-        int c=1;
-        check(root,c);
-        return c;
+        // Time taken 0.39 sec.
+        int h=check(root);
+        if(h==-1)
+        return 0;
+        return 1;
     }
 };
 
