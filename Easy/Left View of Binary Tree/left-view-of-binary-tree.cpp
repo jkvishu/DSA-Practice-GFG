@@ -128,60 +128,64 @@ struct Node
  */
 
 //Function to return a list containing elements of left view of the binary tree.
-int height(Node* root){
-    if(root==NULL)
-    return 0;
-    else{
-        return max(height(root->left),height(root->right))+1;
-    }
-}
-void find(vector<int>&ans,Node* root){
+/*
+void find(int k,vector<int>&ans,Node* root){
     if(root==NULL)
     return;
     else{
-        ans.push_back(root->data);
-        find(ans,root->left);
-        find(ans,root->right);
+        if(k==ans.size()){
+            ans.push_back(root->data);
+        }
+        find(k+1,ans,root->left);
+        find(k+1,ans,root->right);
     }
 }
 vector<int> leftView(Node *root)
 {
    // Your code here
-   // Super brute force approach but works fine
+   // recursive approach 
+   // ✅🤝💯
+   if(root==NULL)
+   return {};
+   vector<int>ans;
+   find(0,ans,root);
+   return ans;
+}*/
+vector<int> leftView(Node *root)
+{
+   // Your code here
+   // Let's see the iterative approach also hehe 👽
    // ✅💯😏
    if(root==NULL)
    return {};
-   if(root->data==4){
-       if(root->left!=NULL&&root->right!=NULL){
-           if(root->left->data==5&&root->right->data==2)
-           {
-               if(root->left->left==NULL&&root->left->right==NULL)
-               return {4,5,3,6};
-           }
-       }
-   }
-   else if(root->data==1){
-        if(root->left!=NULL&&root->right!=NULL){
-           if(root->left->data==2&&root->right->data==5)
-           {
-               if(root->left->left==NULL&&root->left->right==NULL)
-               return {1,2,6,7};
-           }
-           else if(root->left->data==2&&root->right->data==3){
-                if(root->left->left!=NULL&&root->left->right!=NULL){
-                    if(root->left->left->data==4&&root->left->right->data==5)
-                    return {1,2,4,8};
-                }
-           }
-       }
-   }
-   int h=0;
-   h=height(root);
+   queue<Node*>q;
+   q.push(root);
    vector<int>ans;
-   vector<int>fans;
-   find(ans,root);
-   for(int i=0;i<h;i++){
-       fans.push_back(ans[i]);
+   int k=0;
+   ans.push_back(root->data);
+   while(!q.empty()){
+       int i=0;
+       int n=q.size();
+       while(i<n){
+           root=q.front();
+           q.pop();
+           if(root->left!=NULL){
+               if(k==0){
+                   ans.push_back(root->left->data);
+               }
+               q.push(root->left);
+               k++;
+           }
+           if(root->right!=NULL){
+               if(k==0){
+                   ans.push_back(root->right->data);
+               }
+               q.push(root->right);
+               k++;
+           }
+           i++;
+       }
+       k=0;
    }
-   return fans;
+   return ans;
 }
