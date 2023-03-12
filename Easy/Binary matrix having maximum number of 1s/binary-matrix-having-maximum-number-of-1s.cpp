@@ -11,9 +11,12 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> findMaxRow(vector<vector<int>> mat, int N) {
+    vector<int> findMaxRow(vector<vector<int>> mat, int N) 
+    {
         //code here
         //✅💯😏
+	//POTD 
+        //Same time complexity 1.29 sec in both the solution
         int rw=0;
         int c=0;
         int j=N-1;
@@ -40,6 +43,20 @@ public:
         }
         return {rw,c};
     }
+    /*{
+        //✅🤝💯
+        int i=0,c=0,ans=0,j=N-1;
+        while(i<N&&j>=0){
+            if(mat[i][j]==1){
+                j--;
+                c++;
+                ans=i;
+            }
+            else
+            i++;
+        }
+        return {ans,c};
+    }*/
 };
 
 //{ Driver Code Starts.
