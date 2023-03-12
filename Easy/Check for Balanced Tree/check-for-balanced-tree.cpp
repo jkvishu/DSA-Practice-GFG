@@ -104,6 +104,7 @@ struct Node
 class Solution{
     public:
     //Function to check whether a binary tree is balanced or not.
+     /*
     int find(Node* root){
         if(root==NULL)
         return 0;
@@ -144,6 +145,25 @@ class Solution{
             }
         }
         return 1;
+    }
+    */
+    int check(Node* root,int &c){
+        if(root==NULL)
+        return 0;
+        int lh=check(root->left,c);
+        int rh=check(root->right,c);
+        if(abs(lh-rh)>1)
+        c=0;
+        return max(lh,rh)+1;
+    }
+    bool isBalanced(Node *root)
+    {
+        //  Your Code here
+        // Let's see the optimized recursive approach
+        // ✅🤝💯
+        int c=1;
+        check(root,c);
+        return c;
     }
 };
 
