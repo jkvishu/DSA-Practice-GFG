@@ -94,7 +94,7 @@ struct Node
 class Solution {
   public:
     // Function to return the diameter of a Binary Tree.
-    int find(Node* node){
+    /*int find(Node* node){
         if(node==NULL)
         return 0;
         else{
@@ -104,6 +104,8 @@ class Solution {
     int diameter(Node* root) {
         // Your code here
         // ✅💯😏
+        // Brute force approach but works completely fine
+        // Time taken 0.65 sec.
         int ans=0;
         queue<Node*>q;
         q.push(root);
@@ -129,6 +131,23 @@ class Solution {
             }
         }
         return ans;
+    }*/
+    int res=0;
+    int find(Node* root){
+        if(root==NULL)
+        return 0;
+        int left=find(root->left);
+        int right=find(root->right);
+        res=max(res,left+right+1);
+        return 1+max(left,right);
+    }
+    int diameter(Node* root) {
+        // Your code here
+        // Most efficient approach
+        // ✅🤝👀
+        // Time taken 0.26 sec.
+        find(root);
+        return res;
     }
 };
 
