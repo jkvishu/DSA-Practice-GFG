@@ -110,9 +110,11 @@ struct Node
 class Solution {
   public:
     // Function to convert a binary tree into its mirror tree.
-    void mirror(Node* node) {
+    void mirror(Node* node) 
+    /*{
         // code here
         // ✅💯😏
+        // Iterative solution 100 A.c
         queue<Node*>q;
         q.push(node);
         while(!q.empty()){
@@ -132,6 +134,19 @@ class Solution {
                 node->right=k;
                 i++;
             }
+        }
+    }*/
+    {
+        //Recursive approach
+        //✅🤝💯
+        if(node==NULL)
+        return ;
+        else{
+            Node* temp=node->left;
+            node->left=node->right;
+            node->right=temp;
+            mirror(node->left);
+            mirror(node->right);
         }
     }
 };
