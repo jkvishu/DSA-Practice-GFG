@@ -8,9 +8,10 @@ class Solution
 {
     public:    
        vector <int> commonElements (int A[], int B[], int C[], int n1, int n2, int n3)
-        /*{
+        {
             //code here.
             //✅😏💯
+            //Time complexity is 0.37 sec.
             unordered_set<int>s;
             unordered_set<int>k;
             unordered_set<int>m;
@@ -32,10 +33,11 @@ class Solution
                 }
             }
             return ans;
-        }*/
-       {
+        }
+       /*{
            //Another approach in single traversal
            //✅🤝💯
+           //Time complexity is 0.21 sec.
            unordered_set<int>s;
            vector<int>ans;
            int i=0,j=0,k=0;
@@ -54,7 +56,7 @@ class Solution
                k++;
            }
            return ans;
-       }
+       }*/
        
 
 };
