@@ -118,6 +118,7 @@ class Solution{
     bool isSymmetric(struct Node* root)
     {
         // Code here
+        // ❌©👀
         if(root==NULL) return true;
         return Find(root->left,root->right);
     }
