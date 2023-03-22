@@ -23,7 +23,7 @@ class Solution
 {
     public:
     //Function to check whether a Binary Tree is BST or not.
-    void find(vector<int>&ans,Node* root){
+    /*void find(vector<int>&ans,Node* root){
         if(root==NULL)
         return;
         else{
@@ -43,6 +43,23 @@ class Solution
             return 0;
         }
         return 1;
+    }*/
+    int pv=INT_MIN;
+    bool isBST(Node* root) 
+    {
+        // Your code here
+        //✅🤝👀
+        //Let's see another recursive approach where extra vector is not required.
+        if(root==NULL)
+        return 1;
+        else{
+            if(isBST(root->left)==0)
+            return 0;
+            if(root->data<=pv)
+            return 0;
+            pv=root->data;
+            return isBST(root->right);
+        }
     }
 };
 
