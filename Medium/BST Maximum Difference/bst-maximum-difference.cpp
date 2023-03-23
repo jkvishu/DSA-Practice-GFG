@@ -52,6 +52,7 @@ public:
     int maxDifferenceBST(Node *root,int target){
         // Code here
         // ✅💯😏
+        //POTD Done on my OWn
         int sum1=0;
         int f=0;
         while(root!=NULL){
