@@ -115,7 +115,7 @@ class Solution{
     {
     //add code here.
     //✅💯😏
-    //Brute force approach
+    //Brute force approach and the best one also ha ha done in first attempt
     ans=0;
     unordered_set<int>s;
     find(root,target,s);
