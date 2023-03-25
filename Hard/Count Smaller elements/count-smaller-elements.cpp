@@ -13,6 +13,8 @@ public:
 	vector<int> constructLowerArray(int *arr, int n) {
 	    // code here
 	    // ✅💯😏😎
+	    //Time taken 0.25 sec. 
+	    //Fastest i think so
 	    vector<int>v;
 	    vector<int>ans;
 	    int size=n-1;
