@@ -25,7 +25,7 @@ public:
 	        int h=size,m;
 	        while(l<=h){
 	            m=l+(h-l)/2;
-	            if(arr[i]<v[m]){
+	            if(arr[i]<=v[m]){
 	                h=m-1;
 	            }
 	            else if(arr[i]>v[m]){
