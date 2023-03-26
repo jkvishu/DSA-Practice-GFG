@@ -15,17 +15,13 @@ public:
         // code here
         // ✅💯😏
         sort(arr.begin(),arr.end());
-        int ans=0,sum=0,cal=0;
+        int ans=0,sum=0;
         for(int i=0;i<N;i++){
             sum+=arr[i];
-            if(sum<=K){
-                cal++;
-                ans=max(ans,cal);
-            }
-            else{
-                sum=arr[i];
-                cal=1;
-            }
+            if(sum<=K)
+            ans++;
+            else
+            break;
         }
         return ans;
     }
