@@ -14,6 +14,7 @@ class Solution
     {
         // code here
         // ✅💯😏 BRute force approach
+        // Time taken 0.58 sec
         priority_queue<int>pq;
         vector<int>ans;
         for(int i=0;i<n;i++){
@@ -27,6 +28,31 @@ class Solution
         }
         return ans;
     }
+    /*{
+        //Let's see an approach exactly according to given constraints.
+        //This solution is what question is seeking
+        //🤝💯✅
+        //Time taken 0.67 sec
+        priority_queue<int,vector<int>,greater<int>>pq;
+        vector<int>ans(k);
+        for(int i=0;i<k;i++){
+            pq.push(arr[i]);
+        }
+        for(int i=k;i<n;i++){
+            if(arr[i]>pq.top())
+            {
+                pq.pop();
+                pq.push(arr[i]);
+            }
+        }
+        int i=k-1;
+        while(!pq.empty()){
+            ans[i]=pq.top();
+            pq.pop();
+            i--;
+        }
+        return ans;
+    }*/
 };
 
 //{ Driver Code Starts.
