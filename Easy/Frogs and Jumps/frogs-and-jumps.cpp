@@ -10,12 +10,13 @@ class Solution {
   public:
     int unvisitedLeaves(int N, int leaves, int frogs[]) {
         // Code here
-        // ✅💯😏
+        // ✅💯😏🤝
+        // POTD 26/03/2023
+        // Time taken 0.11sec
         vector<bool>v(leaves+1,true);
-        sort(frogs,frogs+N);
-        if(frogs[0]==1)
-        return 0;
         for(int i=0;i<N;i++){
+            if(frogs[i]==1)
+            return 0;
             int x=frogs[i];
             if(x<=leaves&&v[x]){
             v[x]=0;
