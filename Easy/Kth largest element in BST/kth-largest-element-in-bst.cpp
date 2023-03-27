@@ -94,7 +94,7 @@ struct Node {
 */
 
 // return the Kth largest element in the given BST rooted at 'root'
-class Solution
+/*class Solution
 {
     public:
     int find(Node* root){
@@ -120,10 +120,34 @@ class Solution
     {
         //Your code here
         //✅💯😏
+        //Time taken 0.33sec.
         int h,ans=0,c=0;
         h=find(root);
         h=h-K;
         find1(root,c,h,ans);
+        return ans;
+    }*/
+class Solution
+{
+    public:
+    int ans=0,c=0;
+    void find(Node* root,int k){
+        if(root==NULL)
+        return;
+        else{
+            find(root->right,k);
+            c++;
+            if(c==k)
+            ans=root->data;
+            find(root->left,k);
+        }
+    }
+    int kthLargest(Node *root, int K)
+    {
+        //Your code here
+        //✅🤝💯
+        //More optimized than my above solution
+        find(root,K);
         return ans;
     }
 };
