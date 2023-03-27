@@ -14,7 +14,8 @@ for (int i=0; i < size; i++)
 // } Driver Code Ends
 //User function Template for C++
 
- class tetra{
+
+class tetra{
      public:
         int val,ps1,ps2;
         tetra(int v,int a,int b){
@@ -37,6 +38,7 @@ class Solution
     /*{
         //code here
         //✅💯
+        //Time taken 0.25sec.
         map<int,int>m;
         vector<int>v;
         for(int i=0;i<arr.size();i++){
@@ -58,6 +60,7 @@ class Solution
         //Let's see an optimized solution for the same.
         //Exactly according to the given constraint.
         //✅🤝💯
+        //Time taken 0.33sec.
         vector<int>ans;
         priority_queue<tetra*,vector<tetra*>,cmp>pq;
         for(int i=0;i<K;i++){
