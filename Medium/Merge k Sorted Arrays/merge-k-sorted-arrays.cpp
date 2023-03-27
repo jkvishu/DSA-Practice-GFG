@@ -14,13 +14,27 @@ for (int i=0; i < size; i++)
 // } Driver Code Ends
 //User function Template for C++
 
-
+ class tetra{
+     public:
+        int val,ps1,ps2;
+        tetra(int v,int a,int b){
+            this->val=v;
+            this->ps1=a;
+            this->ps2=b;
+        }
+    };
+    class cmp{
+        public:
+        bool operator()(tetra* s1,tetra* s2){
+            return s1->val>s2->val;
+        }
+    };
 class Solution
 {
     public:
     //Function to merge k sorted arrays.
     vector<int> mergeKArrays(vector<vector<int>> arr, int K)
-    {
+    /*{
         //code here
         //✅💯
         map<int,int>m;
@@ -39,6 +53,28 @@ class Solution
             ++it;
         }
         return v;
+    }*/
+    {
+        //Let's see an optimized solution for the same.
+        //Exactly according to the given constraint.
+        //✅🤝💯
+        vector<int>ans;
+        priority_queue<tetra*,vector<tetra*>,cmp>pq;
+        for(int i=0;i<K;i++){
+            tetra* t=new tetra(arr[i][0],i,0);
+            pq.push(t);
+        }
+        while(!pq.empty()){
+            tetra* cr=pq.top();
+            pq.pop();
+            ans.push_back(cr->val);
+            int ap=cr->ps1,vp=cr->ps2;
+            if(vp+1<arr[ap].size()){
+                tetra* t=new tetra(arr[ap][vp+1],ap,vp+1);
+                pq.push(t);
+            }
+        }
+        return ans;
     }
 };
 
