@@ -47,7 +47,8 @@ class Solution{
     {
         this->shop = s;
     }
-    long long find(int n, long k){
+    long long find(int n, long k)
+    /*{
         // Return the number of chocolates Geek had
         // enjoyed out of 'n' chocolates availabe in the
         // 'shop'.
@@ -84,6 +85,27 @@ class Solution{
             k -= (k/mid_val)*mid_val;
         }
         return ans + find(mid,k);
+    }*/
+    {
+        //Clean code and more accurate
+        //❌©👀
+        //POTD 28/03/2023
+        long long lo = 0, hi = n-1, ans = 0, indx, val;
+        while(k > 0) {
+            indx = val = -1;
+            while(lo <= hi) {
+                int mid = (lo + hi)/2, cur = shop.get(mid);
+                if(cur > k) hi = mid - 1;
+                else {
+                    indx = mid, val = cur;
+                    lo = mid + 1;
+                }
+            }
+            if(indx == -1) break;
+            lo = 0, hi = indx - 1;
+            ans += k/val, k %= val;
+        }
+        return ans;
     }
 
 };
