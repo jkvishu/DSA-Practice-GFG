@@ -5,7 +5,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    // Function to detect cycle in an undirected graph.
+   /* // Function to detect cycle in an undirected graph.
     bool find(int k,int vis[],vector<int> adj[]){
         queue<int>q;
         q.push(k);
@@ -25,11 +25,35 @@ class Solution {
     bool isCycle(int V, vector<int> adj[]) {
         // Code here
         // BFS approach 
-        // ✅💯😏
+        // ✅💯🤝
         int vis[V+1]={0};
         for(int i=0;i<V;i++){
             if(vis[i]==0){
                 if(find(i,vis,adj))
+                return true;
+            }
+        }
+        return false;
+    }*/
+    bool find(int vis[],int k,vector<int>adj[],int p){
+        vis[k]=1;
+        for(auto x:adj[k]){
+            if(vis[x]==0){
+                if(find(vis,x,adj,k))
+            return true;
+            }
+            else if(x!=p)
+            return true;
+        }
+        return false;
+    }
+    bool isCycle(int V, vector<int> adj[]) {
+        //Let's see the DFS approach.
+        //✅💯🤝
+        int vis[V]={0};
+        for(int i=0;i<V;i++){
+            if(vis[i]==0){
+                if(find(vis,i,adj,-1))
                 return true;
             }
         }
