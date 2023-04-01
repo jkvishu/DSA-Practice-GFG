@@ -19,6 +19,7 @@ class Solution {
      }
      vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
         // code here
+        // ✅©🤝
         vector<int>ans(N,INT_MAX);
         vector<pair<int,int>>adj[N];
         int vis[N]={0};
