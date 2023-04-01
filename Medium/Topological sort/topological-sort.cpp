@@ -7,7 +7,7 @@ class Solution
 {
 	public:
 	//Function to return list containing vertices in Topological order. 
-	vector<int> topoSort(int V, vector<int> adj[]) 
+	/*vector<int> topoSort(int V, vector<int> adj[]) 
 	{
 	    // code here
 	    // Using Kahn's BFS Algorithm
@@ -33,6 +33,31 @@ class Solution
 	            if(ind[x]==0)
 	            q.push(x);
 	        }
+	    }
+	    return ans;
+	}*/
+	void find(int src,stack<int>&s,vector<int>adj[],int vis[]){
+	    vis[src]=1;
+	    for(auto x:adj[src]){
+	        if(vis[x]==0)
+	        find(x,s,adj,vis);
+	    }
+	    s.push(src);
+	}
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    //Using Kahn's DFS Algorithm.
+	    //🤝✅💯
+	    stack<int>s;
+	    vector<int>ans;
+	    int vis[V]={0};
+	    for(int i=0;i<V;i++){
+	        if(vis[i]==0)
+	        find(i,s,adj,vis);
+	    }
+	    while(!s.empty()){
+	        ans.push_back(s.top());
+	        s.pop();
 	    }
 	    return ans;
 	}
