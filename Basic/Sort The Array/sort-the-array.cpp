@@ -5,7 +5,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
     public:
-    int partition(vector<int>&arr,int l,int h){
+    /*int partition(vector<int>&arr,int l,int h){
         int j=l-1,k=l;
         while(k<h){
             if(arr[k]<arr[h]){
@@ -29,6 +29,11 @@ class Solution{
     //✅💯😏🤝
     quicksort(arr,0,n-1);
     return arr;
+    }*/
+    vector<int> sortArr(vector<int>arr, int n){
+        //Let's check how fast is inbuilt sort
+        sort(arr.begin(),arr.end());
+        return arr;
     }
 };
 
