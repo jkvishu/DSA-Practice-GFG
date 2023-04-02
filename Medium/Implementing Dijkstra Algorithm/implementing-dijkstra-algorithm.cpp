@@ -9,10 +9,11 @@ class Solution
 	//Function to find the shortest distance of all the vertices
     //from the source vertex S.
     vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
-    {
+    /*{
         // Code here
         // Naive approach
         // ✅💯🤝👀
+        // Time taken 0.09 sec
        vector<bool> mset(V,false);
         vector<int> dist(V,INT_MAX);
         vector<int> res(V,0);
@@ -34,6 +35,30 @@ class Solution
             }
         }
         return res;
+    }*/
+    {
+        //More optimized approach
+        set<pair<int,int>>s;
+        vector<int>dist(V,1e9);
+        s.insert({0,S});
+        dist[S]=0;
+        
+        while(!s.empty()){
+            auto ptr=*(s.begin());
+            int node=ptr.second;
+            int dis=ptr.first;
+            s.erase(ptr);
+            for(auto it:adj[node]){
+                int child=it[0];
+                int wt=it[1];
+                
+                if(dis+wt<dist[child]){
+                    dist[child]=dis+wt;
+                    s.insert({dist[child],child});
+                }
+            }
+        }
+        return dist;
     }
 };
 
