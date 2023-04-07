@@ -4,7 +4,7 @@ using namespace std;
 
 // } Driver Code Ends
 
-class disjoint_set {
+/*class disjoint_set {
   vector<int> rank, parent, size;
   
   public:
@@ -63,6 +63,7 @@ class Solution
         // tc = MlogM (for sorting) + M * 4 * alpha (alpha is nearly 1 ig)
         // sc = V
         // ❌©👀
+        // Time taken 2.57sec
         vector<pair<int, pair<int, int>>> edges;
         
         for(int i=0;i<V;i++) {
@@ -88,8 +89,8 @@ class Solution
             }
         }
         return sum;
-    }
-/*class Solution
+    }*/
+class Solution
 {
 	public:
 	//Function to find sum of weights of edges of the Minimum Spanning Tree.
@@ -97,6 +98,7 @@ class Solution
     {
         // code here
         // ✅💯🤝
+        // time taken 2.48sec.
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
         int ans=0;
         int vis[V]={0};
@@ -115,7 +117,7 @@ class Solution
             }
         }
         return ans;
-    }*/
+    }
 };
 
 //{ Driver Code Starts.
