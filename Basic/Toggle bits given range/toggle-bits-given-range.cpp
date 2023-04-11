@@ -5,7 +5,8 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    int toggleBits(int N , int L , int R) {
+    int toggleBits(int N , int L , int R)
+    /*{
         // code here
         // TO much brute force approach
         // ✅🙄💯
@@ -31,6 +32,12 @@ class Solution {
             x=x*2;
         }
         return ans;
+    }*/
+    {
+        //Optimized approach
+        //✅💯🤝👀
+        int k=(((1<<R)-1)^((1<<(L-1))-1));
+        return (k^N);
     }
 };
 
