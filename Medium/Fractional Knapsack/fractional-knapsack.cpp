@@ -37,7 +37,7 @@ class Solution
             ans+=pq.top().second.first;
         }
         else{
-            ans+=(pq.top().second.first)*((double)W/pq.top().second.second);
+            ans+=(double)W*pq.top().first;
             W=0;
         }
         pq.pop();
@@ -47,7 +47,7 @@ class Solution
             ans+=pq.top().second.first;
         }
         else{
-            ans+=(pq.top().second.first)*((double)W/pq.top().second.second);
+            ans+=(double)W*pq.top().first;
             W=0;
         }
         pq.pop();
