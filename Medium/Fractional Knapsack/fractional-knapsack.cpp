@@ -22,11 +22,17 @@ class Solution
 {
     public:
     //Function to get the maximum total value in the knapsack.
+    static bool cmp(Item s1, Item s2){
+        double r1=(double)s1.value/s1.weight;
+        double r2=(double)s2.value/s2.weight;
+        return r1>r2;
+    }
     double fractionalKnapsack(int W, Item arr[], int n)
-    {
+    /*{
         // Your code here
         // BRute force approach but works completely fine
-        // ✅💯😏
+        // Only Double was causing problem
+        // ✅💯😏😎
         priority_queue<pair<double,pair<int,int>>>pq;
         for(int i=0;i<n;i++){
             pq.push({(double)arr[i].value/arr[i].weight,{arr[i].value,arr[i].weight}});
@@ -51,6 +57,23 @@ class Solution
             W=0;
         }
         pq.pop();
+        }
+        return ans;
+    }*/
+    {
+        //Let's see an approach  where we are not using any extra space.
+        //💯✅😏🤝
+        sort(arr,arr+n,cmp);
+        double ans=0.0;
+        for(int i=0;i<n;i++){
+            if(arr[i].weight<=W){
+                W=W-arr[i].weight;
+                ans+=arr[i].value;
+            }
+            else{
+                ans+=((double)arr[i].value/arr[i].weight)*W;
+                break;
+            }
         }
         return ans;
     }
