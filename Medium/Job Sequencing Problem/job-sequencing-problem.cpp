@@ -30,8 +30,10 @@ class Solution
     vector<int> JobScheduling(Job arr[], int n) 
     { 
         // your code here
+        // your code here
         // ✅💯🤝©©👀
         // GZBBB 👏 solution.
+        // Already done before
         vector<pair<int,int>> v(n);
         for(int i = 0;i<n;i++){
             v[i].first = arr[i].dead;
