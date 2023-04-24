@@ -7,29 +7,26 @@ using namespace std;
 // User function Template for C++
 class Solution {
   public:
-    long long int nthFibonacci(long long int n)
-    {
+    long long int find(long long int m[],long long int n){
+        if(m[n]==-1){
+            int res;
+            if(n==0||n==1)
+            res=n;
+            else
+            res=find(m,n-1)%1000000007+find(m,n-2)%1000000007;
+            m[n]=res%1000000007;
+        }
+        return m[n]%1000000007;
+    }
+    long long int nthFibonacci(long long int n){
         // code here
-        //Damn.. easy
-        //Fastest method exsist on this earth
-        //Time complexity is O(logn)
-        if(n<=70){
-        double phi = (1 + sqrt(5)) / 2;
-        long long int ans= (round(pow(phi, n) / sqrt(5)));
-        return ans%1000000007;
+        // ✅💯🤝👀 
+        // With dynamic programing.
+        long long m[n+1];
+        for(int i=0;i<n+1;i++){
+            m[i]=-1;
         }
-        if(n==0)
-        return 0;
-        if(n==1||n==2)
-        return 1;
-        long long int i=3,a=1,b=2,c=2,m=1000000007;
-        while(i!=n){
-            c=(a+b)%m;
-            a=b;
-            b=c;
-            i++;
-        }
-        return c%m;
+        return find(m,n);
     }
 };
 
