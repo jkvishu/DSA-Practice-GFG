@@ -28,6 +28,43 @@ class Solution {
         }
         return find(m,n);
     }
+    /*
+    //Damn.. easy
+        //Fastest method exsist on this earth
+        //Time complexity is O(logn)
+        if(n<=70){
+        double phi = (1 + sqrt(5)) / 2;
+        long long int ans= (round(pow(phi, n) / sqrt(5)));
+        return ans%1000000007;
+        }
+        if(n==0)
+        return 0;
+        if(n==1||n==2)
+        return 1;
+        long long int i=3,a=1,b=2,c=2,m=1000000007;
+        while(i!=n){
+            c=(a+b)%m;
+            a=b;
+            b=c;
+            i++;
+        }
+        return c%m;
+    */
+    /*
+    //Damn.. easy
+        if(n==0)
+        return 0;
+        if(n==1||n==2)
+        return 1;
+        long long int i=3,a=1,b=2,c=2,m=1000000007;
+        while(i!=n){
+            c=(a+b)%m;
+            a=b;
+            b=c;
+            i++;
+        }
+        return c%m;
+    */
 };
 
 //{ Driver Code Starts.
