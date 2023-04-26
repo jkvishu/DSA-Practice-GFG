@@ -9,6 +9,7 @@ class Solution
 {
     public:
     //Function to find length of longest increasing subsequence.
+    /*
     int longestSubsequence(int n, int a[])
     {
        // your code here
@@ -29,6 +30,23 @@ class Solution
            ans=max(ans,dp[i]);
        }
        return ans;
+    }*/
+    int longestSubsequence(int n, int a[])
+    {
+        //Let's see binary search approach which solve this question in O(nlogn) time whihc is the required time complexity,
+        //✅💯🤝😏
+        vector<int>bs;
+        bs.push_back(a[0]);
+        for(int i=1;i<n;i++){
+            if(a[i]>bs[bs.size()-1]){
+                bs.push_back(a[i]);
+            }
+            else{
+            auto it=upper_bound(bs.begin(),bs.end(),a[i]);
+            bs[it-bs.begin()]=a[i];
+            }
+        }
+        return bs.size();
     }
 };
 
