@@ -9,25 +9,31 @@ using namespace std;
 
 class Solution{   
 public:
-     bool subset(int n,int index,vector<int>&arr,int sum,vector<vector<int>>&dp)
-    {    
-         if(sum==0)
-          return true;
-        if(index>=n)
-          return false;
-       if(dp[index][sum]!=-1) 
-            return dp[index][sum];
-         bool l=subset(n,index+1,arr,sum-arr[index],dp);
-          bool r=subset(n,index+1,arr,sum,dp);
-          return dp[index][sum]=l||r; 
-    }
     bool isSubsetSum(vector<int>arr, int sum){
         // code here 
-        //DP is cpycy[t]
+        // DP solution 
+        // 👀✅🤝©
+        // LITTLe correction from the solution of GFG-C.
+        int m=1e9+7;
         int n=arr.size();
-        vector<vector<int>>dp(n+1,vector<int>(sum+1,-1));
-        int index=0;
-         return subset(n,index,arr,sum,dp);
+        int dp[n+1][sum+1];
+        for(int i=0;i<=n;i++){
+            dp[i][0]=1;
+        }
+        for(int j=1;j<=sum;j++){
+            dp[0][j]=0;
+        }
+        for(int i=1;i<=n;i++){
+            for(int j=0;j<=sum;j++){
+                if(j<arr[i-1])
+                dp[i][j]=dp[i-1][j]%m;
+                else
+                dp[i][j]=(dp[i-1][j]%m+dp[i-1][j-arr[i-1]]%m)%m;
+            }
+        }
+        if(dp[n][sum]>0)
+        return 1;
+        return 0;
     }
 };
 
