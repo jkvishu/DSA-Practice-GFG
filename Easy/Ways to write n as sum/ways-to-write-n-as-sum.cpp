@@ -11,7 +11,7 @@ class Solution
     //Function to count the number of different ways in which n can be 
     //written as a sum of two or more positive integers.
     int countWays(int n)
-    {
+    /*{
         // your code here
         // Not space optimized but works completely fine
         // USing coin change approach
@@ -36,6 +36,22 @@ class Solution
             }
         }
         return dp[n][n]-1;
+    }*/
+    {
+        //space optimized.
+        // ✅💯👀😏©👀
+    int pack[n];
+    for(int i=0;i<n;i++){
+        pack[i]=i+1;
+    }    
+    int dp[n+1]={0};
+    dp[0]=1;
+    for(int i=0;i<n;i++){
+        for(int j=pack[i];j<=n;j++){
+            dp[j]+=dp[j-pack[i]];
+        }
+    }
+    return dp[n]-1;
     }
 };
 
