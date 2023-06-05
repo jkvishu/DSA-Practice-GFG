@@ -18,7 +18,19 @@ struct Node {
 
 
 // } Driver Code Ends
+/*
+Tree Node
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
 
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
 
 class Solution
 {
@@ -28,22 +40,18 @@ class Solution
     int minDiff(Node *root, int K)
     {
         //Your code here
-        //✅💯😏
-        int ans=INT_MAX;
+        //POTD ❌👀©
+         int mini = INT_MAX;
         while(root){
-            if(root->data<K){
-                ans=min(ans,abs(root->data-K));
-                root=root->right;
-            }
-            else if(root->data>K){
-                ans=min(ans,abs(root->data-K));
-                root=root->left;
+             mini = min(mini, abs(root->data - K));
+            if(root->data<=K){
+                root = root->right;
             }
             else{
-                return 0;
+                root = root->left;
             }
         }
-        return ans;
+        return mini;
     }
 };
 
