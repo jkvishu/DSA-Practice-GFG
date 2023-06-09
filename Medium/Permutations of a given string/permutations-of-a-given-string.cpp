@@ -6,7 +6,7 @@ using namespace std;
 class Solution
 {
 	public:
-	    void help(vector<string>&s,string S,int i){
+		void help(vector<string>&s,string S,int i){
 	        if(i==S.length()-1){
 	            s.push_back(S);
 	            return;
@@ -21,8 +21,10 @@ class Solution
 		{
 		    // Code here there
 		    //same as permutation of String free points
-		    vector<string>ans;
+		    //Done in first attempt
+		    //POTD ✅💯👀
 		    vector<string>fans;
+		    vector<string>ans;
 		    help(ans,S,0);
 		    sort(ans.begin(),ans.end());
 		    fans.push_back(ans[0]);
