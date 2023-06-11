@@ -37,6 +37,29 @@ class Solution
     {
         // code here
         // return head of reversed list
+        // New done by me after 4 months
+        // ✅💯😏
+        if(head->next==NULL)
+        return head;
+        Node* st=head;
+        Node* p=head->next;
+        Node* t=NULL;
+        while(p!=NULL){
+            Node* temp=p->next;
+            p->next=st;
+            st->next=t;
+            t=st;
+            st=p;
+            p=temp;
+        }
+        return st;
+    }
+    /*
+    old  version
+    struct Node* reverseList(struct Node *head)
+    {
+        // code here
+        // return head of reversed list
         // ✅💯😏
         // Done in first attempt
         if(head->next==NULL)
@@ -59,6 +82,8 @@ class Solution
         p->next=k;
         return p;
     }
+    
+    */
     
 };
     
