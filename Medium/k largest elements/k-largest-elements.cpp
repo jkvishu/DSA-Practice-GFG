@@ -10,6 +10,29 @@ class Solution{
 public:	
 	vector<int> kLargest(int arr[], int n, int k) {
 	    // code here
+	    // POTD ✅😏💯
+	    // I have already solved this question with brute force earlier
+	    // Now again solving optimaly when it comes in potd
+	    priority_queue<int,vector<int>,greater<int>>pq;
+	    for(int i=0;i<k;i++){
+	        pq.push(arr[i]);
+	    }
+	    for(int i=k;i<n;i++){
+	        if(arr[i]>pq.top()){
+	            pq.pop();
+	            pq.push(arr[i]);
+	        }
+	    }
+	    vector<int>ans(k);
+	    for(int i=k-1;i>=0;i--){
+	        ans[i]=pq.top();
+	        pq.pop();
+	    }
+	    return ans;
+	}
+	/*
+	vector<int> kLargest(int arr[], int n, int k) {
+	    // code here
 	    // code here
         // ✅💯😏 BRute force approach
         // Time taken 0.58 sec
@@ -26,7 +49,7 @@ public:
         }
         return ans;
 	}
-
+	*/
 };
 
 //{ Driver Code Starts.
