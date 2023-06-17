@@ -10,27 +10,33 @@ using namespace std;
 class Solution{
     public:
     // Function to insert element into the queue
-    void insert(queue<int> &q, int k){
-        // Your code here
+   void insert(queue<int> &q, int k) {
         q.push(k);
     }
-    
-    // Function to find frequency of an element
-    // return the frequency of k
-    int findFrequency(queue<int> &q, int k){
-        // Your code here
-        // ✅💯😏
-        int ans=0;
-        for(int i=0;i<q.size();i++){
-            int temp=q.front();
+
+    int findFrequency(queue<int> &q, int k) {
+        //POTD ©❌👀⏰
+        int frequency = 0;
+        queue<int> tempQueue;
+
+        while (!q.empty()) {
+            int element = q.front();
             q.pop();
-            if(temp==k)
-            ans++;
-            q.push(temp);
+
+            if (element == k) {
+                frequency++;
+            }
+
+            tempQueue.push(element);
         }
-        if(ans==0)
-        return -1;
-        return ans;
+
+        while (!tempQueue.empty()) {
+            int element = tempQueue.front();
+            tempQueue.pop();
+            q.push(element);
+        }
+
+        return frequency;
     }
     
 };
