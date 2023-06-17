@@ -38,6 +38,31 @@ class Solution{
 
         return frequency;
     }
+    /*
+    //Earlier
+     void insert(queue<int> &q, int k){
+        // Your code here
+        q.push(k);
+    }
+    
+    // Function to find frequency of an element
+    // return the frequency of k
+    int findFrequency(queue<int> &q, int k){
+        // Your code here
+        // ✅💯😏
+        int ans=0;
+        for(int i=0;i<q.size();i++){
+            int temp=q.front();
+            q.pop();
+            if(temp==k)
+            ans++;
+            q.push(temp);
+        }
+        if(ans==0)
+        return -1;
+        return ans;
+    }
+    */
     
 };
 
