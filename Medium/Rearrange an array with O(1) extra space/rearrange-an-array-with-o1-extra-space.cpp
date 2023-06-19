@@ -12,6 +12,8 @@ class Solution{
     // n: size of array
     //Function to rearrange an array so that arr[i] becomes arr[arr[i]]
     //with O(1) extra space.
+    // POTD
+    // ✅😏©👀 Phle bhi kia hua tha
     void arrange(long long arr[], int n) {
         // Your code here
         //Done already previous time.
