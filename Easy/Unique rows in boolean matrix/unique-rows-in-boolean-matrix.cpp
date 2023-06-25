@@ -14,7 +14,7 @@ class Solution
     vector<vector<int>> uniqueRow(int M[MAX][MAX],int row,int col)
     {
         //Your code here
-        //POTD ©👀💯⏰
+        //POTD ✅💯😏
         unordered_set<string> sett;
         vector<vector<int>> ans;
         for(int i=0; i<row; i++){
@@ -30,6 +30,33 @@ class Solution
         }
         return ans;
     }
+    /*
+    //✅💯😏
+set<vector<int>>s;
+vector<vector<int>>ans;
+vector<int>temp;
+for(int i=0;i<row;i++){
+    for(int j=0;j<col;j++){
+        temp.push_back(M[i][j]);
+    }
+    s.insert(temp);
+    temp.clear();
+}
+temp.clear();
+for(int i=0;i<row;i++){
+    for(int j=0;j<col;j++){
+        temp.push_back(M[i][j]);
+    }
+    if(s.find(temp)!=s.end())
+    {
+        auto it=s.find(temp);
+        ans.push_back(*it);
+        s.erase(*it);
+    }
+    temp.clear();
+}
+return ans;
+    */
 };
 
 //{ Driver Code Starts.
