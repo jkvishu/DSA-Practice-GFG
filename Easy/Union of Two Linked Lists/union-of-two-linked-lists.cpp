@@ -38,29 +38,25 @@ class Solution
     struct Node* makeUnion(struct Node* head1, struct Node* head2)
     {
         // code here
-        // POTD ❌👀👀©⏰
-        set<int> s;
-        Node* temp=head1;
-        while(temp!=NULL)
-        {
-            s.insert(temp->data);
-            temp=temp->next;
+        // POTD ✅🥱✅💯
+        set<int>s;
+        while(head1!=NULL){
+            s.insert(head1->data);
+            head1=head1->next;
         }
-        temp=head2;
-        while(temp!=NULL)
-        {
-            s.insert(temp->data);
-            temp=temp->next;
+        while(head2!=NULL){
+            s.insert(head2->data);
+            head2=head2->next;
         }
-        Node* head= new Node(-1);
-        temp=head;
-        for(auto it: s)
-        {
-            Node* t= new Node(it);
-            temp->next=t;
-            temp=temp->next;
+        Node* ans=new Node(-1);
+        Node* st=ans;
+        auto it=s.begin();
+        while(it!=s.end()){
+            st->next=new Node(*it);
+            st=st->next;
+            ++it;
         }
-        return head->next;
+        return ans->next;
     }
 };
 
