@@ -5,28 +5,34 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
 public:
-bool solve(int N) {
-        if(N == 1 or N == 7)
-            return true;
-        if(N <= 9) return false;
-        
-        int sum = 0;
-        while(N != 0) {
-            int digit = N % 10;
-            sum += pow(digit, 2);
-            N /= 10;
+    bool find(int N){
+        if(N==7||N==1)
+        return 1;
+        int s=N,c=N;
+        while(s>9){
+            s=0;
+            while(c>0){
+                int d=c%10;
+                s+=d*d;
+                c=c/10;
+            }
+            if(s==1)
+            return 1;
+            c=s;
         }
-        return solve(sum);
+        if(s==7)
+        return 1;
+        return 0;
     }
     int nextHappy(int N){
         // code here
-        //❌👀😒
-        ++N;
-        while(true) {
-            if(solve(N)) return N;
-            else ++N;
+        // 🤝💯👀
+        N=N+1;
+        while(true){
+            if(find(N))
+            return N;
+            N++;
         }
-        return 0;
     }
 };
 
