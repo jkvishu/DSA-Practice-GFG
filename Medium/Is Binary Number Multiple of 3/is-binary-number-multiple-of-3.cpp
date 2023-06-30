@@ -10,24 +10,19 @@ public:
 		
 	int isDivisible(string s){
 	    //complete the function here
-	    //Intiall logic of mine was very close but the changes that i learned from editorial were very crucial
-	    int count1=0,count2=0,i;
-	    for(i=0;i<s.length();i++){
-	        int j=s[i]-'0';
-	        if(i%2==0){
-	            count2+=j;
+	    //✅💯😏🤝
+	    long long int ck=1;
+	    long long int sum=0;
+	    for(int i=s.length()-1;i>=0;i--){
+	        if(s[i]=='1'){
+	            sum+=ck;
 	        }
-	        else
-	        {
-	            count1+=j;
-	        }
+	        ck=(ck*2)%3;
 	    }
-	    if(abs(count2-count1)%3==0)
+	    if(sum%3==0)
 	    return 1;
-	    else
 	    return 0;
 	}
-
 };
 
 //{ Driver Code Starts.
