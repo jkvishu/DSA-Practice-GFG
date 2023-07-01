@@ -5,9 +5,10 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
 public:
-    int findMin(int arr[], int n){
+    /*int findMin(int arr[], int n){
         //complete the function here
         //✅💯😏
+        //This code works fine and it's almost optimize but not fully optimized.Hence more work can be done
         int i=0,j=n-1,m;
         while(i<=j){
             m=(i+j)/2;
@@ -25,6 +26,24 @@ public:
             m--;
         }
         return arr[m];
+    }*/
+    int findMin(int arr[], int n){
+        //✅💯😏🤝
+        //This one is the most optmized solution
+        int ans=INT_MAX;
+        int l=0,h=n-1;
+        while(l<=h){
+            int m=(l+h)/2;
+            if(arr[l]<=arr[m]){
+                ans=min(ans,arr[l]);
+                l=m+1;
+            }
+            else{
+                ans=min(ans,arr[m]);
+                h=m-1;
+            }
+        }
+        return ans;
     }
 };
 
