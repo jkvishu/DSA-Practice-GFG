@@ -3,29 +3,19 @@
 using namespace std;
 
 // } Driver Code Ends
-
-int table[256];
 class Solution {
   public:
-  void lookup(){
-      int i;
-      table[0]=0;
-      for(i=1;i<256;i++){
-          table[i]=(i&1)+table[i/2];
-      }
-  }
     int setBits(int N) {
-        lookup();
         // Write Your Code here
-        //Done by taking concept from GFG course
-        int res=table[N&0xff];
-        N=N>>8;
-        res=res+table[N&0xff];
-        N=N>>8;
-        res=res+table[N&0xff];
-        N=N>>8;
-        res=res+table[N&0xff];
-        return res;
+        // Solution clicked in just 10 sec.
+        // Fastest
+        // POTD 😏✅💯😎
+        int ans=0;
+        while(N){
+            N=N&(N-1);
+            ans++;
+        }
+        return ans;
     }
 };
 
