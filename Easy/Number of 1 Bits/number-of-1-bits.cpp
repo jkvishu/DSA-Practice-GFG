@@ -17,6 +17,30 @@ class Solution {
         }
         return ans;
     }
+    /*
+    // LookUp table method 
+    // PArt of GFG-C.
+    void lookup(){
+      int i;
+      table[0]=0;
+      for(i=1;i<256;i++){
+          table[i]=(i&1)+table[i/2];
+      }
+  }
+    int setBits(int N) {
+        lookup();
+        // Write Your Code here
+        //Done by taking concept from GFG course
+        int res=table[N&0xff];
+        N=N>>8;
+        res=res+table[N&0xff];
+        N=N>>8;
+        res=res+table[N&0xff];
+        N=N>>8;
+        res=res+table[N&0xff];
+        return res;
+    }
+    */
 };
 
 //{ Driver Code Starts.
