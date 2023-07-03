@@ -1,81 +1,80 @@
 //{ Driver Code Starts
-#include<bits/stdc++.h>
-using namespace std;
+#include <bits/stdc++.h>
 
+using namespace std;
 
 // } Driver Code Ends
 class Solution{
-    public:
-        
-    // A[]: input array
-    // N: size of array
-    // Function to find the maximum index difference.
-    int maxIndexDiff(int A[], int N) 
-    { 
-        // Your code here
-        //Still can't do it in one go.😒
-        //Well i am always close to 80% of the correct solution for this question
-        vector<int>v1(N);
-        vector<int>v2(N);
-        v1[0]=A[0];
-        int mx=A[0];
-        for(int i=1;i<N;i++){
-            if(A[i]<mx){
-                mx=A[i];
-                v1[i]=mx;
-            }
-            else{
-                v1[i]=mx;
-            }
-        }
-        mx=A[N-1];
-        v2[N-1]=mx;
-        for(int i=N-2;i>=0;i--){
-            if(A[i]>mx){
-                mx=A[i];
-                v2[i]=mx;
-            }
-            else{
-                v2[i]=mx;
-            }
-        }
-        int i=0,j=0;
-        mx=0;
-        while(i<N&&j<N){
-            if(v1[i]<=v2[j]){
-                mx=max(mx,j-i);
-                j++;
+public:
+    int maxIndexDiff(int arr[], int n) {
+        // code here
+        // POTD ✅🤝©👀
+        // Already solved in earlier time
+        int a[n];
+        int b[n];
+        int mx,i,j=0,ans=0;
+        mx=arr[0];
+        a[0]=mx;
+        for(i=1;i<n;i++)
+        {
+            if(arr[i]<mx)
+            {
+                mx=arr[i];
+                a[i]=mx;
             }
             else
+            {
+                a[i]=mx;
+            }
+        }
+        mx=arr[n-1];
+        b[n-1]=mx;
+        for(i=n-2;i>=0;i--)
+        {
+            if(arr[i]>mx)
+            {
+                mx=arr[i];
+                b[i]=mx;
+            }
+            else
+            {
+                b[i]=mx;
+            }
+        }
+        i=0;
+        while(i<n&&j<n)
+        {
+            if(a[i]<=b[j])
+            {
+            while(j<n&&a[i]<=b[j])
+            {
+                j++;
+            }
+            ans=max(ans,j-i-1);
+            }
             i++;
         }
-        return mx;
+        return ans;
     }
 };
 
+
 //{ Driver Code Starts.
-  
-/* Driver program to test above functions */
-int main() 
-{
-    int T;
-    //testcases
-    cin>>T;
-    while(T--){
-        int num;
-        //size of array
-        cin>>num;
-        int arr[num];
-        
-        //inserting elements
-        for (int i = 0; i<num; i++)
-            cin>>arr[i];
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, i;
+        cin >> n;
+        int a[n];
+        for (i = 0; i < n; i++) {
+            cin >> a[i];
+        }
         Solution ob;
-        
-        //calling maxIndexDiff() function
-        cout<<ob.maxIndexDiff(arr, num)<<endl;    
-        
+        auto ans = ob.maxIndexDiff(a, n);
+        cout << ans << "\n";
     }
     return 0;
-} 
+}
 // } Driver Code Ends
