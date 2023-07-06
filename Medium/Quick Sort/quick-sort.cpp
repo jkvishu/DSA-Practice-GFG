@@ -16,7 +16,6 @@ void printArray(int arr[], int size)
 class Solution
 {
     public:
-    //Function to sort an array using quick sort algorithm.
     int partition(int arr[],int l,int h){
         //Hoare's partition method.
         //Little Faster than Lomuto Partition ayi baat smjh beta
@@ -52,10 +51,12 @@ class Solution
     void quickSort(int arr[], int l, int h)
     {
         // code here
+        // Now it was asked in POTD ✅💯😏
+        // Revision of Quick Sort is very important
         if(l>=h)
         return;
         int p=partition(arr,l,h);
-        quickSort(arr,l,p); //p-1 in Hoare's partition method.
+        quickSort(arr,l,p);
         quickSort(arr,p+1,h);
     }
 };
