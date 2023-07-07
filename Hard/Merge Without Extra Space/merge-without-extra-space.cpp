@@ -9,36 +9,22 @@ class Solution{
         //Function to merge the arrays.
         void merge(long long arr1[], long long arr2[], int n, int m) 
         { 
-            // code here 
+            // code here
+            // POTD ✅😏💯
             int i=n-1,j=0;
             while(i>=0&&j<m){
-                if(arr1[i]>arr2[j]){
+                if(arr1[i]<=arr2[j]){
+                    j++;
+                }
+                else
+                {
                     swap(arr1[i],arr2[j]);
                     i--;
                     j++;
                 }
-                else{
-                    break;
-                }
             }
             sort(arr1,arr1+n);
             sort(arr2,arr2+m);
-            //With using extra space it's damm easy.
-            /*vector<int>v;
-            int i,j=0;
-            for(i=0;i<n;i++){
-                v.push_back(arr1[i]);
-            }
-            for(i=0;i<m;i++){
-                v.push_back(arr2[i]);
-            }
-            sort(v.begin(),v.end());
-            for(i=0;i<n;i++){
-                arr1[i]=v[j++];
-            }
-            for(i=0;i<m;i++){
-                arr2[i]=v[j++];
-            }*/
         } 
 };
 
