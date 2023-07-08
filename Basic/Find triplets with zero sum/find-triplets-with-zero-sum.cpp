@@ -12,10 +12,11 @@ using namespace std;
 class Solution{
   public:
     //Function to find triplets with zero sum.
-    bool findTriplets(int arr[], int n)
+    /*bool findTriplets(int arr[], int n)
     { 
         //Your code here
         //POTD ✅😏💯
+        //Brute force approach but not space optimized and not time optimized still accepted.LOL
        unordered_map<int,int>m;
         for(int i=0;i<n;i++){
             m[arr[i]]++;
@@ -37,6 +38,28 @@ class Solution{
                 else{
                    if(m.find(y)!=m.end())
                    return 1; 
+                }
+            }
+        }
+        return 0;
+    }
+    */
+    bool findTriplets(int arr[], int n)
+    { 
+        //✅💯
+        //Most Optimized Approach
+        sort(arr,arr+n);
+        for(int i=0;i<n;i++){
+            int l=i+1,h=n-1;
+            while(l<h){
+                if(arr[i]+arr[h]+arr[l]<0){
+                    l++;
+                }
+                else if(arr[i]+arr[l]+arr[h]>0){
+                    h--;
+                }
+                else{
+                    return 1;
                 }
             }
         }
