@@ -15,19 +15,28 @@ class Solution{
     bool findTriplets(int arr[], int n)
     { 
         //Your code here
-        //✅💯
-        sort(arr,arr+n);
+        //POTD ✅😏💯
+       unordered_map<int,int>m;
         for(int i=0;i<n;i++){
-            int l=i+1,h=n-1;
-            while(l<h){
-                if(arr[i]+arr[h]+arr[l]<0){
-                    l++;
+            m[arr[i]]++;
+        }
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                int x=arr[i]+arr[j];
+                int y=(-1*x);
+                if(y==arr[i]||y==arr[j]){
+                if(y==arr[i]&&y==arr[j]){
+                    if(m[y]>2)
+                    return 1;
                 }
-                else if(arr[i]+arr[l]+arr[h]>0){
-                    h--;
+                if((y==arr[i]&&y!=arr[j])||(y!=arr[i]&&y==arr[j])){
+                    if(m[y]>1)
+                    return 1;
+                }
                 }
                 else{
-                    return 1;
+                   if(m.find(y)!=m.end())
+                   return 1; 
                 }
             }
         }
