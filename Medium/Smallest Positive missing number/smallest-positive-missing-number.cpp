@@ -12,21 +12,20 @@ class Solution
     int missingNumber(int arr[], int n) 
     { 
         // Your code here
-        //Without using exrta space make's it really worthy in medium.
-        //❌🥵🤝⭐️
+        // POTD ✅😏💯
+        int mx=INT_MIN;
+        unordered_set<int>m;
         for(int i=0;i<n;i++){
-            int j=arr[i]-1;
-            while(arr[i]>0&&arr[i]<=n&&arr[i]!=arr[j]){
-                swap(arr[i],arr[j]);
-                j=arr[i]-1;
-            }
+            mx=max(mx,arr[i]);
+            m.insert(arr[i]);
         }
-        for(int i=0;i<n;i++){
-            if(arr[i]!=i+1){
-                return i+1;
-            }
+        for(int i=1;i<=mx;i++){
+            if(m.find(i)==m.end())
+            return i;
         }
-        return n+1;
+        if(mx<=0)
+        return 1;
+        return mx+1;
     } 
 };
 
