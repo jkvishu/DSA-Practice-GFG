@@ -14,7 +14,8 @@ class Solution
     void deleteMid(stack<int>&s, int n)
     {
         // code here.. 
-        // ✅💯😏
+        // ✅💯😏/
+        // POTD 
         stack<int>k;
         int m=ceil((n+1)/2);
         for(int i=0;i<n;i++){
@@ -26,7 +27,7 @@ class Solution
                 s.pop();
             }
         }
-        while(!k.empty()){
+         while(!k.empty()){
             s.push(k.top());
             k.pop();
         }
