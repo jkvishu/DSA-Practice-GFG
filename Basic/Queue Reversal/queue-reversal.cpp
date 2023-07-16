@@ -3,7 +3,33 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-queue<int> rev(queue<int> q);
+
+// } Driver Code Ends
+//function Template for C++
+
+//Function to reverse the queue.
+class Solution
+{
+    public:
+    queue<int> rev(queue<int> q)
+    {
+        // add code here.
+        // POTD ✅😏💯
+        stack<int>s;
+        while(!q.empty()){
+            s.push(q.front());
+            q.pop();
+        }
+        while(!s.empty()){
+            q.push(s.top());
+            s.pop();
+        }
+        return q;
+    }
+};
+
+
+//{ Driver Code Starts.
 int main()
 {
     int test;
@@ -18,7 +44,8 @@ int main()
         cin>>var; 
         q.push(var);
     }
-    queue<int> a=rev(q); 
+    Solution ob;
+    queue<int> a=ob.rev(q); 
     while(!a.empty())
     {
         cout<<a.front()<<" ";
@@ -28,39 +55,3 @@ int main()
     }
 }
 // } Driver Code Ends
-
-
-//function Template for C++
-
-//Function to reverse the queue.
-void help(queue<int> &q){
-    if(q.empty())
-    return;
-    int x=q.front();
-    q.pop();
-    help(q);
-    q.push(x);
-}
-queue<int> rev(queue<int> q)
-/*{
-    // add code here.
-    // First method by using a stack
-    // 😏✅💯
-    stack<int>v;
-    while(!q.empty()){
-        v.push(q.front());
-        q.pop();
-    }
-    while(!v.empty()){
-        q.push(v.top());
-        v.pop();
-    }
-    return q;
-}*/
-{
-    //2 Method using no extra space.
-    //Doing it with recursion
-    // ✅🤝💯
-    help(q);
-    return q;
-}
