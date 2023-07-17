@@ -7,29 +7,29 @@ class Solution {
 	public:
 		string FirstNonRepeating(string A){
 		    // Code here
-		    // Papa bolte bete 
-		    // ✅💯😏
-		    string ans="";
-		    ans.push_back(A[0]);
+		    // POTD ✅💯😏
 		    int a[26]={0};
+		    string ans="";
 		    queue<char>q;
-		    a[A[0]-'a']++;
-		    q.push(A[0]);
-		    for(int i=1;i<A.length();i++){
-		        a[A[i]-'a']++;
-		        if(a[A[i]-'a']==1){
-		        q.push(A[i]);
+		    for(int i=0;i<A.length();i++){
+		        if(a[A[i]-'a']==0){
+		            if(!q.empty())
+		            ans.push_back(q.front());
+		            else{
+		                ans.push_back(A[i]);
+		            }
+		            q.push(A[i]);
+		            a[A[i]-'a']++;
 		        }
-		        if(a[q.front()-'a']>1){
+		        else{
+		            a[A[i]-'a']++;
 		            while(!q.empty()&&a[q.front()-'a']>1){
 		                q.pop();
 		            }
-		        }
-		        if(q.empty()){
-		            ans.push_back('#');
-		        }
-		        else{
+		            if(!q.empty())
 		            ans.push_back(q.front());
+		            else
+		            ans.push_back('#');
 		        }
 		    }
 		    return ans;
