@@ -12,13 +12,13 @@ class Solution
     char nonrepeatingCharacter(string S)
     {
        //Your code here
-       //✅💯
+       //POTD ✅💯😏
        int a[26]={0};
        for(int i=0;i<S.length();i++){
            a[S[i]-'a']++;
        }
        for(int i=0;i<S.length();i++){
-           if(a[S[i]-'a']==1)
+           if(a[S[i]-'a']<=1)
            return S[i];
        }
        return '$';
