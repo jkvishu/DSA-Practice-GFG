@@ -35,35 +35,64 @@ class Solution
     //Function to sort a linked list of 0s, 1s and 2s.
     Node* segregate(Node *head) {
         // Add code here
-        // ✅💯😏
-        int c0=0,c1=0,c2=0;
-        Node* st=head;
-        while(st!=NULL){
-            if(st->data==0)
-            c0++;
-            else if(st->data==1)
-            c1++;
+        // POTD 💯😏✅
+        Node* s1=NULL;
+        Node* b1=NULL;
+        Node* s2=NULL;
+        Node* b2=NULL;
+        Node* s3=NULL;
+        Node* b3=NULL;
+        while(head){
+            if(head->data==0)
+            {
+                if(s1==NULL){
+                    s1=head;
+                    b1=head;
+                }
+                else{
+                    b1->next=head;
+                    b1=b1->next;
+                }
+            }
+            else if(head->data==1){
+                 if(s2==NULL){
+                    s2=head;
+                    b2=head;
+                }
+                else{
+                    b2->next=head;
+                    b2=b2->next;
+                }
+            }
+            else{
+                 if(s3==NULL){
+                    s3=head;
+                    b3=head;
+                }
+                else{
+                    b3->next=head;
+                    b3=b3->next;
+                }
+            }
+            head=head->next;
+        }
+        if(b1!=NULL){
+        b1->next=s2;
+        }
+        else{
+            s1=s2;
+        }
+        if(b2!=NULL)
+        b2->next=s3;
+        else{
+            if(b1==NULL&&b2==NULL)
+            s1=s3;
             else
-            c2++;
-            st=st->next;
+            b1->next=s3;
         }
-        st=head;
-        while(c0){
-            st->data=0;
-            c0--;
-            st=st->next;
-        }
-        while(c1){
-        st->data=1;
-        c1--;
-        st=st->next;
-        }
-        while(c2){
-        st->data=2;
-        c2--;
-        st=st->next;
-        }
-        return head;
+        if(b3!=NULL)
+        b3->next=NULL;
+        return s1;
     }
 };
 
