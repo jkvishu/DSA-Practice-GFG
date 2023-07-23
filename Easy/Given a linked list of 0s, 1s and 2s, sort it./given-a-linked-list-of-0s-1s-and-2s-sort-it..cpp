@@ -94,6 +94,41 @@ class Solution
         b3->next=NULL;
         return s1;
     }
+    /*
+    // Old way when i solved this question but it overwrites the whole data which is not a good practice
+    Node* segregate(Node *head) {
+        // Add code here
+        // ✅💯😏
+        int c0=0,c1=0,c2=0;
+        Node* st=head;
+        while(st!=NULL){
+            if(st->data==0)
+            c0++;
+            else if(st->data==1)
+            c1++;
+            else
+            c2++;
+            st=st->next;
+        }
+        st=head;
+        while(c0){
+            st->data=0;
+            c0--;
+            st=st->next;
+        }
+        while(c1){
+        st->data=1;
+        c1--;
+        st=st->next;
+        }
+        while(c2){
+        st->data=2;
+        c2--;
+        st=st->next;
+        }
+        return head;
+    }
+    */
 };
 
 
