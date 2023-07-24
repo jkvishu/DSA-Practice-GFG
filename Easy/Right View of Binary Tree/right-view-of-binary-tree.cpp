@@ -44,27 +44,25 @@ class Solution
     vector<int> rightView(Node *root)
     {
        // Your Code here
-       // ✅😏💯
-       vector<int>ans;
+       // POTD ✅😏💯
        queue<Node*>q;
+       Node* k;
        q.push(root);
-       int k=0;
+       vector<int>ans;
        while(!q.empty()){
            int i=0;
            int n=q.size();
            while(i<n){
-               root=q.front();
+               Node* st=q.front();
+               k=st;
                q.pop();
-               if(k+1==n)
-               ans.push_back(root->data);
-               if(root->left!=NULL)
-               q.push(root->left);
-               if(root->right!=NULL)
-               q.push(root->right);
+               if(st->left!=NULL)
+               q.push(st->left);
+               if(st->right!=NULL)
+               q.push(st->right);
                i++;
-               k++;
            }
-           k=0;
+           ans.push_back(k->data);
        }
        return ans;
     }
