@@ -7,6 +7,7 @@ using namespace std;
 class Solution
 {
     public:
+
     //Function to find the maximum number of activities that can
     //be performed by a single person.
     int activitySelection(vector<int> start, vector<int> end, int n)
