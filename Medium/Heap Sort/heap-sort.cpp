@@ -31,7 +31,7 @@ class Solution
     void buildHeap(int arr[], int n)  
     { 
     // Your Code Here
-    for(int i=(n-2)/2;i>=0;i--){
+     for(int i=(n-2)/2;i>=0;i--){
         heapify(arr,n,i);
     }
     }
@@ -42,7 +42,7 @@ class Solution
     void heapSort(int arr[], int n)
     {
         //code here
-        //GFG-C ✅🤝
+        //POTD ✅💯😏
         buildHeap(arr,n);
         for(int i=n-1;i>=1;i--){
             swap(arr[i],arr[0]);
