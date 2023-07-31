@@ -11,35 +11,21 @@ using namespace std;
 class Solution{
     //Function to find the leaders in the array.
     public:
-    vector<int> leaders(int a[], int n)
-    {
-        vector<int>v;
+    vector<int> leaders(int a[], int n){
+        // Code here
+        // ✅😏💯
+        vector<int>ans;
+        ans.push_back(a[n-1]);
         int mx=a[n-1];
-        v.push_back(mx);
         for(int i=n-2;i>=0;i--){
             if(a[i]>=mx){
-                v.push_back(a[i]);
                 mx=a[i];
+                ans.push_back(a[i]);
             }
         }
-        reverse(v.begin(),v.end());
-        return v;
+        reverse(ans.begin(),ans.end());
+        return ans;
     }
-    /*{
-        //Just checked
-        //Last year done same with edit but now done in a sec.
-        vector<int> ans;
-       ans.push_back(a[n-1]);
-       int maxi = a[n-1];
-       for(int i = n-2;i>=0;i--){
-           if(a[i]>=maxi){
-               ans.push_back(a[i]);
-               maxi = a[i];
-           }
-       }
-       reverse(ans.begin(),ans.end());
-       return ans;
-    }*/
 };
 
 //{ Driver Code Starts.
