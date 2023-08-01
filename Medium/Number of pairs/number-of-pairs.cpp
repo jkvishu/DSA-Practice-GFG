@@ -1,146 +1,96 @@
 //{ Driver Code Starts
-#include<bits/stdc++.h>
+//Initial template for C++
+
+#include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
- 
+//User function template for C++
 
-class Solution{
-    public:
-    
-    // X[], Y[]: input arrau
-    // M, N: size of arrays X[] and Y[] respectively
-    //Function to count number of pairs such that x^y is greater than y^x.
-    /*int answer(int a[],int n,int x){
-        int l=0,h=n-1,m,ans=-1;
-           while(l<=h){
-               m=(l+h)/2;
-               if(a[m]>x){
-                   ans=m;
-                   h=h-1;
-               }
-               else{
-                   l=m+1;
-               }
-           }
-           return ans;
-    }
-    long long countPairs(int X[], int Y[], int M, int N)
-    {
-       //Your code here
-       //❌🥵👌🏻
-       //EK DUm SEXy question
-       sort(X,X+M);
-       sort(Y,Y+N);
-       int c1=0,c2=0,c3=0,c4=0;
-       for(int i=0;i<N;i++){
-           if(Y[i]==1)
-           c1++;
-           if(Y[i]==2)
-           c2++;
-           if(Y[i]==3)
-           c3++;
-           if(Y[i]==4)
-           c4++;
-       }
-       long long int c=0;
-       for(int i=0;i<M;i++){
-           if(X[i]==1)
-           continue;
-           else if(X[i]==2){
-               int ch=answer(Y,N,2);
-               if(ch!=-1){
-                   c+=(N-ch);
-               }
-               c-=c3;
-               c-=c4;
-               c+=c1;
-           }
-           else if(X[i]==3){
-               int ch=answer(Y,N,X[i]);
-               if(ch!=-1){
-                   c+=(N-ch);
-               }
-               c+=c2;
-               c+=c1;
-           }
-           else{
-               int ch=answer(Y,N,X[i]);
-               if(ch!=-1){
-                   c+=(N-ch);
-               }
-               c+=c1;
-           }
-       }
-       return c;
-    }*/
-    int count(int x, int Y[], int n, int NoOfY[]) {
-        // If x is 1, then the number of pairs is equal to 0 becaue 1 can never be bigger
-        if (x == 1) {
-            return 0;
-        }
-        // Find number of elements in Y[] with values greater
-        // than x upper_bound() gets address of first greater
-        // element in Y[0..n-1]
-        int* idx = upper_bound(Y, Y + n, x);
-        int ans = (Y + n) - idx;
-        // If we have reached here, then x must be greater than
-        // 1, increase number of pairs for y=0 and y=1
-        ans += NoOfY[1];
-        // Decrease number of pairs for x=2 and (y=4 or y=3)
-        if (x == 2) {
-            ans -= (NoOfY[3] + NoOfY[4]);
-        }
-        // Increase number of pairs for x=3 and y=2
-        if (x == 3) {
-            ans += NoOfY[2];
+class Solution{   
+public:
+    int find(int y[] , int n , int ele){
+        int low = 0;
+        int high = n-1;
+        int ans = -1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(y[mid] >ele){
+                ans = mid;
+                high  =mid -1;
+            }
+            else {
+                low = mid+1;
+            }
         }
         return ans;
-}
-    // X[], Y[]: input arrau
-    // M, N: size of arrays X[] and Y[] respectively
-    //Function to count number of pairs such that x^y is greater than y^x.
-    long long countPairs(int X[], int Y[], int m, int n)
-    {
-        //❌🥵🥵🥵🥵🥵GFG-C
-        int check[5] = { 0 };
-        for (int i = 0; i < n; i++)
-            if (Y[i] < 5) {
-                check[Y[i]]++;
+    }
+    long long countPairs(int X[], int Y[], int m, int n) {
+        // code here
+        int s1,s2,s3,s4,s0;
+        s1=s2=s3=s4=s0=0;
+        sort(X,X+m);
+        sort(Y,Y+n);
+        for(int i=0;i<n;i++){
+            if(Y[i]==0)
+            s0++;
+            else if(Y[i]==1)
+            s1++;
+            else if(Y[i]==2)
+            s2++;
+            else if(Y[i]==3)
+            s3++;
+            else if(Y[i]==4)
+            s4++;
+        }
+        long long int ans=0;
+        for(int i=0;i<m;i++){
+            if(X[i]==0)
+            continue;
+            else if(X[i]==1){
+                ans+=s0;
             }
-        // Sort Y[] so that i  can do binary search in it
-        sort(Y, Y + n);
-        long long ans = 0;
-        // Now i am Taking every element of X and count pairs with it
-        for (int i = 0; i < m; i++) {
-            ans += count(X[i], Y, n, check);
+            else if(X[i]==2){
+                int id=find(Y,n,2);
+                if(id!=-1)
+                ans+=(n-id);
+                ans-=s3;
+                ans-=s4;
+                ans+=(s1+s0);
+            }
+            else{
+                int id=find(Y,n,X[i]);
+                if(id!=-1)
+                ans+=n-id;
+                ans+=(s0+s1);
+                if(X[i]==3){
+                    ans+=s2;
+                }
+            }
         }
         return ans;
     }
 };
 
-
 //{ Driver Code Starts.
-int main()
-{
-	int T;
-	cin>>T;
-	while(T--)
-	{
-		int M,N;
-		cin>>M>>N;
-		int i,a[M],b[N];
-		for(i=0;i<M;i++)
-		{
-			cin>>a[i];
-		}
-		for(i=0;i<N;i++)
-		{
-			cin>>b[i];
-		}
-		Solution ob;
-		cout<<ob.countPairs(a, b, M, N)<<endl;
-	}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int m, n;
+        cin >> m >> n;
+        int X[m], Y[n];
+        for (int i = 0; i < m; i++) {
+            cin >> X[i];
+        }
+        for (int i = 0; i < n; i++) {
+            cin >> Y[i];
+        }
+        Solution ob;
+        auto ans = ob.countPairs(X, Y, m, n);
+        cout << ans << "\n";
+    }
+    return 0;
 }
 // } Driver Code Ends
