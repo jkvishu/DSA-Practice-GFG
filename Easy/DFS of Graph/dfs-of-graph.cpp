@@ -16,9 +16,9 @@ class Solution {
     }
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
         // Code here
-        // ✅🤝💯👀
-        vector<int>ans;
+        // POTD ✅😏💯🤝
         bool vis[V]={0};
+        vector<int>ans;
         finddfs(ans,adj,0,vis);
         return ans;
     }
