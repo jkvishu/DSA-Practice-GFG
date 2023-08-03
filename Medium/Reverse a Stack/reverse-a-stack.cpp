@@ -18,6 +18,7 @@ public:
         }
     }
     void Reverse(stack<int> &St){
+        //POTD ✅😏💯
         //Done by me on my own it was very very easy with iterative but we have to do with recursion that makes it worthy.
         //In first attempt done by vishu tyagi
         vector<int>s;
