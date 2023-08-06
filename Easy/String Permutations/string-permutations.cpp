@@ -6,6 +6,7 @@ using namespace std;
 class Solution{
     public:
     //Complete this function
+    
     void check(vector<string>&ans,string S,int i){
         if(i==S.length()-1){
             ans.push_back(S);
@@ -21,6 +22,7 @@ class Solution{
     {
         //Your code here
         //Done in first attempt after learning a concept from GFG.C
+        // POTD ✅😏💯
         vector<string>ans;
         check(ans,S,0);
         sort(ans.begin(),ans.end());
