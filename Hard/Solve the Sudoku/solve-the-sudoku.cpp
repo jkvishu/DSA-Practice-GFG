@@ -14,7 +14,7 @@ class Solution
 {
     public:
     //Function to find a solved Sudoku. 
-    bool isSafe(int row,int col,int board[N][N],int val){
+   bool isSafe(int row,int col,int board[N][N],int val){
     
        for(int i=0;i<N;++i){
            //row
@@ -54,6 +54,7 @@ class Solution
     void printGrid (int grid[N][N]) 
     {
         //✅🤝©👀
+        //POTD
         SolveSudoku(grid);
         for(int i=0;i<N;++i){
             for(int j=0;j<N;++j){
