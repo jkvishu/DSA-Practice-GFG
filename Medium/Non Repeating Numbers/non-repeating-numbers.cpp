@@ -11,6 +11,7 @@ public:
         // Code here.
         //Done on my own with my own logic
         //Dont by Vishu Tyagi
+        //POTD ✅💯😏
         int i,xr=0,fn=0,sc=0;
         vector<int>v;
         for(i=0;i<nums.size();i++){
