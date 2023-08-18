@@ -13,7 +13,7 @@ class Solution{
     public:
     vector<int> leaders(int a[], int n){
         // Code here
-        // ✅😏💯
+        // POTD ✅😏💯
         vector<int>ans;
         ans.push_back(a[n-1]);
         int mx=a[n-1];
