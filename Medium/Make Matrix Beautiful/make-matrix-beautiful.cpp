@@ -12,7 +12,8 @@ class Solution
     //to make the matrix beautiful.
     int findMinOpeartion(vector<vector<int> > matrix, int n)
     {
-        // code here
+        // code here 
+        // POTD
         // 🤝❌👀
         int ans=0,mx=INT_MIN,mn=INT_MIN;
         vector<int>v;
