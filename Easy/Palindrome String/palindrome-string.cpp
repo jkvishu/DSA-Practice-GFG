@@ -13,6 +13,7 @@ public:
 	int isPalindrome(string S)
 	{
 	    // Your code goes here
+	    // POTD ✅😂💯 
 	    //Easiest Questions you can solve on GFG 😂
 	    int i=0,l=S.length()-1;
 	    while(i<=l){
