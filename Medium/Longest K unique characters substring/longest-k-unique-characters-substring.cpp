@@ -11,6 +11,7 @@ class Solution{
   public:
     int longestKSubstr(string s, int k) {
     // your code here
+    // POTD
     //✅😏💯
     int j=0,ans=-1,a[26]={0},c=0;
     for(int i=0;i<s.length();i++){
