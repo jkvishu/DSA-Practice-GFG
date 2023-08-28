@@ -70,7 +70,9 @@ Node *removeDuplicates(Node *head)
 {
  // your code goes here
  // ✅💯😏
+ // POTD 
  Node* st=head;
+ 
  Node* k=st;
  st=st->next;
  while(st!=NULL){
@@ -88,4 +90,4 @@ Node *removeDuplicates(Node *head)
          st=st->next;
      }
      return head;
- }
+}
