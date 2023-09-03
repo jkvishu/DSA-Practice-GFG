@@ -93,24 +93,21 @@ struct Node {
 class Solution{
   public:
     // Return True if the given trees are isomotphic. Else return False.
-    bool find(Node* root1,Node* root2){
-        if(root1==NULL&&root2==NULL)
-        return true;
-        if(root1==NULL||root2==NULL)
-        return false;
-        if(root1->data!=root2->data)
-        return false;
-        bool f1=find(root1->left,root2->left);
-        bool f2=find(root1->left,root2->right);
-        bool t1=find(root1->right,root2->left);
-        bool t2=find(root1->right,root2->right);
-        return ((f1||f2)&&(t1||t2));
+     bool isIsomorphicHelper(Node* root1, Node* root2){
+        if(!root1 && !root2) return true;
+        if(!root1 || !root2) return false;
+        
+        if(root1->data != root2->data) return false;
+
+        return (isIsomorphicHelper(root1->left, root2->left) && isIsomorphicHelper(root1->right, root2->right))||
+               (isIsomorphicHelper(root1->left, root2->right) && isIsomorphicHelper(root1->right, root2->left));
     }
+  
+   
     bool isIsomorphic(Node *root1,Node *root2)
     {
-    //add code here.
-    //❌©👀
-    return find(root1,root2);
+        //POTD ❌👀©
+        return isIsomorphicHelper(root1, root2);
     }
 };
 
