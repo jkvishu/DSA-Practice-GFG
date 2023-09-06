@@ -8,28 +8,43 @@ class Solution
 {
     public:
     //Function to find a Mother Vertex in the Graph.
-    void dfs(int src,vector<int>adj[],vector<bool>&vis,int &c){
-        vis[src]=true;
-        for(auto x:adj[src]){
-            if(!vis[x]){
-                c++;
-            dfs(x,adj,vis,c);
-            }
+	 void dfs(vector<int>adj[], int i, vector<bool> &visted )
+    {
+        visted[i]=true;
+        for(auto x: adj[i])
+        {
+            if(visted[x])
+            continue;
+            dfs(adj, x,visted);
         }
     }
-	int findMotherVertex(int V, vector<int>adj[])
-	{
-	    // Code here
-	    //✅💯😏
-	    for(int i=0;i<V;i++){
-	        int c=0;
-	        vector<bool>vis(V,false);
-	        dfs(i,adj,vis,c);
-	        if(c+1==V)
-	        return i;
-	    }
-	    return -1;
-	}
+    //Function to find a Mother Vertex in the Graph.
+int findMotherVertex(int V, vector<int>adj[])
+{
+    // Code here
+    // POTD ❌👀©
+        vector<bool> visted(V, false);
+        int mv=-1;
+    for(int i=0; i<V; i++)
+    {
+        if(!visted[i])
+        {
+            dfs(adj, i, visted);
+            mv=i;
+        }
+    }
+      fill(visted.begin(), visted.end(), false);
+          dfs(adj, mv, visted);
+ 
+            for (bool v : visted) 
+            {
+                if (!v) {
+                    return -1;
+                }
+            }
+ 
+    return mv;
+}
 };
 
 //{ Driver Code Starts.
