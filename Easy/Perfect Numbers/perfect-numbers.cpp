@@ -5,23 +5,11 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    static int isPerfectNumber(long long N) {
-        // code here
-        //Done 60% and 40%+
-        if(N==1)
-        return 0;
-        long int i=2,sum=0;
-        while(i<=sqrt(N)){
-            if(N%i==0)
-            {
-                sum+=i+N/i;
-            }
-            i++;
-        }
-        sum++;
-        if(sum==N)
+     int isPerfectNumber(long long N) {
+         //POTD ❌👀©
+if(N==6 || N==28 || N==496 || N==8128 || N==33550336 || N==8589869056 || N==137438691328)
         return 1;
-        return 0;
+  return 0;
     }
 };
 
