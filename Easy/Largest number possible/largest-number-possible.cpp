@@ -9,32 +9,22 @@ using namespace std;
 
 class Solution{
 public:
-    string findLargest(int N, int S){
+    string findLargest(int n, int s){
         // code here
-        // 🤝©❌👀
-         string ans="";
-       if(S==0){
-          if(N==1){
-              return "0"; 
-           }
-           else{
-               return "-1";
-           }
-       }
-       if(S>9*N){
-           return "-1";
-       }
-       for(int i=0;i<N;i++){
-           if(S>=9){
-             ans+="9";
-             S-=9;
-           }
-           else{
-               ans+=to_string(S);
-               S=0;
-           }
-       }
-       return ans;
+        // POTD ❌© 👀
+        if(n*9<s||(n>1&&s==0))return "-1";        
+        string t="";
+        int d=s/9;
+        for(int i=0;i<d;i++)
+        t+="9";
+        if(t.size()!=n)
+        {   char ch=(s%9+'0');
+            t+=ch;
+        }
+
+        for(int i=t.size();i<n;i++)
+        t+="0";
+        return t;
     }
 };
 
