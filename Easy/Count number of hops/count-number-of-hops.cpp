@@ -10,13 +10,15 @@ class Solution
     //Function to count the number of ways in which frog can reach the top.
     long long countWays(int n)
     {
+        
         // your code here
+        // POTD
         // ✅💯👀😏©👀
         int arr[3];
         arr[0]=1;
         arr[1]=2;
         arr[2]=3;
-        int dp[n+1]={0};
+        long long int dp[n+1]={0};
         dp[0]=1;
         int mod=1e9+7;
         for(int i=1;i<=n;i++){
@@ -26,7 +28,7 @@ class Solution
             }
         }
         return dp[n];
-        }
+    }
 };
 
 
