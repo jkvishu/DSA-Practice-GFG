@@ -16,6 +16,7 @@ class Solution
     {
         //code here
         //✅💯😏
+        //POTD
         vector<long long> ans;
         ans.push_back(1);
         if(n == 1)
