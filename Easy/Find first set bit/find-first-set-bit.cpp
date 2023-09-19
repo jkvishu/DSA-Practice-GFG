@@ -16,19 +16,13 @@ class Solution
     unsigned int getFirstSetBit(int n)
     {
         // Your code here
-        //Done on my own with my own logic
-        unsigned int x=1;
-        int k=1;
-        if((n&1)!=0){
-            return x;
-        }
-        x++;
-        while(x<32){
-            if((n&(1<<k))!=0){
-                return x;
-            }
-            x++;
-            k++;
+        // POTD ✅😏💯
+        int i=0;
+        while(n){
+            i++;
+            if((n&1)!=0)
+            return i;
+            n=n>>1;
         }
         return 0;
     }
