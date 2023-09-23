@@ -10,7 +10,9 @@ class Solution{
     // a: input array
     // n: size of array
     int equilibriumPoint(long long a[], int n) {
+    
         // Your code here
+        // POTD ✅💯😏
         // Done in first attempt using prefix-sum technique in first atttempt
         if(n==1)
         return 1;
