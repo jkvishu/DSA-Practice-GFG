@@ -12,7 +12,8 @@ class Solution{
     // k : the quadruple sum required
     vector<vector<int> > fourSum(vector<int> &arr, int k) {
         // Your code goes here
-        // ✅🤝💯
+         // ✅🤝💯
+         // POTD
         // Ye sahi ha medium me.😂
         vector<vector<int>>ans;
         set<vector<int>>s;
