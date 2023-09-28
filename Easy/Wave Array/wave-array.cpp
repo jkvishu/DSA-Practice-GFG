@@ -11,13 +11,17 @@ class Solution{
     // n: size of array
     //Function to sort the array into a wave-like array.
     void convertToWave(int n, vector<int>& arr){
+        
         // Your code here
-        //✅⑴💯
-        if(n%2!=0)
-        n=n-1;
-        for(int i=0;i<n;i=i+2){
-            swap(arr[i],arr[i+1]);
-        }
+        // POTD
+        int i=0;
+      while(i+1<n)
+      {
+          int temp=arr[i];
+          arr[i]=arr[i+1];
+          arr[i+1]=temp;
+          i+=2;
+      }
     }
 };
 
@@ -33,6 +37,7 @@ int main()
         vector<int> a(n); //declare vector of size n
         for(int i=0;i<n;i++)
             cin>>a[i]; //input elements of array
+        sort(a.begin(),a.end());
         Solution ob;
         ob.convertToWave(n, a);
 
