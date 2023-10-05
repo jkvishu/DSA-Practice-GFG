@@ -14,6 +14,7 @@ class Solution
     long long int substrCount (string s, int k) {
     	//code here.
     	//Done in first attempt
+    	//POTD
     	//©
     	int n=s.size();
     	vector<int> v1(26,0);
