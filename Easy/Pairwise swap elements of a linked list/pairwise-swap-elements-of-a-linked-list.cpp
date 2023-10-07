@@ -38,22 +38,24 @@ class Solution
     Node* pairWiseSwap(struct Node* head) 
     {
         // The task is to complete this method
-        // ✅🤝💯
-        if(head->next==NULL)
-        return head;
-        Node* cr=head->next->next;
-        Node* pr=head;
-        head=head->next;
-        head->next=pr;
-        while(cr!=NULL&&cr->next!=NULL){
-            pr->next=cr->next;
-            pr=cr;
-            Node* temp=cr->next->next;
-            cr->next->next=cr;
-            cr=temp;
-        }
-        pr->next=cr;
-        return head;
+        // POTD
+         if( head->next == NULL ) return head;
+       Node* prev = head ,* curr = head->next ,*next = curr->next;
+       Node* head2 = curr;
+       
+       while(true){
+           curr->next = prev;
+           if(next == NULL || next->next == NULL){
+               prev->next = next;
+               break;
+           }
+           prev->next = next->next;
+           
+           prev = next;
+           curr = next->next;
+           next = curr->next;
+       }
+       return head2;
     }
 };
 
