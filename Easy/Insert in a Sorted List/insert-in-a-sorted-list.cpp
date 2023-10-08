@@ -43,29 +43,32 @@ struct Node
 class Solution{
   public:
     // Should return head of the modified linked list
-    Node *sortedInsert(struct Node* head, int x) {
+    Node *sortedInsert(struct Node* head, int data) {
         // Code here
         // Jod ✅💯😏
-        Node* s1=head;
-        Node* temp=head;
-        if(head->data>x){
-            Node* ax=new Node(x);
-            ax->next=head;
-            head=ax;
+        // POTD
+        Node *newNode= new Node(data);
+        if(head->data>data){
+            newNode->next=head;
+            head=newNode;
             return head;
         }
-        while(s1!=NULL){
-            if(s1->data>x){
-                Node* temp1=new Node(x);
-                temp->next=temp1;
-                temp1->next=s1;
+        if(head->next==NULL){
+            head->next=newNode;
+            return head;
+        }
+        Node *slow=head;
+        Node *fast=head->next;
+        while(slow->data<data && fast->data<data){
+            if(fast->next==NULL){
+                fast->next=newNode;
                 return head;
             }
-            temp=s1;
-            s1=s1->next;
+            slow=slow->next;
+            fast=fast->next;
         }
-        Node* temp1=new Node(x);
-        temp->next=temp1;
+        slow->next=newNode;
+        newNode->next=fast;
         return head;
     }
 };
