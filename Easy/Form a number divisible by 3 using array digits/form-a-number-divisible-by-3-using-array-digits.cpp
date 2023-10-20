@@ -13,6 +13,7 @@ class Solution {
         // code here
         //Question language is tricky otherwise solution is of school level
         //Done in first attempt
+        // POTD
         int i,sum=0,num;
         for(i=0;i<N;i++){
             num=arr[i];
