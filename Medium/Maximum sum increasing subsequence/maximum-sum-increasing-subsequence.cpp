@@ -11,6 +11,7 @@ class Solution{
 	{  
 	    // Your code goes here
 	    // ✅😏🤝💯👀
+	    // Exactly similar concept as of LCI questions
 	    int dp[n];
 	    dp[0]=arr[0];
 	    for(int i=1;i<n;i++){
