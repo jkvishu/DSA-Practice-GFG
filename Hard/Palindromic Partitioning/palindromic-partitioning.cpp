@@ -7,6 +7,8 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
+// User function Template for C++
+
 class Solution{
 public:
     bool ispalindrome(string st,int i,int j){
@@ -23,6 +25,7 @@ public:
         // code here
         // DP one of the best question
         // ✅🤝©👀
+        // POTD
         int n=str.length();
         int dp[n][n];
         for(int i=0;i<n;i++){
