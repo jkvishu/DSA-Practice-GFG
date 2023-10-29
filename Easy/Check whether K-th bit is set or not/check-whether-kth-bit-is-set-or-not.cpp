@@ -18,6 +18,7 @@ class Solution
         // Your code here
         // It can be a one liner logic!! Think of it!!
         //Done by me on my own
+        // POTD ✅😏
         if((n&(1<<k))==0)
         return false;
         else
