@@ -8,12 +8,27 @@ class Solution{
 public:
 	void pushZerosToEnd(int arr[], int n) {
 	    // code here
-	    //ye sb easy question ha 😪
-	    int i,j=0,c=0;
-	    for(i=0;i<n;i++){
-	        if(arr[i]>0){
-	            swap(arr[i],arr[j++]);
-	        }
+	    int i=0,j=0;
+	    while(i<n&&arr[i]!=0){
+	        i++;
+	    }
+	    j=i+1;
+	    while(j<n&&arr[j]==0){
+	        j++;
+	    }
+	    if(i<n&&j<n)
+	    swap(arr[i],arr[j]);
+	    while(i<n&&j<n){
+	        while(i<n&&arr[i]!=0){
+	        i++;
+	    }
+	    while(j<n&&arr[j]==0){
+	        j++;
+	    }
+	    if(i<n&&j<n)
+	    swap(arr[i],arr[j]);
+	    else
+	    break;
 	    }
 	}
 };
