@@ -98,10 +98,14 @@ struct Node
         
 };
 */
-Node* reverseDLL(Node * head)
+class Solution
 {
-    //Your code here
-    //✅😏💯
+    public:
+    Node* reverseDLL(Node * head)
+    {
+        //Your code here
+        //POTD
+         //✅😏💯
     Node* st=head;
     int x=0;
     while(st->next!=NULL){
@@ -120,7 +124,9 @@ Node* reverseDLL(Node * head)
         st=st->prev;
     }
     return head;
-}
+    }
+};
+
 
 
 //{ Driver Code Starts.
@@ -146,7 +152,8 @@ int main() {
 	        temp->prev= tail;
 	        tail = temp;
 	    }
-	    head=reverseDLL(head);
+	    Solution ob;
+	    head=ob.reverseDLL(head);
 	    
 	    
 	    if(verify(head))
