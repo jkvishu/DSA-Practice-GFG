@@ -119,6 +119,7 @@ class Solution{
     {
         // Code here
         // ❌©👀
+        // POTD
         if(root==NULL) return true;
         return Find(root->left,root->right);
     }
