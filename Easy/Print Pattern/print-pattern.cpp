@@ -7,30 +7,41 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
-vector<int>v;
 class Solution{
 public:
-    vector<int> solve(vector<int>&v,int N,int m){
-         if(N>0){
-            v.push_back(N);
-            solve(v,N-5,m);
-            if(N<m){
-            v.push_back(5+N);
-            }
-        }
-        else{
-        v.push_back(N);
-        v.push_back(N+5);
-        }
-        return v;
-        
-    }
     vector<int> pattern(int N){
         // code here
+        // POTD
         //Done on my own in first attempt
         //little creepy
-        vector<int>k;
-        return solve(k,N,N);
+       vector<int>v;
+        if(N==0){
+            v.push_back(N);
+            return v;
+        }
+        else if(N<0){
+            v.push_back(N);
+            return v;
+        } 
+        else{
+        int x=N;
+        for(int i=0;i<(N/2)+1;i++){
+            v.push_back(x);
+            x=x-5;
+            if(x<=0){
+                v.push_back(x);
+                break;
+            }
+        }
+        
+        for(int i =0;i<(N/2) +1;i++){
+            
+            x=x+5;
+            v.push_back(x);
+            if(x==N)break;
+        }
+        return v;
+        }
     }
 };
 
