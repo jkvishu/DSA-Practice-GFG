@@ -19,6 +19,7 @@ class Solution {
     int smithNum(int n) {
         // code here
         // POTD
+        // Most optimal soluton done by me on my own.
        // ✅😏💯
        if(n==2||n==3||n==7||n==5)
        return 0;
