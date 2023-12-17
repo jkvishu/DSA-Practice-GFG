@@ -11,16 +11,22 @@ public:
 	// calculate the maximum sum with out adjacent
 	int findMaxSum(int *arr, int n) {
 	    // code here
-	    // WIth dp;
+	    // POTD
+	    // Space optimized approach.
 	    // ✅🤝💯👀
-	    int dp[n+1];
-	    dp[0]=0;
-	    dp[1]=arr[0];
-	    dp[2]=max(arr[0],arr[1]);
+	    if(n==1)
+	    return arr[0];
+	    if(n==2)
+	    return max(arr[0],arr[1]);
+	    int pp=arr[0];
+	    int prev=max(arr[0],arr[1]);
+	    int ans=prev;
 	    for(int i=3;i<=n;i++){
-	        dp[i]=max(dp[i-1],dp[i-2]+arr[i-1]);
+	        ans=max(prev,pp+arr[i-1]);
+	        pp=prev;
+	        prev=ans;
 	    }
-	    return dp[n];
+	    return ans;
 	}
 };
 
