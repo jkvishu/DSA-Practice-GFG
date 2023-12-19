@@ -15,15 +15,17 @@ class Solution
     int posOfRightMostDiffBit(int m, int n)
     {
         // Your code here
-        //Done on my own with my own logic
+        // POTD
+        // ✅💯😏
         if(m==n)
         return -1;
-        int x=0;
-        while(x<32){
-            if((m&(1<<x))!=(n&(1<<x))){
-                return x+1;
-            }
-            x++;
+        int i=1,k=0;
+        while(m||n){
+            if((m&1)!=(n&1))
+            return i;
+            m=m>>1;
+            n=n>>1;
+            i++;
         }
         return -1;
     }
