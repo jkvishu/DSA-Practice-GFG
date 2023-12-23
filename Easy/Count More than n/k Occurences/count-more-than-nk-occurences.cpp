@@ -12,7 +12,8 @@ class Solution
     //Function to find all elements in array that appear more than n/k times.
     int countOccurence(int arr[], int n, int k) {
         // Your code here
-        //✅💯
+        //✅💯😏
+        //POTD
         int c=0;
         unordered_map<int,int>m;
         for(int i=0;i<n;i++){
@@ -31,7 +32,7 @@ class Solution
 
 //{ Driver Code Starts.
 int main() {
-    int t, k;
+    int t;
     cin >> t;
     while (t--) {
         int n, i;
@@ -40,6 +41,7 @@ int main() {
         int arr[n];
 
         for (i = 0; i < n; i++) cin >> arr[i];
+        int k;
         cin >> k;
         Solution obj;
         cout << obj.countOccurence(arr, n, k) << endl;
