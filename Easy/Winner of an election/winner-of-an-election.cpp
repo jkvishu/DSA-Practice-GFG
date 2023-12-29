@@ -18,7 +18,9 @@ class Solution{
         // Your code here
         // Return the string containing the name and an integer
         // representing the number of votes the winning candidate got
+         // representing the number of votes the winning candidate got
         //✅💯
+        //POTD
         unordered_map<string,int>m;
         int mx=0;
         string ans="",k;
