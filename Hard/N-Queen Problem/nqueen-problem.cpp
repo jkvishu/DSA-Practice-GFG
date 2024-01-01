@@ -6,68 +6,69 @@ using namespace std;
 
 // } Driver Code Ends
 // User function Template for C++
-bool isSafe(int row,int col,vector<vector<bool>>&board,int n){
-        int x =row;
-        int y=col;
-     //row
-      while(y>=0){
-          if(board[x][y]==1)
-          return false;
-           y--;
-      }
-     //upper left diagonal
-     x=row;
-     y=col;
-     while(y>=0 && x>=0){
-          if(board[x][y]==1)
-          return false;
-           y--;
-           x--;
-      }
-     x=row;
-     y=col;
-     //lower left diagonal
-     while(y>=0 && x<n){
-          if(board[x][y]==1)
-          return false;
-           y--;
-           x++;
-      }
-      return true;
-}
-void solve(int col,vector<vector<bool>>&board,vector<vector<int>>&ans,int n){
-      if(col==n){
-          vector<int>temp;
-          for(int col=0;col<n;++col){      //column
-               for(int row=0;row<n;++row){  //row
-                   if(board[row][col]==1){
-                       temp.push_back(row+1);
-                   }
-               }
-          }
-          ans.push_back(temp);
-           return;
-      }
-        
-        for(int row=0;row<n;++row){
-             if(isSafe(row,col,board,n)){
-                    board[row][col]=1;
-                    solve(col+1,board,ans,n);
-                    //backTrack
-                    board[row][col]=0;
-             }
-        }
-}
+
 class Solution{
 public:
+
+    bool ok(vector< vector<string> >&k,int row,int col,int n){
+    int trow=row;
+    int tcol=col;
+    while(row>=0&&col>=0){
+        if(k[row][col]=="Q")
+        return false;
+        row--;
+        col--;
+    }
+    row=trow;
+    col=tcol;
+    while(col>=0){
+        if(k[row][col]=="Q")
+        return false;
+        col--;
+    }
+    row=trow;
+    col=tcol;
+    while(row<n&&col>=0){
+        if(k[row][col]=="Q")
+        return false;
+        row++;
+        col--;
+    }
+    return true;
+}
+
+void find(vector< vector<int> >&ans, int n, int i,vector< vector<string> >&k,vector<int>&temp)
+{
+    if(i==n){
+        ans.push_back(temp);
+        return;
+    }
+    for(int j=0;j<n;j++){
+        if(ok(k,j,i,n)){
+            temp.push_back(j+1);
+            k[j][i]="Q";
+            find(ans,n,i+1,k,temp);
+            temp.pop_back();
+            k[j][i]=".";
+        }
+    }
+}
     vector<vector<int>> nQueen(int n) {
         // code here
-        // 💯🤝👀©
-        // GFG-C
-        vector<vector<int>>ans;
-         vector<vector<bool>>board(n,vector<bool>(n,0));
-          solve(0,board,ans,n);
-          return ans;
+        // ✅🤝💯
+        // Striver op
+    vector<string>v;
+    for(int i=0;i<n;i++){
+        v.push_back(".");
+    }
+    vector< vector<int> >ans;
+    vector<int>temp;
+    vector< vector<string> >k;
+    for(int i=0;i<n;i++){
+        k.push_back(v);
+    }
+    find(ans,n,0,k,temp);
+    return ans;
     }
 };
 
