@@ -11,6 +11,8 @@ class Solution{
     {
         // POTD
         // ✅😏💯
+        // Space optimized beti
+        // done in first attempt
         long long int ans=INT_MIN;
         long long int sum1=0,sum2;
         for(int i=0;i<k;i++){
