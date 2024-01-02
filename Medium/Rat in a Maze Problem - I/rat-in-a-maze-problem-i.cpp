@@ -10,27 +10,82 @@ using namespace std;
 
 class Solution{
     public:
-    void find(vector<string>&ans,string temp,vector<vector<int>> &m,int n,int r,int c){
-        if(r>=n||r<0||c>=n||c<0||m[r][c]==0)
-        return;
-        if(r==n-1&&c==n-1){
-            ans.push_back(temp);
-            return;
-        }
-        m[r][c]=0;
-        find(ans,temp+'D',m,n,r+1,c);
-        find(ans,temp+'U',m,n,r-1,c);
-        find(ans,temp+'R',m,n,r,c+1);
-        find(ans,temp+'L',m,n,r,c-1);
-        m[r][c]=1;
+    bool isvalid(char c,int i,int j,vector< vector<bool> >&vis,int n,vector< vector<int> >&rat){
+    if(c=='D'){
+        if(i+1<n&&vis[i+1][j]==0&&rat[i+1][j]==1)
+        return true;
+        else
+        return false;
     }
+    else if(c=='L'){
+        if(j-1>=0&&vis[i][j-1]==0&&rat[i][j-1]==1)
+        return true;
+        else
+        return false;
+    }
+    else if(c=='R'){
+        if(j+1<n&&vis[i][j+1]==0&&rat[i][j+1]==1)
+        return true;
+        else
+        return false;
+    }
+    else{
+        if(i-1>=0&&vis[i-1][j]==0&&rat[i-1][j]==1)
+        return true;
+        else
+        return false;
+    }
+}
+    void find(vector< vector<int> >&rat,int n,vector<string>&ans,string &st,int i,int j,vector< vector<bool> >&vis,string &temp){
+    if(i==n-1&&j==n-1){
+        ans.push_back(st);
+        return;
+    }
+    for(int k=0;k<4;k++){
+        if(isvalid(temp[k],i,j,vis,n,rat)){
+            st.push_back(temp[k]);
+            vis[i][j]=1;
+            if(k==0)
+            i=i+1;
+            else if(k==1)
+            j=j-1;
+            else if(k==2)
+            j=j+1;
+            else
+            i=i-1;
+            find(rat,n,ans,st,i,j,vis,temp);
+            st.pop_back();
+            if(k==0)
+            i=i-1;
+            else if(k==1)
+            j=j+1;
+            else if(k==2)
+            j=j-1;
+            else
+            i=i+1;
+            vis[i][j]=0;
+        }
+    }
+}
     vector<string> findPath(vector<vector<int>> &m, int n) {
         // Your code goes here
-        // ✅🤝©👀
-        if(m[0][0]==0)
-        return {"-1"};
+        // Vishu Op
+        // ✅😏😎💯
+        // Done in first attempt
         vector<string>ans;
-        find(ans,"",m,n,0,0);
+        vector< vector<bool> >vis;
+        vector<bool>pp;
+        string st="",temp="DLRU";
+        if(m[0][1]!=1&&m[1][0]!=1||m[0][0]==0)
+        return ans;
+        for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            pp.push_back(0);
+        }
+        vis.push_back(pp);
+        pp.clear();
+        }
+        find(m,n,ans,st,0,0,vis,temp);
         return ans;
     }
 };
