@@ -10,8 +10,67 @@ class Solution {
   public:
     int smallestSubstring(string S) {
         // Code here
-        // brute force as extra space is used
-        // ✅💯
+        // ✅💯😏
+        // POTD
+        // OPtimized approach
+        int ans=INT_MAX;
+        int j=-1,k=-1,l=-1,i;
+        int n=S.length();
+        for(i=0;i<S.length();i++){
+            if(S[i]=='0'&&j==-1)
+            j=i;
+            if(S[i]=='1'&&k==-1)
+            k=i;
+            if(S[i]=='2'&&l==-1)
+            l=i;
+            if(j!=-1&&k!=-1&&l!=-1)
+            break;
+        }
+        if(j==-1||k==-1||l==-1)
+        return -1;
+        int h=min(j,min(k,l));
+        int p=max(j,max(k,l));
+        ans=min(ans,p-h+1);
+        i++;
+        while(l<n&&j<n&&k<n){
+            if(l==h){
+                p=S[l];
+                l++;
+                while(l<n&&p!=S[l]){
+                    l++;
+                }
+                if(l>=n)
+                break;
+            }
+            else if(j==h){
+                p=S[j];
+                j++;
+                while(j<n&&p!=S[j]){
+                    j++;
+                }
+                if(j>=n)
+                break;
+            }
+            else if(k==h){
+                p=S[k];
+                k++;
+                while(k<n&&p!=S[k]){
+                    k++;
+                }
+                if(k>=n)
+                break;
+            }
+            h=min(j,min(k,l));
+            p=max(j,max(k,l));
+            ans=min(ans,p-h+1);
+        }
+        return ans;
+        /*
+        
+         // brute force as extra space is used
+         // Done by me on my own both logic.
+         // ✅💯😏
+        
         queue<int>q1;
         queue<int>q2;
         queue<int>q3;
@@ -38,45 +97,9 @@ class Solution {
             else if(h==q3.front())
             q3.pop();
         }
-        return ans;
+        return ans;*/
     }
 };
-
-/*
-  int ans=INT_MAX;
-        int j=-1,k=-1,l=-1,i;
-        for(i=0;i<S.length();i++){
-            if(S[i]==0&&j==-1)
-            j=i;
-            if(S[i]==1&&k==-1)
-            k=i;
-            if(S[i]==2&&l==-1)
-            l=i;
-            if(j!=-1&&k!=-1&&l!=-1)
-            break;
-        }
-        if(j==-1||k==-1||l==-1)
-        return -1;
-        int h=min(j,min(k,l));
-        int p=max(j,max(k,l));
-        ans=min(ans,p-h+1);
-        i++;
-        if(j>h&&j<p){
-            m=j;
-        }
-        else if(k>h&&k<p){
-            m=k;
-        }
-        else if(l>h&&l<p){
-            m=l;
-        }
-        j=m;
-        k=p;
-        l=-1;
-        for(;i<S.length();i++){
-            if(S[j]!=S[i]&&S[i]!=S[k])
-        }
-  */
 
 //{ Driver Code Starts.
 
