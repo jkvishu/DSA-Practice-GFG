@@ -7,25 +7,39 @@ class Solution
 {
     public:
     //Function to count number of ways to reach the nth stair.
+    /*
+    // Recursive way to solve the problem.
+    void find(int n,int &ans){
+    if(n==0){
+        ans++;
+        return; 
+    }
+    if((n-1)>=0)
+    find(n-1,ans);
+    if((n-2)>=0)
+    find(n-2,ans);
+}
     int countWays(int n)
     {
         // your code here
-      //space optimized.
-        // ✅💯👀😏©👀
-    int arr[2];
-    arr[0]=1;
-    arr[1]=2;
-    int dp[n+1]={0};
-    dp[0]=1;
-    int mod=1e9+7;
-    for(int i=1;i<=n;i++){
-        for(int j=0;j<2;j++){
-            if(i>=arr[j])
-            dp[i]=(dp[i]+dp[i-arr[j]])%mod;
+        int ans=0;
+        find(n,ans);
+        return ans;
+    }*/
+    int countWays(int n)
+    {
+        //✅😏💯
+        int a,b,c;
+        int mod=1e9+7;
+        a=0;
+        b=1;
+        for(int i=2;i<(n+2);i++){
+            c=(a+b)%mod;
+            a=b;
+            b=c;
         }
+        return c%mod;
     }
-    return dp[n];
-    } 
 };
 
 
