@@ -7,7 +7,7 @@ using namespace std;
 class Solution
 {
     public:
-    void fill_lcs(string p,int arr[]){
+       void fill_lcs(string p,int arr[]){
         arr[0]=0;
         int l=0;
         int i=1;
@@ -32,6 +32,7 @@ class Solution
         {
             //code here.
             //❌🤝👀
+            //POTD
             vector<int>ans;
             int m=pat.length();
             int n=txt.length();
