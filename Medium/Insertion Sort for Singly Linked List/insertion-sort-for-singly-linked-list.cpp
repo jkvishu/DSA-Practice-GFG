@@ -44,6 +44,44 @@ struct Node {
 class Solution
 {
     public:
+    struct Node* st=NULL;
+    void doit(Node* ck){
+        if(st==NULL||st->data>=ck->data){
+            ck->next=st;
+            st=ck;
+        }
+        else{
+            Node* temp=st;
+            while(temp->next!=NULL&&temp->next->data<ck->data){
+                temp=temp->next;
+            }
+            ck->next=temp->next;
+            temp->next=ck;
+        }
+    }
+    Node* insertionSort(struct Node* head)
+    {
+        // POTD
+        // ✅🤝💯😏
+        // Insertion sort
+        if(head==NULL||head->next==NULL)
+        return head;
+        if(head->next->next==NULL){
+            if(head->data>head->next->data){
+                swap(head->data,head->next->data);
+                return head;
+            }
+        }
+        Node* cr=head;
+        while(cr){
+            Node* temp=cr->next;
+            doit(cr);
+            cr=temp;
+        }
+        head=st;
+        return head;
+    }
+    /*
     Node* insertionSort(struct Node* head)
     {
         //code here
@@ -64,6 +102,7 @@ class Solution
         }
         return head;
     }
+    */
     
 };
 
