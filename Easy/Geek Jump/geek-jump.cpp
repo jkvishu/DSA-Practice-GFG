@@ -6,8 +6,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-  
-  /*void find(vector<int>&a,int n,int i,int &ans,int cal){
+    /*void find(vector<int>&a,int n,int i,int &ans,int cal){
     if(i==n-1){
         ans=min(ans,cal);
         return;
@@ -28,7 +27,7 @@ class Solution {
         int ans=INT_MAX;
         find(height,n,0,ans,0);
         return ans;
-    }*/
+    }
     int find(int dp[],vector<int>&a,int n){
     if(n==0){
       return dp[n];
@@ -51,6 +50,26 @@ class Solution {
          }
          dp[0]=0;
          return find(dp,height,n-1);
+    }
+    */
+    
+    int minimumEnergy(vector<int>& height, int n) {
+        // Code here
+        // Striver Op
+        // Most optimized solution for this problem.
+        // ✅💯😏
+        int prev=0;
+        int prev2=0;
+        for(int i=1;i<n;i++){
+            int left=prev+abs(height[i]-height[i-1]);
+            int right=INT_MAX;
+            if(i>1)
+            right=prev2+abs(height[i]-height[i-2]);
+            int cur=min(left,right);
+            prev2=prev;
+            prev=cur;
+        }
+        return prev;
     }
 };
 
