@@ -21,7 +21,6 @@ struct Item{
 class Solution
 {
     public:
-    //Function to get the maximum total value in the knapsack.
     static bool cmp(Item s1, Item s2){
         double r1=(double)s1.value/s1.weight;
         double r2=(double)s2.value/s2.weight;
@@ -63,6 +62,7 @@ class Solution
     {
         //Let's see an approach  where we are not using any extra space.
         //💯✅😏🤝
+        //POTD
         sort(arr,arr+n,cmp);
         double ans=0.0;
         for(int i=0;i<n;i++){
@@ -76,8 +76,7 @@ class Solution
             }
         }
         return ans;
-    }
-        
+    } 
 };
 
 
@@ -87,7 +86,7 @@ int main()
 	int t;
 	//taking testcases
 	cin>>t;
-	cout<<setprecision(2)<<fixed;
+	cout<<setprecision(6)<<fixed;
 	while(t--){
 	    //size of array and weight
 		int n, W;
