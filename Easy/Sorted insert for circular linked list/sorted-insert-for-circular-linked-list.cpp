@@ -36,38 +36,29 @@ struct Node
 class Solution
 {
     public:
-    Node *sortedInsert(Node* head, int x)
+    Node *sortedInsert(Node* head, int data)
     {
        //Your code here
        //✅💯😏
-       Node* st=head;
-       if(head->data>=x){
-           while(st->next!=head){
-               st=st->next;
-           }
-           Node* temp=new Node(x);
-           temp->next=st->next;
-           st->next=temp;
-           return temp;
-       }
-       else{
-           Node* help=head;
-           st=st->next;
-           while(st!=head){
-               if(st->data>=x){
-                  Node* temp=new Node(x);
-                  temp->next=help->next;
-                  help->next=temp;
-                  return head;
-               }
-               help=st;
-               st=st->next;
-           }
-           Node* temp=new Node(x);
-           help->next=temp;
-           temp->next=head;
-           return head;
-       }
+       //POTD
+       Node *ptr = head;
+    Node *new_node = new Node(data);
+    if (head == NULL)
+    {
+        new_node->next = new_node;
+        return new_node;
+    }
+    while (ptr->next != head && ptr->next->data < data)
+    {
+        ptr = ptr->next;
+    }
+    new_node->next = ptr->next;
+    ptr->next = new_node;
+    if (head->next->data < head->data)
+    {
+        swap(head->next->data, head->data);
+    }
+    return head;
     }
 };
 
