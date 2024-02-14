@@ -10,33 +10,21 @@ class Solution
     //Function to find the maximum money the thief can get.
     int FindMaxSum(int arr[], int n)
     {
-        //POTD 
-        if(n==1)
-        return arr[0];
-        if(n==2)
-        return max(arr[0],arr[1]);
-        arr[1]=max(arr[0],arr[1]);
-        int mx,s;
-        for(int i=2;i<n;i++)
-        {
-            mx=max(arr[i-1],arr[i]+arr[i-2]);
-            arr[i]=mx;
-        }
-        return arr[n-1];
-    }
-    /*{
         // Your code here
-        vector<int> dp(n);
-        int i;
-        dp[0] = arr[0];
-        dp[1] = max(arr[1], arr[0]);
-        
-        for(int i = 2; i < n; ++i) {
-            dp[i] = max(arr[i] + dp[i-2], dp[i-1]);
+        // Best Optimal solution for this problem finally in 2024
+        // 💯✅😏😎
+        int cur=arr[0];
+        int prv=0;
+        for(int i=1;i<n;i++){
+            int pick=arr[i];
+            if(i>1)
+            pick+=prv;
+            int ntpick=cur+0;
+            prv=cur;
+            cur=max(pick,ntpick);
         }
-        
-        return *max_element(dp.begin(), dp.end());
-    }*/
+        return cur;
+    }
 };
 
 //{ Driver Code Starts.
