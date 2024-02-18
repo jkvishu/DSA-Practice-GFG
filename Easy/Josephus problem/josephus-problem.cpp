@@ -10,6 +10,19 @@ using namespace std;
 class Solution
 {
     public:
+    //SOLUTION 4:-> //best soluton for this problem without extra space and iterative also
+    int josephus(int n, int k)
+    {
+       //Your code here
+       //Best Solution for this problem is this which is asked in one of the contest of gfg
+       //✅💯🫰🏻🤝👀
+       int ans=0;
+       for(int i=1;i<=n;i++){
+           ans=(ans+k)%i;
+       }
+       return ans+1;
+    }
+       
     //SOLUTION 3:-> //PURE recursion
     int hallfame(int n,int k){
         if(n==1)
