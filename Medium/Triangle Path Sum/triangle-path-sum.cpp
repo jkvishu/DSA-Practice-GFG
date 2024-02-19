@@ -35,12 +35,10 @@ class Solution {
         find(1,n,triangle,ans,triangle[0][0]);
         return ans;
     }
-    */
+    // Second Solution.
     int  find(vector<vector<int>>&dp,int i,int j,int n,vector< vector<int> >& triangle){
     if(i==n-1)
     return triangle[n-1][j];
-    if(j>i)
-    return INT_MAX;
     if(dp[i][j]!=-1)
     return dp[i][j];
     int down=triangle[i][j]+find(dp,i+1,j,n,triangle);
@@ -62,6 +60,53 @@ class Solution {
     return find(dp,0,0,n,triangle);
     }
     
+     int minimizeSum(int n, vector<vector<int>>& triangle) {
+         // More Optimal approach
+        //  Tabulation solution.
+        // ✅💯😏🤝
+        vector< vector<int> > dp;
+    for (int i = 0; i < n; i++)
+    {
+        vector<int> temp;
+        for (int j = 0; j < i + 1; j++)
+        {
+            temp.push_back(0);
+        }
+        dp.push_back(temp);
+    }
+    for(int j=0;j<n;j++){
+        dp[n-1][j]=triangle[n-1][j];
+    }
+    for(int i=n-2;i>=0;i--){
+        for(int j=i;j>=0;j--){
+            int left=triangle[i][j]+dp[i+1][j+1];
+            int up=triangle[i][j]+dp[i+1][j];
+            dp[i][j]=min(left,up);
+        }
+    }
+    return dp[0][0];
+     }
+     */
+     int minimizeSum(int n, vector<vector<int>>& triangle) {
+         // Most Optimal approach
+        //  space optimal solution.
+        // ✅💯😏🤝
+        vector<int>dp(n);
+    for(int j=0;j<n;j++){
+        dp[j]=triangle[n-1][j];
+    }
+    for(int i=n-2;i>=0;i--){
+        vector<int>temp(n);
+        for(int j=i;j>=0;j--){
+            int left=triangle[i][j]+dp[j+1];
+            int up=triangle[i][j]+dp[j];
+            temp[j]=min(left,up);
+        }
+        dp=temp;
+    }
+    return dp[0];
+     }
+     
 };
 
 //{ Driver Code Starts.
