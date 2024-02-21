@@ -11,6 +11,7 @@ class Solution{
 public:
 /*
 //Approach number 1:-> Recursive solution
+
  void find(int &ans,int i,int m,int n,vector<vector<int>> &mat,int cal){
          if(i>=n)
         {
@@ -51,7 +52,9 @@ public:
         find(ans,0,0,N,Matrix,0);
         return ans;
     }
-*/
+
+//Approach number 2:-> Memoization solution
+
     int find(int i,int j,int n,vector<vector<int>> &mat,vector<vector<int>>&dp){
         if(j<0||j>=n)
         return -1e8;
@@ -79,6 +82,85 @@ public:
         }
         return ans;
     }
+
+//Approach number 3:-> Tabulation solution.
+
+    int maximumPath(int n, vector<vector<int>> Matrix)
+    {
+        // code here
+        // More Optimized approach
+        // Tabulation solution.
+        // ✅💯🤝🙂
+        vector< vector<int> > dp(n, vector<int>(n, 0));
+    for (int i = 0; i < n; i++)
+    {
+        dp[0][i] = Matrix[0][i];
+    }
+    for (int i = 1; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            int left = Matrix[i][j];
+            if (j > 0)
+            left += dp[i - 1][j - 1];
+            else
+            left+=-1e8;
+            int mid = Matrix[i][j] + dp[i - 1][j];
+            int right = Matrix[i][j];
+            if (j + 1 < n)
+            right += dp[i - 1][j + 1];
+            else
+            right+=-1e8;
+            dp[i][j] = max(left, max(mid, right));
+        }
+    }
+    int ans=-1e8;
+    for(int i=0;i<n;i++){
+        ans=max(ans,dp[n-1][i]);
+    }
+    return ans;
+    }
+     */
+     
+     //Approach number 4:-> space optimization✅
+     
+       int maximumPath(int n, vector<vector<int>> Matrix)
+    {
+        // Best approach
+        // Space Optimized solution.
+        // ✅💯🤝🙂
+        vector<int>dp(n,0);
+    for (int i = 0; i < n; i++)
+    {
+        dp[i] = Matrix[0][i];
+    }
+    for (int i = 1; i < n; i++)
+    {
+        vector<int>temp(n,0);
+        for (int j = 0; j < n; j++)
+        {
+            int left = Matrix[i][j];
+            if (j > 0)
+            left += dp[j - 1];
+            else
+            left+=-1e8;
+            int mid = Matrix[i][j] + dp[j];
+            int right = Matrix[i][j];
+            if (j + 1 < n)
+            right += dp[j + 1];
+            else
+            right+=-1e8;
+            temp[j] = max(left, max(mid, right));
+        }
+        dp=temp;
+    }
+    int ans=-1e8;
+    for(int i=0;i<n;i++){
+        ans=max(ans,dp[i]);
+    }
+    return ans;
+    }
+     
 };
 
 //{ Driver Code Starts.
