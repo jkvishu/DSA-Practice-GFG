@@ -78,7 +78,10 @@ public:
         else
         return false;
     }
-    */
+    
+    
+//2nd appproach memoization solution
+
     bool find(int i,int sum,vector<int> &arr,vector< vector<int> >&dp){
     if(sum==0){
         return 1;
@@ -110,6 +113,54 @@ bool isSubsetSum(vector<int> arr, int sum)
     else
     return 0;
 }
+
+*/
+
+//3rd appproach Tabulation solution
+
+static bool isSubsetSum(vector<int> arr, int sum)
+{
+    // code here
+    // Tabulation solution
+    // Striver baba
+    // ✅😏💯🤝
+    int n=arr.size();
+    vector< vector<int> >dp(n,vector<int>(sum+1,0));
+    for(int i=0;i<n;i++){
+        dp[i][0]=1;
+    }
+    if(arr[0]<=sum)
+    dp[0][arr[0]]=1;
+    for(int i=1;i<n;i++){
+        for(int j=1;j<=sum;j++){
+            int pick=0;
+            if(arr[i]<=j)
+            pick=dp[i-1][j-arr[i]];
+            int ntpick=dp[i-1][j];
+            dp[i][j]=pick | ntpick;
+        }
+    }
+    return dp[n-1][sum];
+}
+/*
+bool isSubsetSum(vector<int> &arr, int k)
+{
+    int n=arr.size();
+vector<vector<bool>> dp(n+1, vector<bool>(k+1, false));
+    for (int i = 0; i <= n; i++) dp[i][0] = true;
+
+    for (int i = n-1; i >= 0; i--){
+        for (int j = 1; j <= k; j++){
+            bool skip = dp[i+1][j];
+            bool take = false;
+            if (j >= arr[i]) take = dp[i+1][j-arr[i]];
+            dp[i][j] = skip || take;
+        }
+    }
+    return dp[0][k];
+}
+*/
+
 };
 
 //{ Driver Code Starts.
