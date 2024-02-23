@@ -114,8 +114,6 @@ bool isSubsetSum(vector<int> arr, int sum)
     return 0;
 }
 
-*/
-
 //3rd appproach Tabulation solution
 
 static bool isSubsetSum(vector<int> arr, int sum)
@@ -141,6 +139,35 @@ static bool isSubsetSum(vector<int> arr, int sum)
         }
     }
     return dp[n-1][sum];
+}
+*/
+
+//4th appproach Space Optimized solution.
+
+int isSubsetSum(vector<int> arr, int sum)
+{
+    // code here
+    // Space Optimized solution.
+    // Striver baba
+    // ✅😏💯🤝
+    int n=arr.size();
+    vector<int>dp(sum+1,0);
+    vector<int>prev(sum+1,0);
+    dp[0]=1;
+    prev[0]=1;
+    if(arr[0]<=sum)
+    dp[arr[0]]=1;
+    for(int i=1;i<n;i++){
+        for(int j=1;j<=sum;j++){
+            int ntpick=dp[j];
+            int pick=0;
+            if(arr[i]<=j)
+            pick=dp[j-arr[i]];
+            prev[j]=pick|ntpick;
+        }
+        dp=prev;
+    }
+    return dp[sum];
 }
 /*
 bool isSubsetSum(vector<int> &arr, int k)
