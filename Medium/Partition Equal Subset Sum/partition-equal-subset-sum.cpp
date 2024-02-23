@@ -49,7 +49,7 @@ public:
             return 0;
         }
     }
-    */
+    
 
 //2nd approach using Memoization solution.:->    
     
@@ -75,8 +75,7 @@ public:
     {
         // code here
         // Optimized approach.
-        // Memoization solution
-        // Still TLE
+        // Memoization solution.
         // ✅😏💯
         int sum=0;
         for(int i=0;i<N;i++){
@@ -91,6 +90,78 @@ public:
             return 1;
             else
             return 0;
+        }
+    }
+
+
+//3rd approach using Tabulation solution.:->  
+
+    int equalPartition(int N, int arr[])
+    {
+        // code here
+        // More Optimized approach.
+        // Tabulation solution
+        // ✅😏💯
+        int sum=0;
+        for(int i=0;i<N;i++){
+            sum+=arr[i];
+        }
+        if(sum%2!=0)
+        return 0;
+        else{
+            sum=sum/2;
+            vector< vector<int> >dp(N,vector<int>(sum+1,0));
+            for(int i=0;i<N;i++){
+                dp[i][0]=1;
+            }
+            if(arr[0]<=sum)
+            dp[0][arr[0]]=1;
+            for(int i=1;i<N;i++){
+                for(int j=1;j<=sum;j++){
+                    int ntpick=dp[i-1][j];
+                    int pick=0;
+                    if(arr[i]<=j)
+                    pick=dp[i-1][j-arr[i]];
+                    dp[i][j]=pick|ntpick;
+                }
+            }
+            return dp[N-1][sum];
+        }
+    }
+    
+*/
+
+//4th approach using Space Optimized solution.:->  
+
+    int equalPartition(int N, int arr[])
+    {
+        // code here
+        // More Optimized approach.
+        // Space Optimized solution
+        // ✅😏💯
+        int sum=0;
+        for(int i=0;i<N;i++){
+            sum+=arr[i];
+        }
+        if(sum%2!=0)
+        return 0;
+        else{
+            sum=sum/2;
+            vector<int>dp(sum+1,0);
+            vector<int>prev(sum+1,0);
+            if(arr[0]<=sum)
+            dp[arr[0]]=1;
+            for(int i=1;i<N;i++){
+                for(int j=1;j<=sum;j++){
+                    int ntpick=dp[j];
+                    int pick=0;
+                    if(arr[i]<=j)
+                    pick=dp[j-arr[i]];
+                    prev[j]=pick|ntpick;
+                }
+                dp=prev;
+            }
+            return dp[sum];
         }
     }
 };
