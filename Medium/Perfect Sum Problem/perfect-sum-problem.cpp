@@ -28,10 +28,11 @@ class Solution{
         // ✅😏💯
         // TLE
        return find(arr,n-1,sum)%mod;
-	}*/
+	}
 // 	int mod=1e9+7;
 int find(int arr[], int n, int sum,vector< vector<int> >&dp)
 {
+
     if (n == 0)
     {
         if (arr[0] == 0 && sum == 0)
@@ -55,6 +56,32 @@ int perfectSum(int arr[], int n, int sum)
     // ✅😏💯
     vector< vector<int> >dp(n,vector<int>(sum+1,-1));
     return find(arr, n - 1, sum,dp) % mod;
+}
+*/
+int perfectSum(int arr[], int n, int sum)
+{
+    // Your code goes here
+    // space optimized solution for the problem.
+    // ✅😏💯
+    // Need to handle 0's case by sorting the array in decreasing order.
+    sort(arr,arr+n,greater<int>());
+    vector<int>dp(sum+1,0);
+    vector<int>cur(sum+1,0);
+    dp[0]=1;
+    cur[0]=1;
+    if(arr[0]<=sum)
+    dp[arr[0]]=1;
+    for(int i=1;i<n;i++){
+        for(int j=1;j<=sum;j++){
+            int ntpick=dp[j];
+            int pick=0;
+            if(arr[i]<=j)
+            pick=dp[j-arr[i]];
+            cur[j]=(pick+ntpick)%mod;
+        }
+        dp=cur;
+    }
+    return dp[sum]%mod;
 }
 };
 
