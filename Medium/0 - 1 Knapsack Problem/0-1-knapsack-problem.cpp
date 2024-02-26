@@ -8,27 +8,66 @@ class Solution
 {
     public:
     //Function to return max value that can be put in knapsack of capacity W.
+    /*
+    void find(int w,int wt[],int val[],int n,int i,int &ans,int cal){
+        if(i==n||w==0){
+            ans=max(ans,cal);
+            return;
+        }
+        if(wt[i]<=w)
+        find(w-wt[i],wt,val,n,i+1,ans,cal+val[i]);
+        find(w,wt,val,n,i+1,ans,cal);
+    }
     int knapSack(int W, int wt[], int val[], int n) 
     { 
-       // Your code here 
-       // ✅👀🤝
-       // Dp most famous problem
-       int dp[n+1][W+1];
-       for(int i=0;i<=n;i++){
-           dp[i][0]=0;
+       // Your code here
+       // Recursive solution
+       // ✅😏💯
+       int ans=0;
+       find(W,wt,val,n,0,ans,0);
+       return ans;
+    }
+    
+    //Another recursive approach
+    int find(int W, int wt[], int val[], int n){
+       if(n==0){
+           if(wt[0]<=W)
+           return val[0];
+           return 0;
        }
-       for(int i=1;i<=W;i++){
-           dp[0][i]=0;
+       int ntpick=0+find(W,wt,val,n-1);
+       int pick=INT_MIN;
+       if(wt[n]<=W)
+       pick=val[n]+find(W-wt[n],wt,val,n-1);
+       return max(pick,ntpick);
+    }
+    int knapSack(int W, int wt[], int val[], int n) 
+    { 
+       // Your code here
+       return find(W,wt,val,n-1);
+    }
+    */
+    
+    int find(int W, int wt[], int val[], int n,vector< vector<int> >&dp){
+       if(n==0){
+           if(wt[0]<=W)
+           return val[0];
+           return 0;
        }
-       for(int i=1;i<=n;i++){
-           for(int j=1;j<=W;j++){
-               if(wt[i-1]>j)
-               dp[i][j]=dp[i-1][j];
-               else
-               dp[i][j]=max(val[i-1]+dp[i-1][j-wt[i-1]],dp[i-1][j]);
-           }
-       }
+       if(dp[n][W]!=-1)
        return dp[n][W];
+       int ntpick=0+find(W,wt,val,n-1,dp);
+       int pick=INT_MIN;
+       if(wt[n]<=W)
+       pick=val[n]+find(W-wt[n],wt,val,n-1,dp);
+       return dp[n][W]=max(pick,ntpick);
+    }
+    int knapSack(int W, int wt[], int val[], int n) 
+    {
+        // Memoization solution for the problem.
+        // ✅😏💯
+        vector< vector<int> >dp(n,vector<int>(W+1,-1));
+        return find(W,wt,val,n-1,dp);
     }
 };
 
