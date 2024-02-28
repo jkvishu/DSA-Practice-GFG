@@ -1,25 +1,27 @@
 //{ Driver Code Starts
+
 #include <bits/stdc++.h>
 using namespace std;
 
 // } Driver Code Ends
+
 class Solution{
     public:
-    int DivisibleByEight(string S){
+    int DivisibleByEight(string s){
         //code here
-        //✅🤝💯😏
-        int n=S.length();
-        if(n==2){
-            int nm=stoi(S);
-            if(!(nm%8))
-            return 1;
-            return -1;
+        //POTD 28/02/2024
+        //✅😏💯
+        int n=s.length();
+        int r=0,f;
+        for(int i=0;i<n;i++){
+            int x=s[i]-'0';
+            f=(r*10)+x;
+            r=f%8;
         }
-        int lastdigit=(int)(S[n-1])-48;
-        int second_lastdigit=(int)(S[n-2])-48;
-        int Third_lastdigit=(int)(S[n-3])-48;
-        int nm= Third_lastdigit*100+second_lastdigit*10+lastdigit;
-        return nm%8?-1:1;
+        if(r==0)
+        return 1;
+        else
+        return -1;
     }
 };
 
