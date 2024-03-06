@@ -9,7 +9,8 @@ class Solution
     public:
         vector <int> search(string pat, string txt)
         {
-            //code here.
+            //code here
+            //POTD
             //Rabin-Karp Algorithm 
             //❌🥵👌🏻👀
             vector<int>ans;
@@ -42,7 +43,7 @@ class Solution
                 }
             }
             if(ans.size()==0)
-            return {-1};
+            return {};
             return ans;
         }
 };
