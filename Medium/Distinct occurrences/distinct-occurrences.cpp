@@ -6,33 +6,56 @@ using namespace std;
 // } Driver Code Ends
 /*You are required to complete this method*/
 
-int mod=1e9+7;
 class Solution
 {
     public:
+    int mod=1e9+7;
+    /*
+    int find(int n,int m,string s,string t){
+        if(m<0)
+        return 1;
+        if(n<0)
+        return 0;
+        if(s[n]==t[m]){
+            return (find(n-1,m-1,s,t)+find(n-1,m,s,t));
+        }
+        else
+        return find(n-1,m,s,t);
+    }
     int subsequenceCount(string s, string t)
     {
       //Your code here
-      //Best optimal approach
-      //POTD 22/02/2024
-      //©❌🤝👀
-      int n = s.length();
-        int m = t.length();
-        vector<int> next(m+1,0),curr(m+1,0);
-        for(int i=n-1; i>=0; --i){
-            next[m] = 1;
-            for(int j=0; j<m; ++j){
-                int ans = 0;
-                if(s[i]==t[j]){
-                    ans = (next[j+1] + next[j])%mod;
-                }
-                else{
-                    ans = next[j];
-                }
-                next[j] = ans;
-            }
+      //Brute force but this was the approach of striver not mine i was not able to figure out the recusrive relation to solve this problem.
+      //✅🤝🫠👀💯
+      //TLE
+      //Recursive approach
+      int n=s.length();
+      int m=t.length();
+      return find(n-1,m-1,s,t);
+    }
+    */
+     int find(int n,int m,string s,string t,vector<vector<int>>&dp){
+        if(m<0)
+        return 1;
+        if(n<0)
+        return 0;
+        if(dp[n][m]!=-1)
+        return dp[n][m];
+        if(s[n]==t[m]){
+            return dp[n][m]=(find(n-1,m-1,s,t,dp)+find(n-1,m,s,t,dp))%mod;
         }
-        return next[0];
+        else
+        return dp[n][m]=find(n-1,m,s,t,dp)%mod;
+    }
+    int subsequenceCount(string s, string t)
+    {
+       // Your code here
+       // Memoization solution for the problem.
+       // ✅😏💯
+      int n=s.length();
+      int m=t.length();
+      vector<vector<int>>dp(n+1,vector<int>(m+1,-1));
+      return find(n-1,m-1,s,t,dp)%mod;
     }
 };
  
