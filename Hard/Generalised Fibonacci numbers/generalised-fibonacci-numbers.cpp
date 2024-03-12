@@ -1,12 +1,28 @@
 //{ Driver Code Starts
-
 #include <bits/stdc++.h>
 using namespace std;
 
 // } Driver Code Ends
-
 class Solution {
   public:
+  /*
+    long long genFibNum(long long a, long long b, long long c, long long n, long long m) {
+        // code here
+        // Brute force
+        // POTD
+        // ✅😏💯
+        long long int d=1;
+        long long int e=1;
+        if(n==1||n==2)
+        return 1;
+        for(int i=2;i<n;i++){
+            long long int x=a*d+b*e+c;
+            d=e;
+            e=x;
+        }
+        return e%m;
+    }
+    */
     long long mat[3][3], res[3][3];
     
     void mul(long long res[3][3], long long mat[3][3], long long m)
@@ -43,6 +59,7 @@ class Solution {
     
     long long genFibNum(long long a, long long b, long long c, long long n, long long m) {
         //❌👀©
+        // POTD
         memset(res,0,sizeof(res));
         res[0][0] = res[1][1] = res[2][2] = 1;
         mat[0][0] = a;
