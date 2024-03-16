@@ -6,47 +6,42 @@ using namespace std;
 // User function template for C++
 class Solution{
     public:
-    int dp[1001][1001];
-    int solve(string p, string s, int i, int j) {
-    if (i == -1 && j == -1) {
-        return 1;
-    }
-    if (j == -1) {
-        for (int k = 0; k <i; k++)
-        {
-            if (p[k] != '*') 
-            {
-                return 0;
-            }
-        }
-        return 1;
-    }
-    if (i == -1) {
-        return 0;
-    }
-    if (dp[i][j] != -1) {
-        return dp[i][j];
-    }
-
-    if (p[i] == '?' || p[i] == s[j]) { // Adjusted index to j when comparing p[j] and s[i]
-        return dp[i][j] = solve(p, s, i - 1, j - 1);
-    }
-    if (p[i] == '*') { // Adjusted index to j
-        int op1 = solve(p, s, i - 1, j);
-        int op2 = solve(p, s, i, j - 1);
-        return dp[i][j] = (op1 | op2);
-    }
-    return dp[i][j] = 0;
-}
-    bool match(string wild, string pattern)
+    bool match(string pat, string str)
     {
         // code here
-        // POTD
-        // ❌©
-         int n = wild.size();
-    int m = pattern.size();
-    memset(dp,-1,sizeof(dp));
-    return solve(wild, pattern, n - 1, m - 1);
+        // Direct solution
+        // Already solved this question earlier
+        // Space Optimized solution.
+        // ✅😏💯
+        int n = pat.length();
+        int m = str.length();
+        vector<bool> dp(m + 1, false);
+        vector<bool> cur(m + 1, false);
+        dp[0] = true;
+        for (int i = 1; i <= n; i++)
+        {
+        bool f = true;
+        for (int j = 1; j <= i; j++)
+        {
+            if (pat[j - 1] != '*')
+            {
+                f = false;
+                break;
+            }
+        }
+        cur[0] = f;
+        for (int j = 1; j <= m; j++)
+        {
+            if (pat[i - 1] == str[j - 1] || pat[i - 1] == '?')
+                cur[j] = dp[j - 1];
+            else if (pat[i - 1] == '*')
+                cur[j] = dp[j] | cur[j - 1];
+            else
+                cur[j] = false;
+        }
+        dp = cur;
+        }
+        return dp[m];
     }
 };
 
