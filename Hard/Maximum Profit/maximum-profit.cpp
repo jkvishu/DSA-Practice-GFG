@@ -9,24 +9,53 @@ using namespace std;
 
 class Solution {
   public:
-    int maxProfit(int k, int n, int arr[]) {
-        // code here
-        //cpyppypcpyt
-        vector<int> prev (n, 0);
-        vector<int> curr (n, 0);
-        for(int i = 1; i <= k; i++){
-            for(int j = 1; j < n; j++){
-                curr[j] = curr[j - 1];
-                for(int m = 0; m < j; m++){
-                    curr[j] = max(curr[j], prev[m] + arr[j] - arr[m]);
-                }
-            }
-            for(int i = 0; i < n; i++){
-                prev[i] = curr[i];
-            }
-        }
-        return curr[n - 1];
+  /*
+    int find(int i, int n, int p[], int pro, int f, int c)
+    {
+    if (i == n || c == 0)
+        return 0;
+    if (f && c)
+    {
+        pro = max(-p[i] + find(i + 1, n, p, pro, 0, c), 0 + find(i + 1, n, p, pro, 1, c));
     }
+    else
+    {
+        pro = max(p[i] + find(i + 1, n, p, pro, 1, c-1), 0 + find(i + 1, n, p, pro, 0, c));
+    }
+    return pro;
+    }
+    int maxProfit(int K, int N, int A[]) {
+        // code here
+        // Brute force approach
+        // TLE
+        // Recusrive solution
+        // ✅💯😏
+        return find(0, N, A, 0, 1, K);
+    }
+    */
+    int find(int i, int n, int p[], int pro, int f, int c,vector< vector< vector<int> > > &dp)
+    {
+    if (i == n || c == 0)
+    return 0;
+    if(dp[i][f][c]!=-1)
+    return dp[i][f][c];
+    if (f && c)
+    {
+        pro = max(-p[i] + find(i + 1, n, p, pro, 0, c,dp), 0 + find(i + 1, n, p, pro, 1, c,dp));
+    }
+    else
+    {
+        pro = max(p[i] + find(i + 1, n, p, pro, 1, c-1,dp), 0 + find(i + 1, n, p, pro, 0, c,dp));
+    }
+    return dp[i][f][c]=pro;
+    }
+    int maxProfit(int K, int N, int A[]) {
+      // Memoization solution for the problem.
+      // ✅😏💯
+        vector< vector< vector<int> > > dp(N, vector< vector<int> >(2, vector<int>(K+1, -1)));
+        return find(0, N, A, 0, 1, K,dp);
+    }
+    
 };
 
 //{ Driver Code Starts.
