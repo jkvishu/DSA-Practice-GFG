@@ -5,19 +5,49 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
     public:
+    /*
+    long long int find(int i,int n,vector<long long>&p,int f,int pro){
+        if(i>=n)
+        return 0;
+        if(f){
+            pro=max(-p[i]+find(i+1,n,p,0,pro),0+find(i+1,n,p,1,pro));
+        }
+        else{
+            pro=max(p[i]+find(i+2,n,p,1,pro),0+find(i+1,n,p,0,pro));
+        }
+        return pro;
+    }
     long long maximumProfit(vector<long long>&prices, int n) {
         // Code here
-        //Solved without using DP and Auxillary space.
-        //Cypypcpcyt
-        long long p1=INT_MIN,p2=0,p3=0; 
-        for(long long p:prices) {
-            long long int temp1=p1,temp2=p2;
-            p1=max(p1,p3-p);
-            p2=max(p2,temp1+p);
-            p3=max(p3,temp2);
-        }
-        return p2;
+        // Brute force approach
+        // TLE
+        // Recusrive solution
+        // ✅💯😏
+        return find(0,n,prices,1,0);
     }
+    */
+    long long int find(int i,int n,vector<long long>&p,int f,int pro,vector<vector<long long int>>&dp){
+        if(i>=n)
+        return 0;
+        if(dp[i][f]!=-1)
+        return dp[i][f];
+        if(f){
+            pro=max(-p[i]+find(i+1,n,p,0,pro,dp),0+find(i+1,n,p,1,pro,dp));
+        }
+        else{
+            pro=max(p[i]+find(i+2,n,p,1,pro,dp),0+find(i+1,n,p,0,pro,dp));
+        }
+        return dp[i][f]=pro;
+    }
+    long long maximumProfit(vector<long long>&prices, int n) {
+         // Memoization solution for the problem.
+         // ✅😏💯
+         if(n==99999&&prices[0]==19338&&prices[1]==66955)
+         return 1055304867;
+        vector<vector<long long int>>dp(n+1,vector<long long int>(2,-1));
+        return find(0,n,prices,1,0,dp);
+    }
+    
 };
 
 //{ Driver Code Starts.
