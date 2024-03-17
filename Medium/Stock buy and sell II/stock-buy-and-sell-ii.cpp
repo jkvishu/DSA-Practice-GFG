@@ -31,18 +31,66 @@ public:
 
 class Solution {
   public:
+  /*
+    int find(int i,int n,vector<int> &prices,bool f,int pro){
+        if(i==n)
+        return 0;
+        if(f){
+            pro=max(-prices[i]+find(i+1,n,prices,0,pro),0+find(i+1,n,prices,1,pro));
+        }
+        else{
+            pro=max(prices[i]+find(i+1,n,prices,1,pro),0+find(i+1,n,prices,0,pro));
+        }
+        return pro;
+    }
     int stockBuyAndSell(int n, vector<int> &prices) {
         // code here
-        // POTD ✅😏💯
-        int ans=0,p=prices[0],s;
-        for(int i=1;i<n;i++){
-            if(prices[i]<p||prices[i]<prices[i-1]){
-                ans+=(prices[i-1]-p);
-                p=prices[i];
+        // Brute force approach
+        // TLE
+        // Recusrive solution
+        // ✅🤝🙂💯
+        return find(0,n,prices,1,0);
+    }
+    
+     int find(int i,int n,vector<int> &prices,int f,int pro,vector<vector<long long int>>&dp){
+        if(i==n)
+        return 0;
+        if(dp[i][f]!=-1)
+        return dp[i][f];
+        if(f){
+            pro=max(-prices[i]+find(i+1,n,prices,0,pro,dp),0+find(i+1,n,prices,1,pro,dp));
+        }
+        else{
+            pro=max(prices[i]+find(i+1,n,prices,1,pro,dp),0+find(i+1,n,prices,0,pro,dp));
+        }
+        return dp[i][f]=pro;
+    }
+    int stockBuyAndSell(int n, vector<int> &prices) {
+        // code here
+        // Memoization solution for the problem.
+        // ✅😏💯
+        vector<vector<long long int>>dp(n,vector<long long int>(2,-1));
+        return find(0,n,prices,1,0,dp);
+    }
+    */
+     int stockBuyAndSell(int n, vector<int> &prices) {
+        // code here
+        // Tabulation solution for the problem.
+        // ✅😏💯
+        vector<vector<int>>dp(n+1,vector<int>(2,0));
+        for(int i=n-1;i>=0;i--){
+            for(int f=0;f<=1;f++){
+              int pro=0;
+              if(f){
+              pro=max(-prices[i]+dp[i+1][0],0+dp[i+1][1]);
+              }
+              else{
+              pro=max(prices[i]+dp[i+1][1],0+dp[i+1][0]);
+              }
+              dp[i][f]=pro;
             }
         }
-        ans+=(prices[n-1]-p);
-        return ans;
+        return dp[0][1];
     }
 };
 
