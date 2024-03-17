@@ -52,7 +52,8 @@ class Solution{
     // your task is to complete this function
     int countPairs(struct Node* head1, struct Node* head2, int x) {
         // Code here
-        // ✅💯😏
+        // POTD
+        // ✅😂💯
         unordered_set<int>s;
         while(head2){
             s.insert(head2->data);
