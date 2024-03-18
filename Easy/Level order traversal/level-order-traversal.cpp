@@ -44,10 +44,10 @@ class Solution
     //Function to return the level order traversal of a tree.
     vector<int> levelOrder(Node* node)
     {
-      //Your code here
-      // Iterative solution by JOOD vishu tyagi
+      // Your code here
+      // POTD
       // 💯😏✅
-      if(node->left==NULL&&node->right==NULL)
+       if(node->left==NULL&&node->right==NULL)
       return {node->data};
       vector<int>ans;
       queue<Node*>q;
@@ -105,12 +105,12 @@ Node* buildTree(string str)
     for(string str; iss >> str; )
         ip.push_back(str);
         
-    // Create the node of the tree
-    Node* node = newNode(stoi(ip[0]));
+    // Create the root of the tree
+    Node* root = newNode(stoi(ip[0]));
         
-    // Push the node to the queue
+    // Push the root to the queue
     queue<Node*> queue;
-    queue.push(node);
+    queue.push(root);
         
     // Starting from the second element
     int i = 1;
@@ -151,7 +151,7 @@ Node* buildTree(string str)
         i++;
     }
     
-    return node;
+    return root;
 }
 
 /* Driver program to test size function*/
@@ -163,9 +163,9 @@ int main()
   {
         string s;
 		getline(cin,s);
-		Node* node = buildTree(s);
+		Node* root = buildTree(s);
 		Solution ob;
-        vector <int> res = ob.levelOrder(node);
+        vector <int> res = ob.levelOrder(root);
         for (int i : res) cout << i << " ";
         cout << endl;
   }
