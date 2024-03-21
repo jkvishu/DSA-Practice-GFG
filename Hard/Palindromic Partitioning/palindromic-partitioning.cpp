@@ -7,43 +7,70 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
-// User function Template for C++
-
 class Solution{
 public:
-    bool ispalindrome(string st,int i,int j){
-        while(i<j){
-            if(st[i]!=st[j])
+    bool ispal(string st)
+    {
+        int i=0,n=st.length()-1;
+        while(i<n){
+            if(st[i]!=st[n])
             return 0;
             i++;
-            j--;
+            n--;
         }
         return 1;
+    }
+    /*
+    int find(int i,int n,string st){
+        if(i==n)
+        return 0;
+        int ans=INT_MAX;
+        string temp="";
+        for(int j=i;j<n;j++){
+            temp+=st[j];
+            if(ispal(temp))
+            {
+                int cst=1+find(j+1,n,st);
+                ans=min(ans,cst);
+            }
+        }
+        return ans;
     }
     int palindromicPartition(string str)
     {
         // code here
-        // DP one of the best question
-        // ✅🤝©👀
-        // POTD
+        // Recursive Solution
+        // ✅😏💯
+        // TLE
         int n=str.length();
-        int dp[n][n];
-        for(int i=0;i<n;i++){
-            dp[i][i]=0;
-        }
-        for(int gap=1;gap<n;gap++){
-            for(int i=0;i+gap<n;i++){
-                int j=i+gap;
-                if(ispalindrome(str,i,j))
-                dp[i][j]=0;
-                else{
-                    dp[i][j]=INT_MAX;
-                    for(int k=i;k<j;k++)
-                    dp[i][j]=min(dp[i][j],1+dp[i][k]+dp[k+1][j]);
-                }
+        return find(0,n,str)-1;
+    }
+    */
+    int find(int i,int n,string st,vector<vector<int>>&dp){
+        if(i==n)
+        return 0;
+        if(dp[i][i]!=-1)
+        return dp[i][i];
+        int ans=INT_MAX;
+        string temp="";
+        for(int j=i;j<n;j++){
+            temp+=st[j];
+            if(ispal(temp))
+            {
+                int cst=1+find(j+1,n,st,dp);
+                ans=min(ans,cst);
             }
         }
-        return dp[0][n-1];
+        return dp[i][i]=ans;
+    }
+    int palindromicPartition(string str)
+    {
+        // code here
+        // Memoization solution for the problem.
+        // ✅😏💯
+        int n=str.length();
+        vector<vector<int>>dp(n+1,vector<int>(n+1,-1));
+        return find(0,n,str,dp)-1;
     }
 };
 
