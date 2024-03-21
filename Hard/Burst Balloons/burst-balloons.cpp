@@ -6,26 +6,47 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
 public:
+/*
+    int find(int i,int j,vector<int> &arr){
+        if(i>j)
+        return 0;
+        int mn=INT_MIN;
+        for(int k=i;k<=j;k++){
+            int steps=arr[i-1]*arr[k]*arr[j+1]+find(i,k-1,arr)+find(k+1,j,arr);
+            mn=max(steps,mn);
+        }
+        return mn;
+    }
     int maxCoins(int N, vector<int> &arr) {
         // code here
-        // POTD
-        // ©❌
-    arr.push_back(1);
-    arr.insert(arr.begin(), 1);
-    int n= arr.size();
-    vector<vector<int>> dp(n, vector<int> (n, 0));
-
-    for(int i = n-2; i>=1; i--){
-        for(int j = i; j<=n-2; j++){
-                int maxi = INT_MIN;
-    for(int k = i ; k <= j ; k++){
-        int cost = arr[i-1]*arr[k]*arr[j+1] + dp[i][k-1]+ dp[k+1][j];
-        maxi = max(maxi, cost);
+        // Recursive Code 
+        // TLE
+        // ✅😏💯
+        arr.push_back(1);
+        arr.insert(arr.begin(),1);
+        return find(1,N,arr);
     }
-     dp[i][j] = maxi;
+    */
+    int find(int i,int j,vector<int> &arr,vector<vector<int>> &dp){
+        if(i>j)
+        return 0;
+        int mn=INT_MIN;
+        if(dp[i][j]!=-1)
+        return dp[i][j];
+        for(int k=i;k<=j;k++){
+            int steps=arr[i-1]*arr[k]*arr[j+1]+find(i,k-1,arr,dp)+find(k+1,j,arr,dp);
+            mn=max(steps,mn);
         }
+        return dp[i][j]=mn;
     }
-    return dp[1][n-2];
+    int maxCoins(int N, vector<int> &arr) {
+        // code here
+        // Memoization solution for the problem.
+        // ✅😏💯
+        arr.push_back(1);
+        arr.insert(arr.begin(),1);
+        vector<vector<int>> dp(N + 1, vector<int>(N + 1, -1));
+        return find(1,N,arr,dp);
     }
 };
 
