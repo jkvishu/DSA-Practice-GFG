@@ -8,42 +8,47 @@ using namespace std;
 /*You are required to complete this method*/
 
 class Solution{
-  public:
-    int find(vector<int>&v){
-        stack<int>s;
+  public:   
+    int getMaxArea(vector<int>&arr, int n)
+    {
+        // Your code here
+        // GGF-C
+        // ✅🤝👀
         int ans=0;
         int cal=0;
-        int n=v.size();
+        stack<int>s;
         for(int i=0;i<n;i++){
-            while(!s.empty()&&v[s.top()]>=v[i]){
-                int pp=s.top();
+            while(!s.empty()&&arr[s.top()]>=arr[i]){
+                int tp=s.top();
                 s.pop();
-                cal=v[pp]*(s.empty()?i:(i-s.top()-1));
+                cal=arr[tp]*(s.empty()?i:(i-s.top()-1));
                 ans=max(ans,cal);
             }
             s.push(i);
         }
         while(!s.empty()){
-            int pp=s.top();
+            int tp=s.top();
             s.pop();
-            cal=v[pp]*(s.empty()?n:(n-s.top()-1));
+            cal=arr[tp]*(s.empty()?n:(n-s.top()-1));
             ans=max(ans,cal);
         }
         return ans;
     }
     int maxArea(int M[MAX][MAX], int n, int m) {
         // Your code here
-        // ✅🤝🤝👀🙄
-        vector<int>v(m,0);
-        int ans=find(v);
+        // Direct Optimal Solution
+        // ✅💯😏🤝
+        // Striver OP
+        int ans=1;
+        vector<int>dp(m,0);
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(M[i][j]==1)
-                v[j]++;
+                dp[j]++;
                 else
-                v[j]=0;
+                dp[j]=0;
             }
-            ans=max(ans,find(v));
+            ans=max(ans,getMaxArea(dp,m));
         }
         return ans;
     }
