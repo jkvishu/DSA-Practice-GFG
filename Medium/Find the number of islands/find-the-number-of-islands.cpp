@@ -6,21 +6,22 @@ using namespace std;
 class Solution {
   public:
     // Function to find the number of islands.
-    void bfs(int i,int j,vector<vector<int>>&vis,vector<vector<char>>&grid,int n,int m){
+    void bfs(vector<vector<char>>& grid,vector<vector<int>>&vis,int n,int m,int i,int j){
         vis[i][j]=1;
         queue<pair<int,int>>q;
         q.push({i,j});
         while(!q.empty()){
-            int r=q.front().first;
-            int c=q.front().second;
+            int row=q.front().first;
+            int col=q.front().second;
             q.pop();
-            for(int row=-1;row<=1;row++){
-                for(int col=-1;col<=1;col++){
-                    int rrow=row+r;
-                    int ccol=c+col;
-                    if(rrow<n&&rrow>=0&&ccol>=0&&ccol<m&&grid[rrow][ccol]=='1'&&!vis[rrow][ccol]){
-                        vis[rrow][ccol]=1;
-                        q.push({rrow,ccol});
+            for(int drow=-1;drow<=1;drow++){
+                for(int dcol=-1;dcol<=1;dcol++){
+                    int mrow=row+drow;
+                    int mcol=col+dcol;
+                    if(mrow>=0&&mrow<n&&mcol>=0&&mcol<m&&grid[mrow][mcol]=='1'&&vis[mrow][mcol]==0)
+                    {
+                        vis[mrow][mcol]=1;
+                        q.push({mrow,mcol});
                     }
                 }
             }
@@ -28,20 +29,22 @@ class Solution {
     }
     int numIslands(vector<vector<char>>& grid) {
         // Code here
-        // ✅🤝©👀
-        int ans=0;
+        // ✅😏💯🤝
+        // Striver OP
         int n=grid.size();
         int m=grid[0].size();
+        int c=0;
         vector<vector<int>>vis(n,vector<int>(m,0));
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                if(!vis[i][j]&&grid[i][j]=='1'){
-                ans++;
-                bfs(i,j,vis,grid,n,m);
+                if(grid[i][j]=='1'&&vis[i][j]==0)
+                {
+                    c++;
+                    bfs(grid,vis,n,m,i,j);
                 }
             }
         }
-        return ans;
+        return c;
     }
 };
 
