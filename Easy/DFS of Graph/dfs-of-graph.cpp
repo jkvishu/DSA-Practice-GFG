@@ -6,20 +6,22 @@ using namespace std;
 class Solution {
   public:
     // Function to return a list containing the DFS traversal of the graph.
-    void finddfs(vector<int>&ans,vector<int> adj[],int c,bool vis[]){
-        vis[c]=1;
-        ans.push_back(c);
-        for(auto x:adj[c]){
-            if(vis[x]==0)
-            finddfs(ans,adj,x,vis);
+    void dfs(int vis[],vector<int> adj[],vector<int>&ans,int node){
+        vis[node]=1;
+        ans.push_back(node);
+        for(auto it:adj[node]){
+            if(!vis[it]){
+                dfs(vis,adj,ans,it);
+            }
         }
     }
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
         // Code here
-        // POTD ✅😏💯🤝
-        bool vis[V]={0};
+        // ✅😏💯
+        // Striver OP
+        int vis[V]={0};
         vector<int>ans;
-        finddfs(ans,adj,0,vis);
+        dfs(vis,adj,ans,0);
         return ans;
     }
 };
