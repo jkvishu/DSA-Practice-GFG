@@ -5,55 +5,55 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-   /* // Function to detect cycle in an undirected graph.
-    bool find(int k,int vis[],vector<int> adj[]){
-        queue<int>q;
-        q.push(k);
-        while(!q.empty()){
-            int l=q.front();
-            q.pop();
-            if(vis[l]==true)
+    // Function to detect cycle in an undirected graph.
+    /*
+    void dfs(int node,vector<int> adj[],vector<bool>&vis){
+        vis[node]=true;
+        for(auto x:adj[node]){
+            dfs(x,adj,vis);
+        }
+        return;
+    }
+    bool isCycle(int V, vector<int> adj[]) {
+        // Code here
+        // ✅😏💯
+        vector<bool>vis(V,false);
+        for(int i=0;i<V;i++){
+            if(vis[i]==true)
             return true;
-            vis[l]=true;
-            for(auto x:adj[l]){
-                if(vis[x]==0)
-                q.push(x);
+            else{
+            dfs(i,adj,vis);
+            }
+        }
+        return false;
+    }
+    */
+    bool bfs(int src,vector<int> adj[],vector<bool>&vis){
+        queue<pair<int,int>>q;
+        q.push({src,-1});
+        vis[src]=true;
+        while(!q.empty()){
+            auto it=q.front();
+            q.pop();
+            for(auto x:adj[it.first]){
+                if(!vis[x]){
+                    vis[x]=true;
+                    q.push({x,it.first});
+                }
+                else if(x!=it.second)
+                return true;
             }
         }
         return false;
     }
     bool isCycle(int V, vector<int> adj[]) {
         // Code here
-        // BFS approach 
-        // ✅💯🤝
-        int vis[V+1]={0};
+        // ✅😏💯
+        // BFS approach.
+        vector<bool>vis(V,false);
         for(int i=0;i<V;i++){
-            if(vis[i]==0){
-                if(find(i,vis,adj))
-                return true;
-            }
-        }
-        return false;
-    }*/
-    bool find(int vis[],int k,vector<int>adj[],int p){
-        vis[k]=1;
-        for(auto x:adj[k]){
-            if(vis[x]==0){
-                if(find(vis,x,adj,k))
-            return true;
-            }
-            else if(x!=p)
-            return true;
-        }
-        return false;
-    }
-    bool isCycle(int V, vector<int> adj[]) {
-        //Let's see the DFS approach.
-        //✅💯🤝
-        int vis[V]={0};
-        for(int i=0;i<V;i++){
-            if(vis[i]==0){
-                if(find(vis,i,adj,-1))
+            if(!vis[i]){
+                if(bfs(i,adj,vis))
                 return true;
             }
         }
