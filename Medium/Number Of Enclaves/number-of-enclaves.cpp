@@ -10,56 +10,55 @@ using namespace std;
 
 class Solution {
   public:
-    int numberOfEnclaves(vector<vector<int>> &grid) {
+   void dfs(vector<vector<int>> &mat,vector<vector<bool>>&vis,int i,int j){
+        vis[i][j]=1;
+        int row[] = {-1, 0, +1, 0};
+        int col[] = {0, +1, 0, -1};
+        int n=mat.size();
+        int m=mat[0].size();
+        for(int k=0;k<4;k++){
+            int nr=row[k]+i;
+            int nc=col[k]+j;
+            if(nr>=0&&nr<n&&nc>=0&&nc<m&&mat[nr][nc]==1&&vis[nr][nc]==false){
+            vis[nr][nc]=true;
+            dfs(mat,vis,nr,nc);
+            }
+        }
+    }
+    int numberOfEnclaves(vector<vector<int>> &mat) {
         // Code here
-        // POTD 
-        int n = grid.size();
-        int m = grid[0].size();
-        queue<pair<int,int>>q;
-        vector<vector<int>>vis(n,vector<int>(m,0));
-        for(int i = 0 ; i <n;i++){
-            if(grid[i][0]){
-                vis[i][0] = 1;
-                q.push({i,0});
-            }
-            if(grid[i][m-1]){
-                vis[i][m-1] = 1;
-                q.push({i,m-1});
+        // ✅😏💯
+        int n=mat.size();
+        int m=mat[0].size();
+         vector<vector<bool>>vis(n,vector<bool>(m,false));
+        for(int i=0;i<n;i++){
+            if(mat[i][0]==1&&vis[i][0]==0){
+                dfs(mat,vis,i,0);
             }
         }
-        for(int j = 0 ; j < m;j++){
-            if(grid[0][j]){
-                vis[0][j] = 1;
-                q.push({0,j});
-            }
-            if(grid[n-1][j]){
-                vis[n-1][j] = 1;
-                q.push({n-1,j});
+        for(int i=0;i<m;i++){
+            if(mat[n-1][i]==1&&vis[n-1][i]==0){
+                dfs(mat,vis,n-1,i);
             }
         }
-        int dr[] = {-1,0,1,0};
-        int dc[] = {0,1,0,-1};
-        while(!q.empty()){
-            int r = q.front().first;
-            int c = q.front().second;
-            q.pop();
-            for(int i = 0 ; i < 4 ;i++){
-                int nr = r + dr[i];
-                int nc = c + dc[i];
-                if(nr>=0 && nr<n && nc>=0 && nc<m && !vis[nr][nc] && grid[nr][nc]){
-                    q.push({nr,nc});
-                    vis[nr][nc] = 1;
-                }
+        for(int i=n-1;i>=0;i--){
+            if(mat[i][m-1]==1&&vis[i][m-1]==0){
+                dfs(mat,vis,i,m-1);
             }
-            
         }
-            int cnt = 0;
-            for(int i = 0;  i<n ; i++){
-                for(int j = 0 ; j<m;j++){
-                    if(grid[i][j] && !vis[i][j]) cnt++;
-                }
+        for(int i=m-1;i>=0;i--){
+            if(mat[0][i]==1&&vis[0][i]==0){
+                dfs(mat,vis,0,i);
             }
-            return cnt;
+        }
+        int ans=0;
+        for(int i=1;i<n-1;i++){
+            for(int j=1;j<m-1;j++){
+                if(mat[i][j]==1&&vis[i][j]==0)
+                ans++;
+            }
+        }
+        return ans;
     }
 };
 
