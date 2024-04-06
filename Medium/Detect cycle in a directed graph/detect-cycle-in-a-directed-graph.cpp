@@ -6,57 +6,32 @@ using namespace std;
 class Solution {
   public:
     // Function to detect cycle in a directed graph.
-    /*bool find(int vis[],int resc[],int src,vector<int>adj[]){
-        vis[src]=1;
-        resc[src]=1;
-        for(auto x:adj[src]){
-            if(vis[x]==0&&find(vis,resc,x,adj))
-            return true;
-            else if(resc[x]==1)
+    bool dfs(int node,vector<int> adj[],vector<bool>&vis,vector<bool>&path){
+        vis[node]=true;
+        path[node]=true;
+        for(auto x:adj[node]){
+            if(!vis[x]){
+                if(dfs(x,adj,vis,path))
+                return true;
+            }
+            else if(x==node||path[x])
             return true;
         }
-        resc[src]=0;
+        path[node]=false;
         return false;
     }
     bool isCyclic(int V, vector<int> adj[]) {
         // code here
-        // 🤝👀🙄©
-        int vis[V]={0};
-        int resc[V]={0};
+        // ✅😏💯
+        vector<bool>vis(V,false);
+        vector<bool>path(V,false);
         for(int i=0;i<V;i++){
-            if(vis[i]==0){
-                if(find(vis,resc,i,adj))
+            if(!vis[i]){
+                if(dfs(i,adj,vis,path)==true)
                 return true;
             }
         }
         return false;
-    }*/
-    bool isCyclic(int V, vector<int> adj[]) {
-        //Another method of finding Using Topological sort
-        //🤝✅💯
-        int c=0;
-        int indegree[V]={0};
-        for(int i=0;i<V;i++){
-            for(auto x:adj[i]){
-                indegree[x]++;
-            }
-        }
-        queue<int>q;
-        for(int i=0;i<V;i++){
-            if(indegree[i]==0)
-            q.push(i);
-        }
-        while(!q.empty()){
-            int k=q.front();
-            q.pop();
-            for(auto x:adj[k]){
-                indegree[x]--;
-                if(indegree[x]==0)
-                q.push(x);
-            }
-            c++;
-        }
-        return c!=V;
     }
 };
 
