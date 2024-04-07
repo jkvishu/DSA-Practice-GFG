@@ -9,44 +9,45 @@ using namespace std;
 // User function Template for C++
 
 class Solution {
-  bool DFS(int node,vector<int>&vis,vector<int>&path,
-
-                 vector<int>&check,vector<int> adj[])
-  {
-      vis[node]=1;
-      path[node]=1;
-      
-      for(auto it:adj[node])
-      {
-          if(!vis[it])
-          {
-              if(DFS(it,vis,path,check,adj))
-              {
-                  return true;
-              }
-              
-          }
-          else if(path[it]==1)return true;
-      }
-      
-      check[node]=1;
-      path[node]=0;
-      return false;
-  }
   public:
+    bool dfs(int node,vector<int> adj[],vector<bool>&vis,vector<bool>&path,vector<bool>&ck){
+        vis[node]=1;
+        path[node]=1;
+        ck[node]=0;
+        for(auto x:adj[node]){
+            if(!vis[x]){
+                ck[x]=0;
+                if(dfs(x,adj,vis,path,ck))
+                return true;
+            }
+            else if(x==node||path[x]==1)
+            {
+                ck[x]=0;
+                return true;
+            }
+        }
+        ck[node]=1;
+        path[node]=0;
+        return false;
+    }
     vector<int> eventualSafeNodes(int V, vector<int> adj[]) {
         // code here
-        // POTD ❌©👀
-        vector<int>vis(V,0),path(V,0),check(V,0),safeNodes;
-        for(int i=0;i<V;i++)
-        {
-            if(!vis[i]) DFS(i,vis,path,check,adj);
+        // Striver OP
+        // ✅😏💯
+        vector<bool>vis(V,0);
+        vector<bool>path(V,0);
+        vector<bool>ck(V,0);
+        vector<int>ans;
+        for(int i=0;i<V;i++){
+            if(!vis[i]){
+                dfs(i,adj,vis,path,ck);
+            }
         }
-        for(int i=0;i<V;i++)
-        {
-            if(check[i]==1)safeNodes.push_back(i);
+        for(int i=0;i<V;i++){
+            if(ck[i]==1)
+            ans.push_back(i);
         }
-        return safeNodes;
+        return ans;
     }
 };
 
