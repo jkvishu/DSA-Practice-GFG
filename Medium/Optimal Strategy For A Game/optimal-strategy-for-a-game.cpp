@@ -7,23 +7,46 @@ using namespace std;
 //Function to find the maximum possible amount of money we can win.
 class Solution{
     public:
-    long long maximumAmount(int arr[], int n){
+    /*
+    long long int find(int i,int n,int a[],int toss){
+        if(i>n)
+        return 0;
+        if(toss){
+            return max(a[i]+find(i+1,n,a,0),a[n]+find(i,n-1,a,0));
+        }
+        else{
+            return min(find(i+1,n,a,1),find(i,n-1,a,1));
+        }
+        
+    }
+    long long maximumAmount(int n, int arr[]){
         // Your code here
-        // Dp very hard and good question
-        // Most asked question
-        // 🥵❌©👀🤝
-        // GFG-C.
-        long long int dp[n][n];
-        for(int i=0;i<n-1;i++){
-            dp[i][i+1]=max(arr[i],arr[i+1]);
+        // Recursive Approach
+        // ✅💯🤝😏
+        // TLE
+        return find(0,n-1,arr,1);
+    }
+    */
+      long long int find(int i,int n,int a[],int toss,vector<vector<int>>&dp){
+        if(i>n)
+        return 0;
+        if(dp[i][n]!=-1)
+        return dp[i][n];
+        if(toss){
+            return dp[i][n]=max(a[i]+find(i+1,n,a,0,dp),a[n]+find(i,n-1,a,0,dp));
         }
-        for(int i=3;i<n;i=i+2){
-            for(int j=0;j+i<n;j++){
-                int k=j+i;
-                dp[j][k]=max(arr[j]+min(dp[j+2][k],dp[j+1][k-1]),arr[k]+min(dp[j+1][k-1],dp[j][k-2]));
-            }
+        else{
+            return dp[i][n]=min(find(i+1,n,a,1,dp),find(i,n-1,a,1,dp));
         }
-        return dp[0][n-1];
+        
+    }
+    long long maximumAmount(int n, int arr[]){
+        // Your code here
+        // Memoization Approach
+        // ✅💯🤝😏
+        // POTD
+        vector<vector<int>>dp(n,vector<int>(n,-1));
+        return find(0,n-1,arr,1,dp);
     }
 };
 
@@ -41,7 +64,7 @@ int main()
 		for(int i=0;i<n;i++)
 		cin>>a[i];
 		Solution ob;
-		cout<< ob.maximumAmount(a,n)<<endl;
+		cout<< ob.maximumAmount(n,a)<<endl;
 	}
 	return 0;
 }
