@@ -7,7 +7,6 @@ class Solution {
   public:
     long long reversedBits(long long x) {
         // code here
-        //Done in first attempt with my own logic
         if(x==0)
         return 0;
         string st="";
