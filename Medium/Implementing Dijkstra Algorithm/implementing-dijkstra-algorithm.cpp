@@ -9,56 +9,28 @@ class Solution
 	//Function to find the shortest distance of all the vertices
     //from the source vertex S.
     vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
-    /*{
-        // Code here
-        // Naive approach
-        // ✅💯🤝👀
-        // Time taken 0.09 sec
-       vector<bool> mset(V,false);
-        vector<int> dist(V,INT_MAX);
-        vector<int> res(V,0);
-        dist[S]=0;
-        for(int c=0;c<V;c++){
-            int u=-1;
-            for(int i=0;i<V;i++){
-                if(mset[i]==false && (u==-1 || dist[u]>dist[i])){
-                    u=i;
-                    
-                }
-            }
-            mset[u]=true;
-            res[u]=dist[u];
-            for(auto a:adj[u]){
-                if(mset[a[0]]==false && dist[a[0]]>a[1]+dist[u]){
-                    dist[a[0]]=a[1]+dist[u];
-                }
-            }
-        }
-        return res;
-    }*/
     {
-        //More optimized approach
-        set<pair<int,int>>s;
-        vector<int>dist(V,1e9);
-        s.insert({0,S});
-        dist[S]=0;
-        
-        while(!s.empty()){
-            auto ptr=*(s.begin());
-            int node=ptr.second;
-            int dis=ptr.first;
-            s.erase(ptr);
-            for(auto it:adj[node]){
-                int child=it[0];
-                int wt=it[1];
-                
-                if(dis+wt<dist[child]){
-                    dist[child]=dis+wt;
-                    s.insert({dist[child],child});
+        // Code here
+        // Implementing Dijkstra Algorithm using priority_queue
+        // Striver OP
+        // ✅😏💯
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        pq.push({0,S});
+        vector<int>dis(V,1e9);
+        dis[S]=0;
+        while(!pq.empty()){
+            auto it=pq.top();
+            pq.pop();
+            for(auto x:adj[it.second]){
+                int ew=x[1];
+                int node=x[0];
+                if(ew+it.first<dis[node]){
+                    dis[node]=ew+it.first;
+                    pq.push({dis[node],node});
                 }
             }
         }
-        return dist;
+        return dis;
     }
 };
 
