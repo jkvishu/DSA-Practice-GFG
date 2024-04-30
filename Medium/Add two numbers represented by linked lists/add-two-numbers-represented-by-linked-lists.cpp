@@ -60,46 +60,68 @@ struct Node {
 class Solution
 {
     public:
-    Node* rev(Node* hd){
-        Node* st=hd;
-        Node* p=NULL;
-        while(st!=NULL){
-            Node* temp=st->next;
-            st->next=p;
-            p=st;
-            st=temp;
-        }
-        return p;
-    }
     //Function to add two numbers represented by linked list.
-    struct Node* addTwoLists(struct Node* first, struct Node* second)
+    struct Node* rev(struct Node* head){
+        Node* st=NULL;
+        while(head){
+            Node* temp=NULL;
+            if(head->next!=NULL)
+            temp=head->next;
+            head->next=st;
+            st=head;
+            head=temp;
+        }
+        return st;
+    }
+    struct Node* addTwoLists(struct Node* num1, struct Node* num2)
     {
         // code here
-        // 🤝👀✅
-        Node* pt=new Node(-1);
-        Node* k=pt;
-        int cal=0;
-        first=rev(first);
-        second=rev(second);
-        while(first!=NULL||second!=NULL||cal){
-            int sum=0;
-            if(first){
-                sum+=first->data;
-                first=first->next;
-            }
-            if(second){
-                sum+=second->data;
-                second=second->next;
-            }
-            sum+=cal;
-            cal=sum/10;
-            Node* temp=new Node(sum%10);
-            k->next=temp;
-            k=k->next;
+        // POTD
+        // ✅😏💯
+        while(num1&&num1->data==0)
+        num1=num1->next;
+        while(num2&&num2->data==0)
+        num2=num2->next;
+        if(num1==NULL&&num2==NULL)
+        {
+            Node* ans=new Node(0);
+            return ans;
         }
-        pt=pt->next;
-        pt=rev(pt);
-        return pt;
+        num1=rev(num1);
+        num2=rev(num2);
+        Node* ans=new Node(-1);
+        Node* st=ans;
+        int r=0;
+        while(num1&&num2){
+            int x=num1->data+num2->data+r;
+            r=x/10;
+            x=x%10;
+            st->next=new Node(x);
+            st=st->next;
+            num1=num1->next;
+            num2=num2->next;
+        }
+        while(num1){
+            int x=num1->data+r;
+            r=x/10;
+            x=x%10;
+            st->next=new Node(x);
+            st=st->next;
+            num1=num1->next;
+        }
+        while(num2){
+            int x=num2->data+r;
+            r=x/10;
+            x=x%10;
+            st->next=new Node(x);
+            st=st->next;
+            num2=num2->next;
+        }
+        if(r!=0)
+        st->next=new Node(r);
+        ans=ans->next;
+        ans=rev(ans);
+        return ans;
     }
 };
 
@@ -115,12 +137,12 @@ int main()
         int n, m;
         
         cin>>n;
-        Node* first = buildList(n);
+        Node* num1 = buildList(n);
         
         cin>>m;
-        Node* second = buildList(m);
+        Node* num2 = buildList(m);
         Solution ob;
-        Node* res = ob.addTwoLists(first,second);
+        Node* res = ob.addTwoLists(num1,num2);
         printList(res);
     }
     return 0;
