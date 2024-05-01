@@ -14,28 +14,29 @@ class Solution {
     */
     vector<int> bellman_ford(int V, vector<vector<int>>& edges, int S) {
         // Code here
-        // Works for negative weight edges in the graph
-        // ✅💯🤝
-        // Striver
-        vector<int>ans(V,1e8);
-        ans[S]=0;
-        for(int c=0;c<V-1;c++){
-            for(auto x:edges){
-                int u=x[0];
-                int v=x[1];
-                int wt=x[2];
-                if(ans[u]!=1e8&&ans[u]+wt<ans[v])
-                ans[v]=ans[u]+wt;
+        // Striver OP
+        // ✅😏💯
+        vector<int>dis(V,1e8);
+        dis[S]=0;
+        for(int i=0;i<V-1;i++){
+            for(auto it:edges){
+                int u=it[0];
+                int v=it[1];
+                int wt=it[2];
+                if(dis[u]!=1e8&&wt+dis[u]<dis[v]){
+                    dis[v]=dis[u]+wt;
+                }
             }
         }
-        for(auto x:edges){
-        int u=x[0];
-        int v=x[1];
-        int wt=x[2];
-        if(ans[u]!=1e8&&ans[u]+wt<ans[v])
-        return {-1};
+        for(auto it:edges){
+                int u=it[0];
+                int v=it[1];
+                int wt=it[2];
+                if(dis[u]!=1e8&&wt+dis[u]<dis[v]){
+                    return {-1};
+                }
         }
-        return ans;
+        return dis;
     }
 };
 
