@@ -2,17 +2,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+class Matrix {
+  public:
+    template <class T>
+    static void input(vector<vector<T>> &A, int n, int m) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                scanf("%d ", &A[i][j]);
+            }
+        }
+    }
+
+    template <class T>
+    static void print(vector<vector<T>> &A) {
+        for (int i = 0; i < A.size(); i++) {
+            for (int j = 0; j < A[i].size(); j++) {
+                cout << A[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+
+
 // } Driver Code Ends
+
 class Solution {
   public:
-    int MinimumEffort(vector<vector<int>>& heights) {
+    int MinimumEffort(int n,int m,vector<vector<int>>& heights) {
         // Code here
         // 88 72 75 69 81 91 -> 81.4
         // 71 90 85 87 86 98 -> 89.2
         // Striver OP
         // ✅😏💯
-        int n=heights.size();
-        int m=heights[0].size();
+        // POTD
         int adjrow[]={-1,0,+1,0};
         int adjcol[]={0,+1,0,-1};
         priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>>pq;
@@ -42,26 +65,28 @@ class Solution {
     }
 };
 
+
 //{ Driver Code Starts.
+
 int main() {
-    int tc;
-    cin >> tc;
-    while (tc--) {
-        int n,m; cin>>n>>m;
-        vector<vector<int>> heights;
-       
-        for(int i=0; i<n; ++i){
-            vector<int> temp;
-            for(int j=0; j<m; ++j){
-                int x; cin>>x;
-                temp.push_back(x);
-            }
-            heights.push_back(temp);
-        }
-       
+    int t;
+    scanf("%d ", &t);
+    while (t--) {
+
+        int rows;
+        scanf("%d", &rows);
+
+        int columns;
+        scanf("%d", &columns);
+
+        vector<vector<int>> heights(rows, vector<int>(columns));
+        Matrix::input(heights, rows, columns);
+
         Solution obj;
-        cout<<obj.MinimumEffort(heights)<<"\n";
+        int res = obj.MinimumEffort(rows, columns, heights);
+
+        cout << res << endl;
     }
-    return 0;
 }
+
 // } Driver Code Ends
