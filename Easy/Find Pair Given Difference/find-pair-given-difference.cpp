@@ -1,40 +1,37 @@
 //{ Driver Code Starts
-#include<bits/stdc++.h>
- 
-using namespace std; 
+#include <bits/stdc++.h>
+using namespace std;
 
-
-bool findPair(int arr[], int size, int n);
-
-int main()
-{
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        int l,n;
-        cin>>l>>n;
-        int arr[l];
-        for(int i=0;i<l;i++)
-            cin>>arr[i];
-        if(findPair(arr, l, n))
-            cout<<1<<endl;
-        else cout<<"-1"<<endl;
+class Array {
+  public:
+    template <class T>
+    static void input(vector<T> &A, int n) {
+        for (int i = 0; i < n; i++) {
+            scanf("%d ", &A[i]);
+        }
     }
-    
-  
-    return 0;
-}
+
+    template <class T>
+    static void print(vector<T> &A) {
+        for (int i = 0; i < A.size(); i++) {
+            cout << A[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+
 // } Driver Code Ends
 
-
-bool findPair(int arr[], int size, int n){
-    //code
-    //✅💯😏
-    sort(arr,arr+size);
-    for(int i=0;i<size-1;i++){
-        int x=n+arr[i];
-        int l=i+1,h=size-1,m;
+class Solution {
+  public:
+    int findPair(int n, int c, vector<int> &arr) {
+        // code here
+        //✅💯😏
+        sort(arr.begin(),arr.end());
+        for(int i=0;i<n-1;i++){
+        int x=c+arr[i];
+        int l=i+1,h=n-1,m;
         while(l<=h){
             m=(l+h)/2;
             if(arr[m]>x){
@@ -48,6 +45,33 @@ bool findPair(int arr[], int size, int n){
                 return 1;
             }
         }
+        }
+        return -1;
     }
-    return 0;
+};
+
+
+//{ Driver Code Starts.
+
+int main() {
+    int t;
+    scanf("%d ", &t);
+    while (t--) {
+
+        int n;
+        scanf("%d", &n);
+
+        int x;
+        scanf("%d", &x);
+
+        vector<int> arr(n);
+        Array::input(arr, n);
+
+        Solution obj;
+        int res = obj.findPair(n, x, arr);
+
+        cout << res << endl;
+    }
 }
+
+// } Driver Code Ends
