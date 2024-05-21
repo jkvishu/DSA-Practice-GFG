@@ -10,53 +10,54 @@ using namespace std;
 
 class Solution {
   public:
-       int findCrossOver(std::vector<int>& arr, int low, int high, int x) {
-        // Base cases
-        if (arr[high] <= x) return high;
-        if (arr[low] > x) return low;
-
-        int mid = (low + high) / 2;
-
-        // Check if mid is the crossover point
-        if (arr[mid] <= x && arr[mid + 1] > x) return mid;
-        else if (arr[mid] < x) return findCrossOver(arr, mid + 1, high, x);
-        return findCrossOver(arr, low, mid - 1, x);
-    }
-
-    std::vector<int> printKClosest(std::vector<int>& arr, int n, int k, int x) {
-        //POTD
-        int id1 = findCrossOver(arr, 0, n - 1, x);
-
-        // Move forward
-        int id2 = id1 + 1;
-
-        // If element is present then we have to neglect
-        if (id1 >= 0 && arr[id1] == x) id1--;
-
-        std::vector<int> ans;
-        for (int i = 0; i < k; i++) {
-            // Both pointing at valid index
-            if (id1 >= 0 && id2 < n) {
-                int val1 = x - arr[id1];
-                int val2 = arr[id2] - x;
-                // val1 is more closest (diff is smaller)
-                if (val1 < val2) {
-                    ans.push_back(arr[id1]);
-                    id1--;
-                } else {
-                    // val2 is more closest or if same we prioritize the greater number
-                    ans.push_back(arr[id2]);
-                    id2++;
-                }
-            } else if (id1 >= 0) {
-                ans.push_back(arr[id1]);
-                id1--;
-            } else {
-                ans.push_back(arr[id2]);
-                id2++;
+    vector<int> printKClosest(vector<int> arr, int n, int k, int x) {
+        // code here
+         // ✅🤝💯😏
+         // POTD
+        vector<int>ans;
+        int l=0,h=n-1,m;
+        int f=0;
+        while(l<=h){
+            m=(l+h)/2;
+            if(arr[m]>x){
+                h=m-1;
+            }
+            else if(arr[m]<x){
+                l=m+1;
+            }
+            else{
+                f=1;
+                break;
             }
         }
-
+        if(f==1)
+        {
+            l=m-1;
+            h=m+1;
+        }
+        else
+        swap(l,h);
+        while(k){
+            int f=abs(x-arr[l]);
+            int s=abs(x-arr[h]);
+            if(l<0){
+                ans.push_back(arr[h]);
+                h++;
+            }
+            else if(h>=n){
+                ans.push_back(arr[l]);
+                l--;
+            }
+            else if(f<s&&l>=0){
+                ans.push_back(arr[l]);
+                l--;
+            }
+            else if(f>=s&&h<n){
+                ans.push_back(arr[h]);
+                h++;
+            }
+            k--;
+        }
         return ans;
     }
 };
