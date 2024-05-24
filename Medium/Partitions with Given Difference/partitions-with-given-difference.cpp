@@ -3,45 +3,14 @@
 using namespace std;
 
 // } Driver Code Ends
-
-int mod=1e9+7;
 class Solution {
   public:
-  /*
-    int countPartitions(int n, int d, vector<int>& arr) {
-        // Code here
-        // Direct approach Striver baba
-        // ✅💯😏🤝
-        int sum1=0;
-        for(int i=0;i<n;i++){
-            sum1+=arr[i];
-        }
-        if(sum1-d<0||(sum1-d)%2!=0)
-        return 0;
-        int sum=(sum1-d)/2;
-        vector<vector<int>>dp(n,vector<int>(sum+1,0));
-        if(arr[0]==0) 
-        dp[0][0]=2;
-        else 
-        dp[0][0]=1;
-        if(arr[0]!=0 && arr[0] <= sum) 
-        dp[0][arr[0]]=1;
-        for(int i=1;i<n;i++){
-            for(int j=0;j<=sum;j++){
-                int pick=0;
-                if(arr[i]<=j)
-                pick=dp[i-1][j-arr[i]];
-                int ntpick=dp[i-1][j];
-                dp[i][j]=(pick+ntpick)%mod;
-            }
-        }
-        return dp[n-1][sum];
-    }
-    */
+    int mod=1e9+7;
     int countPartitions(int n, int d, vector<int>& arr) {
         // Code here
         // Direct optimal approach Striver baba
         // ✅💯😏🤝
+        // POTD
         int sum=0;
         for(int i=0;i<n;i++){
             sum+=arr[i];
@@ -49,9 +18,9 @@ class Solution {
         if(sum-d<0||(sum-d)%2!=0)
         return 0;
         sum=(sum-d)/2;
-    vector<int>dp(sum+1,0);
-    vector<int>cur(sum+1,0);
-     if(arr[0]==0) 
+        vector<int>dp(sum+1,0);
+        vector<int>cur(sum+1,0);
+        if(arr[0]==0) 
         dp[0]=2;
         else 
         dp[0]=1;
@@ -67,9 +36,8 @@ class Solution {
             }
             dp=cur;
         }
-    return dp[sum];
+        return dp[sum];
     }
-    
 };
 
 //{ Driver Code Starts.
