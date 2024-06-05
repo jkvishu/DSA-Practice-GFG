@@ -7,41 +7,6 @@ using namespace std;
 class Solution {
 
   public:
-  int findSwapValues(int A[], int n, int B[], int m)
-	{
-        // Your code goes here
-        sort(A,A+n);
-        sort(B,B+m);
-        int sum1=0,sum2=0,i,j=0,p,q;
-        for(i=0;i<n;i++)
-        {
-            sum1+=A[i];
-        }
-        for(i=0;i<m;i++)
-        {
-            sum2+=B[i];
-        }
-        i=0;
-        while(i<n&&j<m)
-        {
-            p=sum1-A[i]+B[j];
-            q=sum2-B[j]+A[i];
-            if(p==q)
-            {
-                return 1;
-            }
-            if(p>q)
-            {
-                i++;
-            }
-            else
-            {
-                j++;
-            }
-        }
-        return -1;
-	}
-  /*
     void find(long long int &sum1,int a[],int n){
         for(int i=0;i<n;i++){
             sum1+=a[i];
@@ -52,7 +17,7 @@ class Solution {
         // POTD
         // ✅😏💯
         sort(a,a+n);
-        sort(b,b+n);
+        sort(b,b+m);
         long long int sum1=0;
         long long int sum2=0;
         find(sum1,a,n);
@@ -70,7 +35,6 @@ class Solution {
         }
         return -1;
     }
-    */
 };
 
 //{ Driver Code Starts.
